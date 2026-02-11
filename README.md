@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jay Singh Chauhan - Developer Portfolio
+
+A minimalist, modern developer portfolio website built with Next.js and Tailwind CSS. Featuring smooth animations, dark/light mode support, and dynamic content.
+URL: https:***.com
+
+## Features
+
+### Core Features
+- **Dark/Light Mode Toggle** - Seamless theme switching with localStorage persistence
+- **Multi-Language Greetings** - Animated greeting text cycling through 7 languages with smooth slide-up animations
+- **Expandable Sections** - Interactive sections for Experience, Learnings, and Achievements with smooth height animations
+- **GitHub Contributions** - Live GitHub calendar that adapts to your current theme
+- **Responsive Design** - Fully responsive layout optimized for all screen sizes
+
+### Interactive Components
+- **Cursor-Following Navbar** - Fixed navbar with a smooth cursor-tracking glow effect using requestAnimationFrame for 60fps performance
+- **Animated Call-to-Action Button** - Dynamic button with animated gradient edges
+- **Smooth Transitions** - All UI elements feature polished CSS transitions and animations
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Components**: Custom React components with hooks
+
+## Project Structure
+
+```
+├── app/
+│   ├── page.tsx              # Main portfolio page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles and animations
+├── components/
+│   ├── expandableContent.tsx # Reusable expandable section component
+│   └── ui/
+│       ├── Navbar.tsx        # Navigation with cursor tracking
+│       ├── gradientButton.tsx
+│       └── TechStack.tsx
+├── public/                   # Static assets
+└── config files              # Next.js, TypeScript, ESLint configs
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
+### Wanna test website locally?
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Sections
 
-## Learn More
+### Hero Section
+- Animated profile image with gradient overlay
+- Dynamic greeting in multiple languages (Hello, Hola, Bonjour, Ciao, Namaste, こんにちは, Guten Tag)
+- Elegant name display with custom font styling
+- Professional tagline with smooth typography
 
-To learn more about Next.js, take a look at the following resources:
+### Experience & Achievements
+- Expandable cards with clip animation
+- Gradient overlay that transitions smoothly
+- "View More/Less" toggle with smooth height animation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### GitHub Contributions
+- Real-time GitHub activity calendar
+- Automatically switches between light and dark theme colors
+- Shows contribution history
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Call-to-Action
+- Interactive button with animated gradient edge effects
+- Dark mode optimized styling
+- Hover effects with smooth transitions
 
-## Deploy on Vercel
+### Customization
+- Light mode: Foreground background with text color invert on hover
+- Dark mode: Foreground colors remain consistent on hover
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Components Library
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This portfolio will soon feature a dedicated `/components` page showcasing reusable components developed during the website creation process. These components are designed to be:
+- **Modular** - Easy to copy and integrate into other projects
+- **Customizable** - Built with Tailwind CSS for easy styling
+- **Optimized** - Performance-focused implementations
+- **Well-documented** - Clear usage examples and props documentation
+
+Components coming soon:
+- Expandable Content Component
+- Cursor-Tracking Effects
+- Animated Theme Switcher
+- Smooth Transition Wrappers
+
+## Configuration
+
+### Theme System
+The portfolio uses CSS custom properties for theming. Modify colors in `app/globals.css`:
+
+```css
+:root {
+  --background: #FBFAF6;
+  --foreground: #121215;
+  --border: #E4E2DC;
+}
+
+.dark {
+  --background: #121215;
+  --foreground: #FBFAF6;
+  --border: #242423;
+}
+```
+
+
+## Performance Optimizations
+
+- **useMemo** - Prevents unnecessary re-renders of expandable sections
+- **requestAnimationFrame** - Smooth 60fps cursor tracking in navbar
+- **CSS Animations** - Hardware-accelerated animations for better performance
+- **Image Optimization** - Next.js Image component for automatic optimization
+- **Code Splitting** - Automatic by Next.js
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Upcoming Features
+
+- [ ] `/components` page with reusable component library
+- [ ] Component code snippets with copy functionality
+- [ ] Interactive component playground
+- [ ] Blog section
+- [ ] Dark mode system preference detection
+
+## Contact & Links
+
+- **GitHub**: [@jaychauhan-exe1](https://github.com/jaychauhan-exe1)
+- **Portfolio**: [Visit Live Site](#)
+
+## License
+
+This project is open source and available under the MIT License.
+
+---
+
+Built with ❤️ by Jay Singh Chauhan
