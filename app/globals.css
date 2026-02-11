@@ -1,26 +1,62 @@
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FBFAF6;
+  --foreground: #121215;
+  --border: #E4E2DC;
+  --blackish: #121215;
+  --primary: #FDBF79;
+  
+  
 }
+.dark {
+  --background: #121215;
+  --foreground: #FBFAF6;
+  --border: #242423;
+  --primary: #FDBF79;
+}
+
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dark: var(--blackish);
+  --color-primary: var(--primary);
+  --color-border: var(--border);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-cabin-sketch: var(--font-cabin-sketch);
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ededed
+  }
+} */
+@keyframes move-around {
+      0% { offset-distance: 0%; }
+      100% { offset-distance: 100%; }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+body::selection, body::-moz-selection  {
+background: var(--color-foreground); 
+color: var(--color-background);
+}
+
