@@ -1,21 +1,55 @@
 'use client'
-import React, { useRef, useEffect } from 'react'
-import { Github } from "lucide-react";
+import React, { useRef, useEffect, useState } from 'react'
+import { Github, Instagram, Linkedin, QrCode } from "lucide-react";
+import { RxDiscordLogo } from "react-icons/rx";
+
 
 export const Navbar = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const followRef = useRef<HTMLDivElement>(null);
+  const hoverAreaRef = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const followPos = useRef({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const lastScrollTop = useRef(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (navRef.current) {
         const rect = navRef.current.getBoundingClientRect();
         mousePos.current = {
-          x: e.clientX - rect.left - 20,
-          y: e.clientY - rect.top - 20,
+          x: e.clientX - rect.left - 12,
+          y: e.clientY - rect.top - 12,
         };
+      }
+    };
+
+    const handleScroll = () => {
+      const st = window.scrollY;
+      if (st > lastScrollTop.current) {
+        // Scrolling DOWN
+        if (!isHovering) setIsVisible(true);
+      } else {
+        // Scrolling UP
+        if (!isHovering) setIsVisible(false);
+      }
+      lastScrollTop.current = st <= 0 ? 0 : st;
+    };
+
+    const handleMouseEnter = () => {
+      setIsHovering(true);
+      setIsVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+      // Reset visibility based on scroll direction
+      const st = window.scrollY;
+      if (st > lastScrollTop.current) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
     };
 
@@ -33,23 +67,58 @@ export const Navbar = () => {
 
     const animationId = requestAnimationFrame(animate);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    if (hoverAreaRef.current) {
+      hoverAreaRef.current.addEventListener('mouseenter', handleMouseEnter);
+      hoverAreaRef.current.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+      if (hoverAreaRef.current) {
+        hoverAreaRef.current.removeEventListener('mouseenter', handleMouseEnter);
+        hoverAreaRef.current.removeEventListener('mouseleave', handleMouseLeave);
+      }
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [isHovering]);
 
   return (
-    <div ref={navRef} className="fixed bottom-10 w-xs max-w-lg left-1/2 -translate-x-1/2 bg-border/30 border p-2 rounded-full overflow-hidden border-white dark:border-border backdrop-blur-xs ">
-        <div className="bg-border/50 p-2 rounded-full w-fit border border-white/60 dark:border-border">
+    <div
+      ref={hoverAreaRef}
+      className={`fixed w-fit max-w-lg left-1/2 -translate-x-1/2 transition-all duration-300 ease-out flex flex-col items-center z-50 pointer-events-auto ${isVisible ? '-bottom-10' : '-bottom-28'}`}
+    >
+      <div
+        ref={navRef}
+        className="w-full shadow-md bg-border/20 border p-2 rounded-full overflow-hidden border-border dark:border-border backdrop-blur-xs relative pointer-events-auto"
+      >
+        <div className="flex items-center gap-2">
+
+          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <QrCode className="text-foreground" />
+          </div>
+          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Instagram className="text-foreground" />
+          </div>
+          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Linkedin className="text-foreground" />
+          </div>
+          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <Github className="text-foreground" />
+          </div>
+          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <RxDiscordLogo size={24} className="text-foreground" />
+          </div>
         </div>
-        <div 
+        <div
           ref={followRef}
           className="follow absolute w-6 h-6 rounded-full bg-primary blur-lg pointer-events-none"
         >
         </div>
+      </div>
+      {/* Spacer (h-20) below the navbar to handle hover area and correct bottom offset */}
+      <div className="h-20 w-full" />
     </div>
   )
 }

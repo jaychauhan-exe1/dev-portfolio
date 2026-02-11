@@ -2,60 +2,60 @@
 import Image from "next/image";
 import ExpandableContent from "../components/expandableContent";
 import { GitHubCalendar } from "react-github-calendar";
-import { BadgeQuestionMark, CircleQuestionMark } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { Navbar } from "@/components/ui/Navbar";
 
 
 
-  const data = {
-    experience: [
-      {
-        title: "Freelance - Fiverr",
-        year: "2021 - 2024",
-        description:
-          "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
-      },
-      {
-        title: "Graphics Design - Internship",
-        year: "2024",
-        description:
-          "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
-      },
-      {
-        title: "Aciony Studios - Founder",
-        year: "2024 - BREWING",
-        description:
-          "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
-      },
-    ],
-    learnings: [
-      {
-        title: "I learnt a lot from my experiences",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-    ],
-    achievements: [
-      {
-        title: "Level 2 account on Fiverr",
-        year: "2022",
-        description:
-          "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
-      },
-    ],
-    
-  };
-  const greetings = ["Hello", "Hola", "Bonjour", "Ciao", "Namaste", "こんにちは", "Guten Tag"];
+const data = {
+  experience: [
+    {
+      title: "Freelance - Fiverr",
+      year: "2021 - 2024",
+      description:
+        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+    },
+    {
+      title: "Graphics Design - Internship",
+      year: "2024",
+      description:
+        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+    },
+    {
+      title: "Aciony Studios - Founder",
+      year: "2024 - BREWING",
+      description:
+        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+    },
+  ],
+  learnings: [
+    {
+      title: "I learnt a lot from my experiences",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+  ],
+  achievements: [
+    {
+      title: "Level 2 account on Fiverr",
+      year: "2022",
+      description:
+        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+    },
+  ],
+
+};
+const greetings = ["Hello", "Namaste", "Hola", "Bonjour", "Ciao", "こんにちは", "Guten Tag"];
 
 export default function Home() {
   const [theme, setTheme] = useState<"dark" | "light" | null>(null);
   const [greetingIndex, setGreetingIndex] = useState(0);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    
+
     const initialTheme = (savedTheme as "dark" | "light") || systemTheme;
     setTheme(initialTheme);
   }, []);
@@ -78,6 +78,7 @@ export default function Home() {
       localStorage.setItem("theme", "light");
     }
   }, [theme]);
+  const ThemeIcon = theme === "dark" ? Sun : Moon;
 
   const experienceContent = useMemo(() => <ExpandableContent items={data.experience} />, []);
   const learningsContent = useMemo(() => <ExpandableContent items={data.learnings} />, []);
@@ -85,7 +86,7 @@ export default function Home() {
 
   // Prevent rendering before theme is determined to avoid flicker
   if (!theme) return null;
-  
+
 
 
   return (
@@ -103,43 +104,42 @@ export default function Home() {
 
         <div className="text-xl font-bold text-foreground text-center flex flex-col gap-4 mb-2">
           <div className="flex flex-row w-full justify-center items-center gap-2">
-            <span key={greetingIndex} style={{animation: 'slideUp 0.5s ease-out'}}>{greetings[greetingIndex]}</span>, I'm <br />{" "}
+            <span key={greetingIndex} style={{ animation: 'slideUp 0.5s ease-out' }}>{greetings[greetingIndex]}</span>, I'm <br />{" "}
           </div>
           <h1 className="">
-          <span className="text-5xl font-cabin-sketch">Jay Singh Chauhan</span>
-        </h1>
+            <span className="text-5xl font-cabin-sketch">Jay Singh Chauhan</span>
+          </h1>
         </div>
 
         <div className="text-foreground/40 mb-4">
           <span>/dʒeɪ sɪŋ tʃɔːˈhɑːn/</span> • <span>noun</span> •{" "}
-          <span>available for work</span>
+          <a href="#contact" className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out">available for work</a>
         </div>
         <div className="mb-2">
-          <p className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
+          <p className="text-foreground/80 text-lg tracking-wide  mb-2">
             A full-stack developer with extensive experience across strategy,
-            design, and engineering, focused on delivering well-crafted digital
-            products.
+            design, and engineering, focused on delivering well-designed <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Digital_product_design" target="_blank" rel="noopener noreferrer">digital products.</a>
           </p>
-          <p className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
+          <p className="text-foreground/80 text-lg tracking-wide mb-2">
             I help businesses turn ideas into scalable, user-friendly solutions
             that solve real problems.
           </p>
         </div>
       </section>
-      <section className="flex flex-col gap-4 my-8">
+      <section className="flex flex-col gap-6 my-8">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Experience
         </h4>
         {experienceContent}
       </section>
-      <section className="flex flex-col gap-1 my-8 border-l-4 border-border px-8 pt-5">
+      <section className="flex flex-col gap-6 my-8 border-l-4 border-border px-8 pt-5">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Learnings
         </h4>
         {learningsContent}
       </section>
-      <section className="flex flex-col gap-4 my-16">
-        <h4 className="mb-6 text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+      <section className="flex flex-col gap-6 my-16">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Github Contributions
         </h4>
         <GitHubCalendar
@@ -150,31 +150,32 @@ export default function Home() {
         />
       </section>
 
-      <section className="flex flex-col gap-4 my-16">
+      <section className="flex flex-col gap-6 my-16">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Tech Stack
         </h4>
       </section>
 
-      <section className="flex flex-col gap-4 my-16 p-6 border border-border rounded-xl">
-        <h4 className=" -mb-4 text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+      <section className="flex flex-col gap-6 my-16 p-6 border border-border rounded-xl">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Achievements
         </h4>
         {achievementsContent}
       </section>
 
-      <section className="flex flex-col gap-4 my-16">
-        <div onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch ">
-        
+      <section className="flex flex-col gap-6 my-16">
+        <div onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch">
+
           <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase ">
-          <span className="inline-block left-0 rotate-0 opacity-100 group-hover/dark:-rotate-12 group-hover/dark:opacity-0 transition-all duration-100">//</span>
-          <span className="absolute top-1/2 -translate-y-1/2 left-0 rotate-12 opacity-0 group-hover/dark:rotate-0 group-hover/dark:opacity-100 transition-transform duration-200">| |</span>
-           <span className="inline-block translate-x-2 group-hover/dark:translate-x-0 transition-transform duration-200">Off the Screen</span>
-        </h4>
-        <CircleQuestionMark size={16} className="
-opacity-0 right-0 top-[calc(50%-1px)] -translate-y-1/2 absolute transform-style-preserve-3d group-hover/dark:translate-x-5 group-hover/dark:opacity-100 group-hover/dark:rotate-y-360 transition-all duration-400" />
-        </div>
-        <p className="text-sm text-foreground/60">
+            <span className="inline-block left-0 rotate-0 opacity-100 group-hover/dark:-rotate-12 group-hover/dark:opacity-0 transition-all duration-100">//</span>
+            <span className="absolute top-1/2 -translate-y-1/2 left-0 rotate-12 opacity-0 group-hover/dark:rotate-0 group-hover/dark:opacity-100 transition-transform duration-200">| |</span>
+            <span className="inline-block translate-x-2 group-hover/dark:translate-x-0 transition-transform duration-200">Off the Screen</span>
+          </h4>
+          <ThemeIcon
+            size={16}
+            className="absolute right-0 top-[calc(50%-1px)] -translate-y-1/2 opacity-0 transform-style-preserve-3d transition-all duration-400 group-hover/dark:translate-x-5 group-hover/dark:opacity-100 group-hover/dark:rotate-y-360"
+          /> </div>
+        <p className="text-sm text-foreground/60 tracking-wide">
           Off the screen, I enjoy slowing things down and paying attention to
           the details that usually get missed. I like spending time learning new
           things outside of work, whether that’s exploring how products are
@@ -190,36 +191,36 @@ opacity-0 right-0 top-[calc(50%-1px)] -translate-y-1/2 absolute transform-style-
           it.
         </p>
       </section>
-      <section className="flex flex-col gap-4 my-16">
-        <h4 className="mb-4 text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+      <section id="contact" className="flex flex-col gap-6 my-16">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
           // Get in Touch
         </h4>
         <div className="flex justify-between items-center">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
-         <button className="cursor-pointer font-medium relative h-12 w-48 group overflow-hidden rounded-full bg-foreground text-background hover:bg-background hover:text-foreground dark:hover:bg-foreground dark:hover:text-background transition-colors duration-300">
-  {/* The Container for the "Edges" movement */}
-  <div className="absolute inset-0 z-0">
-    <div 
-      className="absolute h-2 w-[80%] bg-[#26F9D6] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
-      style={{
-        offsetPath: "rect(0% 100% 100% 0% round 9999px)",
-        animation: "move-around 4s linear infinite"
-      }}
-    />
-    <div 
-      className="absolute h-2 w-[90%] bg-[#E1BFFF] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
-      style={{
-        offsetPath: "rect(0% 100% 100% 0% round 9999px)",
-        animation: "move-around 4s linear infinite",
-        animationDelay: "-2s" 
-      }}
-    />
-  </div>
-  <span className="relative z-10">work with me</span>
+          <button className="cursor-pointer font-medium relative h-12 w-48 group overflow-hidden rounded-full bg-foreground text-background hover:bg-background hover:text-foreground dark:hover:bg-foreground dark:hover:text-background transition-colors duration-300">
+            {/* The Container for the "Edges" movement */}
+            <div className="absolute inset-0 z-0">
+              <div
+                className="absolute h-2 w-[80%] bg-[#26F9D6] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
+                style={{
+                  offsetPath: "rect(0% 100% 100% 0% round 9999px)",
+                  animation: "move-around 4s linear infinite"
+                }}
+              />
+              <div
+                className="absolute h-2 w-[90%] bg-[#E1BFFF] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
+                style={{
+                  offsetPath: "rect(0% 100% 100% 0% round 9999px)",
+                  animation: "move-around 4s linear infinite",
+                  animationDelay: "-2s"
+                }}
+              />
+            </div>
+            <span className="relative z-10">work with me</span>
 
-</button>
+          </button>
         </div>
       </section>
       <Navbar />

@@ -14,7 +14,7 @@ type Props = {
 export default function ExpandableContent({ items }: Props) {
   if (!items || items.length === 0) return null;
 
-    function ExperienceCard({ item, idx }: { item: ExperienceItem; idx: number }) {
+  function ExperienceCard({ item, idx }: { item: ExperienceItem; idx: number }) {
     const [open, setOpen] = useState(false);
     const contentRef = useRef<HTMLParagraphElement | null>(null);
     const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -35,7 +35,7 @@ export default function ExpandableContent({ items }: Props) {
     }, []);
 
     return (
-      <div key={`${item.title}-${idx}`} className="mb-4 mt-6">
+      <div key={`${item.title}-${idx}`} className="mb-4">
         <div className="flex justify-between items-center">
           <h5 className=" text-foreground text-lg tracking-wide">{item.title}</h5>
           {item.year && (

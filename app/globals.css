@@ -1,14 +1,16 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #FBFAF6;
+  --background: #FDFCFA;
   --foreground: #121215;
   --border: #E4E2DC;
   --blackish: #121215;
   --primary: #FDBF79;
-  
-  
+
+
 }
+
 .dark {
   --background: #121215;
   --foreground: #FBFAF6;
@@ -27,6 +29,7 @@
   --font-dm-sans: var(--font-dm-sans);
   --font-cabin-sketch: var(--font-cabin-sketch);
 }
+
 /* 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -35,8 +38,13 @@
   }
 } */
 @keyframes move-around {
-      0% { offset-distance: 0%; }
-      100% { offset-distance: 100%; }
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
 }
 
 @keyframes slideUp {
@@ -44,6 +52,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -54,9 +63,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-body::selection, body::-moz-selection  {
-background: var(--color-foreground); 
-color: var(--color-background);
+  scroll-behavior: smooth;
+
 }
 
+body::selection,
+body::-moz-selection {
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
