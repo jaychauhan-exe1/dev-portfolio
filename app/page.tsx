@@ -5,6 +5,8 @@ import { GitHubCalendar } from "react-github-calendar";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { Navbar } from "@/components/ui/Navbar";
+import { RawData } from "@/components/RawData";
+
 
 
 
@@ -33,7 +35,7 @@ const data = {
     {
       title: "I learnt a lot from my experiences",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
     },
   ],
   achievements: [
@@ -90,7 +92,7 @@ export default function Home() {
 
 
   return (
-    <div className="max-w-2xl w-full mx-auto p-4 pb-20">
+    <div id='master-container' className="max-w-2xl w-full mx-auto p-4 pb-20 relative">
       <section className="flex justify-center flex-col items-center mt-20 my-8">
         <div className="relative mb-10">
           <Image
@@ -127,19 +129,20 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col gap-6 my-8">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Experience
         </h4>
         {experienceContent}
       </section>
-      <section className="flex flex-col gap-6 my-8 border-l-4 border-border px-8 pt-5">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+      <section className="flex flex-col gap-6 my-8 border-border px-8 pt-5 relative">
+        <div className="w-[4px] h-full bg-border absolute top-0 left-0"></div>
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Learnings
         </h4>
         {learningsContent}
       </section>
       <section className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Github Contributions
         </h4>
         <GitHubCalendar
@@ -151,13 +154,13 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Tech Stack
         </h4>
       </section>
 
       <section className="flex flex-col gap-6 my-16 p-6 border border-border rounded-xl">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Achievements
         </h4>
         {achievementsContent}
@@ -166,13 +169,13 @@ export default function Home() {
       <section className="flex flex-col gap-6 my-16">
         <div onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch">
 
-          <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase ">
+          <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase ">
             <span className="inline-block left-0 rotate-0 opacity-100 group-hover/dark:-rotate-12 group-hover/dark:opacity-0 transition-all duration-100">//</span>
             <span className="absolute top-1/2 -translate-y-1/2 left-0 rotate-12 opacity-0 group-hover/dark:rotate-0 group-hover/dark:opacity-100 transition-transform duration-200">| |</span>
             <span className="inline-block translate-x-2 group-hover/dark:translate-x-0 transition-transform duration-200">Off the Screen</span>
           </h4>
           <ThemeIcon
-            size={16}
+            size={14}
             className="absolute right-0 top-[calc(50%-1px)] -translate-y-1/2 opacity-0 transform-style-preserve-3d transition-all duration-400 group-hover/dark:translate-x-5 group-hover/dark:opacity-100 group-hover/dark:rotate-y-360"
           /> </div>
         <p className="text-sm text-foreground/60 tracking-wide">
@@ -192,8 +195,8 @@ export default function Home() {
         </p>
       </section>
       <section id="contact" className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-widest uppercase">
-          // Get in Touch
+        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+          // Git in Touch
         </h4>
         <div className="flex justify-between items-center">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
@@ -218,11 +221,17 @@ export default function Home() {
                 }}
               />
             </div>
-            <span className="relative z-10">work with me</span>
+            <a href="mailto:jaychauhan.exe@gmail.com"><span className="relative z-10">work with me</span></a>
 
           </button>
         </div>
       </section>
+      <div
+        id="raw"
+        className='pt-20 fixed left-1/2 -translate-x-1/2 bg-background top-full h-screen w-full max-w-2xl transition-all duration-700 ease-in-out '
+      >
+        <RawData />
+      </div>
       <Navbar />
     </div>
   );

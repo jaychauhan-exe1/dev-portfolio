@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased`}>
+      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
         {children}
       </body>
     </html>

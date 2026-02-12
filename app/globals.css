@@ -37,6 +37,17 @@
     --foreground: #ededed
   }
 } */
+ul li:before {
+  content: " ";
+  background-color: var(--color-foreground);
+  border-radius: 40%;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 8px;
+  left: 0;
+}
+
 @keyframes move-around {
   0% {
     offset-distance: 0%;
@@ -71,4 +82,8 @@ body::selection,
 body::-moz-selection {
   background: var(--color-foreground);
   color: var(--color-background);
+}
+
+ul li {
+  position: relative;
 }

@@ -1,8 +1,8 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Linkedin, QrCode } from "lucide-react";
+import { Github, Instagram, Linkedin, QrCode, Power } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
-
+import Link from 'next/link';
 
 export const Navbar = () => {
   const navRef = useRef<HTMLDivElement>(null);
@@ -13,6 +13,30 @@ export const Navbar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const lastScrollTop = useRef(0);
+  const [powerOff, setPowerOff] = useState(false);
+
+  const switchOff = () => {
+    const nextPowerOff = !powerOff;
+    setPowerOff(nextPowerOff);
+
+    const raw = document.getElementById('raw');
+    const master = document.getElementById('master-container');
+
+    if (nextPowerOff) {
+      // If powerOff is true: slide raw to top-0 and hide overflow
+      raw?.classList.remove('top-full');
+      raw?.classList.add('top-0');
+      master?.classList.add('overflow-hidden', 'h-screen');
+      setIsVisible(true);
+      setIsHovering(true)
+    } else {
+      // If powerOff is false: slide raw back to top-full and restore overflow
+      raw?.classList.remove('top-0');
+      raw?.classList.add('top-full');
+      master?.classList.remove('overflow-hidden', 'h-screen');
+      setIsVisible(false);
+    }
+  }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -95,21 +119,24 @@ export const Navbar = () => {
       >
         <div className="flex items-center gap-2">
 
-          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          <a href="" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <QrCode className="text-foreground" />
-          </div>
-          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          </a>
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <Instagram className="text-foreground" />
-          </div>
-          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          </a>
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <Linkedin className="text-foreground" />
-          </div>
-          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          </a>
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <Github className="text-foreground" />
-          </div>
-          <div className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          </a>
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
             <RxDiscordLogo size={24} className="text-foreground" />
-          </div>
+          </a>
+          <a onClick={switchOff} className="power-btn bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Power className={powerOff ? "text-primary fill-primary/20" : "text-foreground"} />
+          </a>
         </div>
         <div
           ref={followRef}

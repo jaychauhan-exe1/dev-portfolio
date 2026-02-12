@@ -35,7 +35,7 @@ export default function ExpandableContent({ items }: Props) {
     }, []);
 
     return (
-      <div key={`${item.title}-${idx}`} className="mb-4">
+      <div key={`${item.title}-${idx}`} className="">
         <div className="flex justify-between items-center">
           <h5 className=" text-foreground text-lg tracking-wide">{item.title}</h5>
           {item.year && (
@@ -44,7 +44,7 @@ export default function ExpandableContent({ items }: Props) {
         </div>
 
         {item.description && (
-          <div className="mb-6">
+          <div>
             <div
               ref={wrapperRef}
               className="relative mt-2"
@@ -134,5 +134,5 @@ export default function ExpandableContent({ items }: Props) {
     );
   }
 
-  return <div>{items.map((it, i) => <ExperienceCard key={`${it.title}-${i}`} item={it} idx={i} />)}</div>;
+  return <div className="flex gap-8 flex-col">{items.map((it, i) => <ExperienceCard key={`${it.title}-${i}`} item={it} idx={i} />)}</div>;
 }
