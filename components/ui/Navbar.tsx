@@ -135,7 +135,7 @@ export const Navbar = () => {
             <RxDiscordLogo size={24} className="text-foreground" />
           </a>
           <a onClick={switchOff} className="power-btn bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-            <Power className={powerOff ? "text-primary fill-primary/20" : "text-foreground"} />
+            <Power className="text-foreground" />
           </a>
         </div>
         <div

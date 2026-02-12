@@ -228,7 +228,7 @@ export default function Home() {
       </section>
       <div
         id="raw"
-        className='pt-20 fixed left-1/2 -translate-x-1/2 bg-background top-full h-screen w-full max-w-2xl transition-all duration-700 ease-in-out '
+        className='pt-0 md:pt-20 fixed left-1/2 -translate-x-1/2 bg-background top-full h-screen w-full max-w-2xl transition-all duration-300 ease-in-out '
       >
         <RawData />
       </div>

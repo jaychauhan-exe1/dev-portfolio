@@ -2,7 +2,7 @@ import React from 'react'
 
 export const RawData = () => {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 p-8">
             <div>
                 <h1 className="text-xl">
                     Jay Singh Chauhan
@@ -19,9 +19,9 @@ export const RawData = () => {
 
                 <li className="w-fit pl-4">
                     <a href="https://www.fiverr.com/sellers/jaychauhan123/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
-                        Fiverr - 4 years
-
+                        Fiverr
                     </a>
+                    - 4 years
                 </li>
                 <li className="pl-4">
                     Graphic Design - 1 year
