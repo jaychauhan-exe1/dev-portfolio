@@ -5,7 +5,7 @@ import { motion, useSpring, useMotionValue, AnimatePresence } from "motion/react
 
 // --- Types ---
 type CatState = "SITTING" | "RUNNING" | "EATING" | "WATCHING";
-type CatVariant = "gray" | "black" | "yellow";
+type CatVariant = "gray" | "black" | "yellow" | "white";
 
 // --- Components ---
 
@@ -37,6 +37,20 @@ const DustCloud = ({ size = 12 }: { size?: number }) => (
     </svg>
 );
 
+const QuestionMark = ({ color }: { color: string }) => (
+    <svg width="14" height="18" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ shapeRendering: "crispEdges" }}>
+        {/* Rounded top arch */}
+        <rect x="1" y="0" width="3" height="1" fill={color} />
+        <rect x="0" y="1" width="1" height="2" fill={color} />
+        <rect x="4" y="1" width="1" height="2" fill={color} />
+        {/* Curve back to middle */}
+        <rect x="3" y="3" width="1" height="1" fill={color} />
+        <rect x="2" y="4" width="1" height="1" fill={color} />
+        {/* Dot */}
+        <rect x="2" y="6" width="1" height="1" fill={color} />
+    </svg>
+);
+
 const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatState; isAngry?: boolean; variant?: CatVariant }) => {
     // Color palettes for different variants
     const palettes: Record<CatVariant, any> = {
@@ -52,13 +66,13 @@ const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatStat
         },
         black: {
             body: "#121215",
-            bodyDark: "#09090b",
+            bodyDark: "#3b3b49",
             white: "#FFFFFF",
-            black: "#71717A", // gray feet and ears
-            collar: "#3F3F46",
+            black: "#71717A",
+            collar: "#7F1D1D",
             eye: "#13c457",
             beard: "#121215",
-            nose: "#FFB6C1" // Light pink nose
+            nose: "#FFB6C1"
         },
         yellow: {
             body: "#D28D44",
@@ -69,6 +83,16 @@ const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatStat
             eye: "#3F2305",
             beard: "#d18c44",
             nose: "#d18c44"
+        },
+        white: {
+            body: "#FFFFFF",
+            bodyDark: "#cacad3",
+            white: "#FFFFFF",
+            black: "#71717A",
+            collar: "#7F1D1D",
+            eye: "#51a1ec",
+            beard: "#FFFFFF",
+            nose: "#FFB6C1"
         }
     };
 
@@ -192,8 +216,8 @@ const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatStat
                             <rect x="1" y="2" width="1" height="1" fill={colors.eye} />
                             <rect x="3" y="2" width="1" height="1" fill={colors.eye} />
                             {/* Angry eyebrows - pixel style */}
-                            <rect x="1" y="1" width="1" height="1" fill="#000000" opacity="0.5" />
-                            <rect x="3" y="1" width="1" height="1" fill="#000000" opacity="0.5" />
+                            <rect x="1" y="1" width="1" height="0.7" fill={colors.black} opacity="0.5" />
+                            <rect x="3" y="1" width="1" height="0.7" fill={colors.black} opacity="0.5" />
                         </g>
                     ) : (
                         <>
@@ -218,9 +242,10 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
     const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
     const [catPos, setCatPos] = useState({ x: 200, y: 500 }); // Initial cat position
     const [isAngry, setIsAngry] = useState(false);
+    const [isHoveringLink, setIsHoveringLink] = useState(false);
     const [variant] = useState<CatVariant>(() => {
         if (initialVariant) return initialVariant;
-        const variants: CatVariant[] = ["gray", "black", "yellow"];
+        const variants: CatVariant[] = ["gray", "black", "yellow", "white"];
         return variants[Math.floor(Math.random() * variants.length)];
     });
     const [dust, setDust] = useState<{ id: number; x: number; y: number }[]>([]);
@@ -230,6 +255,15 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
     const moveTimeout = useRef<NodeJS.Timeout | null>(null);
     const grabCooldown = useRef<number>(0);
     const dustIdCounter = useRef(0);
+
+    // Get colors for the current variant to use in QuestionMark (matching PixelCat)
+    const questionPalettes: Record<CatVariant, string> = {
+        gray: "#121215",
+        black: "#71717A",
+        yellow: "#121215",
+        white: "#71717A"
+    };
+    const questionColor = questionPalettes[variant] || "#121215";
 
     // Smooth movement for cat
     const catX = useSpring(catPos.x, { damping: 30, stiffness: 200 });
@@ -245,6 +279,12 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
             moveTimeout.current = setTimeout(() => {
                 isMoving.current = false;
             }, 150); // Slightly longer window to detect "stopping"
+
+            if (isHoveringLink && catState !== "EATING") {
+                setCatState("SITTING");
+                setIsAngry(false);
+                return;
+            }
 
             if (isFishboneAttached) {
                 // If cat is not eating, it should look at or follow the cursor
@@ -267,14 +307,27 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
             }
         };
 
+        const handleOver = (e: MouseEvent) => {
+            if ((e.target as HTMLElement).closest('a')) setIsHoveringLink(true);
+        };
+        const handleOut = (e: MouseEvent) => {
+            if ((e.target as HTMLElement).closest('a')) setIsHoveringLink(false);
+        };
+
         window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [catPos, isFishboneAttached, catState]);
+        document.addEventListener("mouseover", handleOver);
+        document.addEventListener("mouseout", handleOut);
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseover", handleOver);
+            document.removeEventListener("mouseout", handleOut);
+        };
+    }, [catPos, isFishboneAttached, catState, isHoveringLink]);
 
     // Cat follow logic
     useEffect(() => {
         const interval = setInterval(() => {
-            if (isFishboneAttached && catState === "RUNNING") {
+            if (isFishboneAttached && catState === "RUNNING" && !isHoveringLink) {
                 setCatPos(prev => {
                     const dx = mousePos.x - prev.x;
                     const dy = mousePos.y - prev.y;
@@ -389,7 +442,7 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
 
             {/* Fishbone following cursor */}
             <AnimatePresence>
-                {isFishboneAttached && (
+                {isFishboneAttached && !isHoveringLink && (
                     <motion.div
                         style={{
                             position: 'fixed',
@@ -416,27 +469,45 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
                 }}
                 className="cursor-pointer pointer-events-auto group"
                 onClick={handleInteract}
-                animate={{
-                    scaleX: mousePos.x < catPos.x ? 1 : -1
-                }}
             >
-                {/* Invisible larger hit area */}
-                <div className="absolute inset-[-20px] rounded-full z-0" />
+                {/* Question mark - outside the flipping div to prevent flipping */}
+                {isHoveringLink && catState !== "EATING" && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 0, x: 0 }}
+                        animate={{
+                            opacity: 1,
+                            y: -18,
+                            x: mousePos.x < catPos.x ? -12 : 12
+                        }}
+                        className="absolute left-1/2 -translate-x-1/2"
+                    >
+                        <QuestionMark color={questionColor} />
+                    </motion.div>
+                )}
 
-                <div className="relative z-10 transition-transform group-hover:scale-110 active:scale-95 duration-200">
-                    <PixelCat state={catState} isAngry={isAngry} variant={variant} />
+                <motion.div
+                    animate={{
+                        scaleX: mousePos.x < catPos.x ? 1 : -1
+                    }}
+                >
+                    {/* Invisible larger hit area */}
+                    <div className="absolute inset-[-20px] rounded-full z-0" />
 
-                    {/* If eating, show fishbone in front of cat */}
-                    {!isFishboneAttached && catState === "EATING" && (
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="absolute -left-2 top-2 text-foreground/40 drop-shadow-md"
-                        >
-                            <Fishbone size={16} />
-                        </motion.div>
-                    )}
-                </div>
+                    <div className="relative z-10 transition-transform group-hover:scale-110 active:scale-95 duration-200">
+                        <PixelCat state={catState} isAngry={isAngry} variant={variant} />
+
+                        {/* If eating, show fishbone in front of cat */}
+                        {!isFishboneAttached && catState === "EATING" && (
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                className="absolute -left-2 top-2 text-foreground/40 drop-shadow-md"
+                            >
+                                <Fishbone size={16} />
+                            </motion.div>
+                        )}
+                    </div>
+                </motion.div>
             </motion.div>
         </div>
     );
