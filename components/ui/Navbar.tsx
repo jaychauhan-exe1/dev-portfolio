@@ -2,47 +2,48 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Github, Instagram, Linkedin, QrCode, Power } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
-import { RawData } from '../RawData';
-import { motion, AnimatePresence, useSpring, useMotionValue } from 'motion/react';
+import { motion, useSpring, useMotionValue } from 'motion/react';
+import { useRouter, usePathname } from 'next/navigation';
+import BootScreens from '../BootScreens';
+import { Tooltip } from './Tooltip';
 
 export const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const lastScrollTop = useRef(0);
-  const [powerOff, setPowerOff] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'shutting-down' | 'starting-up'>('idle');
 
-  // Mouse follow logic using motion values
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
 
-  // Smooth springs for the follow bubble
-  const springConfig = { damping: 20, stiffness: 300 };
-  const bubbleX = useSpring(mouseX, springConfig);
-  const bubbleY = useSpring(mouseY, springConfig);
 
   const switchOff = () => {
-    const nextPowerOff = !powerOff;
-    setPowerOff(nextPowerOff);
-
     const master = document.getElementById('master-container');
-    if (nextPowerOff) {
-      master?.classList.add('overflow-hidden', 'h-screen');
-      setIsVisible(true);
-      setIsHovering(true);
-    } else {
-      master?.classList.remove('overflow-hidden', 'h-screen');
-      setIsVisible(true);
-    }
+
+    if (status !== 'idle') return;
+
+    // Start transition
+    const isMainPage = pathname === '/';
+    const nextStatus = isMainPage ? 'shutting-down' : 'starting-up';
+
+    setStatus(nextStatus);
+    master?.classList.add('overflow-hidden', 'h-screen');
+    setIsVisible(true);
+    setIsHovering(true);
+
+    timeoutRef.current = setTimeout(() => {
+      router.push(isMainPage ? '/plain' : '/');
+      setTimeout(() => {
+        setStatus('idle');
+        master?.classList.remove('overflow-hidden', 'h-screen');
+      }, 100);
+    }, 1000);
   }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (navRef.current) {
-        const rect = navRef.current.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left - 12);
-        mouseY.set(e.clientY - rect.top - 12);
-      }
     };
 
     const handleScroll = () => {
@@ -57,7 +58,7 @@ export const Navbar = () => {
 
       const isAtBottom = windowHeight + st >= fullHeight - 20;
 
-      if (isHovering || powerOff) {
+      if (isHovering || status !== 'idle') {
         lastScrollTop.current = st <= 0 ? 0 : st;
         return;
       }
@@ -80,7 +81,7 @@ export const Navbar = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHovering, powerOff]);
+  }, [isHovering, status]);
 
   return (
     <>
@@ -96,47 +97,44 @@ export const Navbar = () => {
           boxShadow: isVisible ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
-        className="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto overflow-hidden"
+        className="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"
         style={{ transformOrigin: 'center bottom' }}
       >
-        <a href="" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <QrCode className="text-foreground" />
-        </a>
-        <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <Instagram className="text-foreground" />
-        </a>
-        <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <Linkedin className="text-foreground" />
-        </a>
-        <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <Github className="text-foreground" />
-        </a>
-        <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <RxDiscordLogo size={24} className="text-foreground" />
-        </a>
-        <a onClick={switchOff} className="power-btn bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
-          <Power className="text-foreground" />
-        </a>
+        <Tooltip content="QR Code">
+          <a href="" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <QrCode className="text-foreground" />
+          </a>
+        </Tooltip>
+        <Tooltip content="Instagram">
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Instagram className="text-foreground" />
+          </a>
+        </Tooltip>
+        <Tooltip content="LinkedIn">
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Linkedin className="text-foreground" />
+          </a>
+        </Tooltip>
+        <Tooltip content="GitHub">
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Github className="text-foreground" />
+          </a>
+        </Tooltip>
+        <Tooltip content="Discord">
+          <a className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <RxDiscordLogo size={24} className="text-foreground" />
+          </a>
+        </Tooltip>
+        <Tooltip content={"Power"}>
+          <a onClick={switchOff} className="power-btn bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Power className="text-foreground" />
+          </a>
+        </Tooltip>
 
-        <motion.div
-          style={{ left: bubbleX, top: bubbleY }}
-          className="absolute w-6 h-6 rounded-full bg-primary blur-lg pointer-events-none -z-1"
-        />
+
       </motion.div>
 
-      <AnimatePresence>
-        {powerOff && (
-          <motion.div
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-            className="z-40 pt-0 md:pt-20 fixed top-0 left-1/2 -translate-x-1/2 bg-background h-screen w-full max-w-2xl overflow-y-auto"
-          >
-            <RawData />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <BootScreens status={status} />
     </>
   )
 }

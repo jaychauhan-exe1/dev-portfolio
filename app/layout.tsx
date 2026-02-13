@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cabin_Sketch, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
+import PageTransition from "@/components/PageTransition";
+import { CatCursor } from "@/components/ui/CatCursor";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -25,10 +27,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const savedTheme = localStorage.getItem('theme');
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              })()
+            `,
+          }}
+        />
+      </head>
+      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased w-full max-w-2xl mx-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
+        <PageTransition>
+          {children}
+        </PageTransition>
         <Navbar />
+        <CatCursor variant="black" />
       </body>
     </html>
   );

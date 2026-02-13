@@ -77,12 +77,24 @@ export default function Home() {
   const [greetingIndex, setGreetingIndex] = useState(0);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-    const initialTheme = (savedTheme as "dark" | "light") || systemTheme;
-    setTheme(initialTheme);
+    const savedTheme = localStorage.getItem("theme") as "dark" | "light";
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    }
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", newTheme);
+  };
 
   useEffect(() => {
     // Cycle through greetings every 2 seconds
@@ -91,17 +103,6 @@ export default function Home() {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    // 3. Apply/Remove the "dark" class on the <html> tag whenever theme changes
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [theme]);
   const ThemeIcon = theme === "dark" ? Sun : Moon;
 
   const experienceContent = useMemo(() => <ExpandableContent items={data.experience} />, []);
@@ -260,7 +261,7 @@ export default function Home() {
 
       <section className="flex flex-col gap-6 my-16">
         <motion.div
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={toggleTheme}
           whileHover="hover"
           initial="initial"
           className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch"
