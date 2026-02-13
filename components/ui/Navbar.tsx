@@ -10,7 +10,7 @@ export const Navbar = () => {
   const hoverAreaRef = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const followPos = useRef({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const lastScrollTop = useRef(0);
   const [powerOff, setPowerOff] = useState(false);
@@ -34,7 +34,8 @@ export const Navbar = () => {
       raw?.classList.remove('top-0');
       raw?.classList.add('top-full');
       master?.classList.remove('overflow-hidden', 'h-screen');
-      setIsVisible(false);
+      // On power on, we might want it visible
+      setIsVisible(true);
     }
   }
 
@@ -51,13 +52,21 @@ export const Navbar = () => {
 
     const handleScroll = () => {
       const st = window.scrollY;
-      if (st > lastScrollTop.current) {
-        // Scrolling DOWN
-        if (!isHovering) setIsVisible(true);
-      } else {
-        // Scrolling UP
-        if (!isHovering) setIsVisible(false);
+
+      // Don't hide if we are hovering
+      if (isHovering) {
+        lastScrollTop.current = st <= 0 ? 0 : st;
+        return;
       }
+
+      if (st > lastScrollTop.current && st > 50) {
+        // Scrolling DOWN - hide it
+        setIsVisible(false);
+      } else if (st < lastScrollTop.current || st <= 50) {
+        // Scrolling UP or near the top - show it
+        setIsVisible(true);
+      }
+
       lastScrollTop.current = st <= 0 ? 0 : st;
     };
 
@@ -68,13 +77,6 @@ export const Navbar = () => {
 
     const handleMouseLeave = () => {
       setIsHovering(false);
-      // Reset visibility based on scroll direction
-      const st = window.scrollY;
-      if (st > lastScrollTop.current) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
     };
 
     const animate = () => {
@@ -144,7 +146,7 @@ export const Navbar = () => {
         >
         </div>
       </div>
-      {/* Spacer (h-20) below the navbar to handle hover area and correct bottom offset */}
+
       <div className="h-20 w-full" />
     </div>
   )

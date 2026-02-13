@@ -6,6 +6,7 @@ import { Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { Navbar } from "@/components/ui/Navbar";
 import { RawData } from "@/components/RawData";
+import Link from "next/link";
 
 
 
@@ -17,6 +18,7 @@ const data = {
       year: "2021 - 2024",
       description:
         "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+      link: "https://www.fiverr.com/jaychauhan123",
     },
     {
       title: "Graphics Design - Internship",
@@ -42,6 +44,29 @@ const data = {
     {
       title: "Level 2 account on Fiverr",
       year: "2022",
+      description:
+        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+    },
+  ],
+  projects: [
+    {
+      title: "Business Reports",
+      link: "https://github.com/jaychauhan-exe1/better-reports",
+      year: "NEXT JS",
+      description:
+        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+    },
+    {
+      title: "Sales Mobility App",
+      link: "https://github.com/jaychauhan-exe1/bettermobility",
+      year: "EXPO APP",
+      description:
+        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+    },
+    {
+      title: "Think File",
+      link: "https://think-file.vercel.app",
+      year: "GEN AI",
       description:
         "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
     },
@@ -85,6 +110,7 @@ export default function Home() {
   const experienceContent = useMemo(() => <ExpandableContent items={data.experience} />, []);
   const learningsContent = useMemo(() => <ExpandableContent items={data.learnings} />, []);
   const achievementsContent = useMemo(() => <ExpandableContent items={data.achievements} />, []);
+  const projectsContent = useMemo(() => <ExpandableContent items={data.projects} />, []);
 
   // Prevent rendering before theme is determined to avoid flicker
   if (!theme) return null;
@@ -141,6 +167,18 @@ export default function Home() {
         </h4>
         {learningsContent}
       </section>
+      <section className="flex flex-col gap-6 my-16">
+        <div className="flex justify-between items-center">
+          <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        // Projects
+          </h4>
+          <Link href="/projects">
+            <button className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out">All Projects</button>
+          </Link>
+        </div>
+        {projectsContent}
+      </section>
+
       <section className="flex flex-col gap-6 my-16">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Github Contributions

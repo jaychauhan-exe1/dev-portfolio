@@ -1,10 +1,11 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, Link } from "lucide-react";
 export type ExperienceItem = {
   title: string;
   year?: string | null;
   description?: string;
+  link?: string;
 };
 
 type Props = {
@@ -37,10 +38,20 @@ export default function ExpandableContent({ items }: Props) {
     return (
       <div key={`${item.title}-${idx}`} className="">
         <div className="flex justify-between items-center">
-          <h5 className=" text-foreground text-lg tracking-wide">{item.title}</h5>
+          <div className="group pr-6">
+            <h5 className="relative text-foreground text-lg tracking-wide">{item.link ? <a href={item.link} target="_blank" rel="noopener noreferrer" className="group-hover:underline">{item.title}</a> : item.title}
+              {item.link && (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="absolute bg-transparent hover:bg-border p-1 rounded-full top-1/2 -translate-y-1/2 right-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-6 transition-all duration-300">
+                  <Link size={12} />
+                </a>
+              )}
+            </h5>
+          </div>
+
           {item.year && (
             <span className="text-foreground/50 text-sm font-cabin-sketch tracking-wide md:tracking-widest">{item.year}</span>
           )}
+
         </div>
 
         {item.description && (
