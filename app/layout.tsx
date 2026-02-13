@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cabin_Sketch, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/ui/Navbar";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
         {children}
+        <Navbar />
       </body>
     </html>
   );

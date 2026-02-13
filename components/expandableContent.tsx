@@ -1,6 +1,8 @@
 "use client"
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { ChevronsUpDown, Link } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+
 export type ExperienceItem = {
   title: string;
   year?: string | null;
@@ -17,133 +19,93 @@ export default function ExpandableContent({ items }: Props) {
 
   function ExperienceCard({ item, idx }: { item: ExperienceItem; idx: number }) {
     const [open, setOpen] = useState(false);
-    const contentRef = useRef<HTMLParagraphElement | null>(null);
-    const wrapperRef = useRef<HTMLDivElement | null>(null);
-    const [maxH, setMaxH] = useState<string | number>("none");
-
-    const ANIM_DURATION = 300; // ms
-    const ANIM_EASING = "ease-in-out";
     const COLLAPSED_PX = 72;
-
-    // initialize collapsed max height on mount
-    useEffect(() => {
-      if (contentRef.current) {
-        const full = contentRef.current.scrollHeight;
-        const collapsed = Math.min(full, COLLAPSED_PX);
-        setMaxH(collapsed);
-        if (wrapperRef.current) wrapperRef.current.style.overflow = "hidden";
-      }
-    }, []);
 
     return (
       <div key={`${item.title}-${idx}`} className="">
         <div className="flex justify-between items-center">
-          <div className="group pr-6">
-            <h5 className="relative text-foreground text-lg tracking-wide">{item.link ? <a href={item.link} target="_blank" rel="noopener noreferrer" className="group-hover:underline">{item.title}</a> : item.title}
-              {item.link && (
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className="absolute bg-transparent hover:bg-border p-1 rounded-full top-1/2 -translate-y-1/2 right-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-6 transition-all duration-300">
-                  <Link size={12} />
+          <motion.div className="group pr-6" whileHover="hover">
+            <h5 className="relative text-foreground text-lg tracking-wide">
+              {item.link ? (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="group-hover:underline">
+                  {item.title}
                 </a>
+              ) : (
+                item.title
+              )}
+              {item.link && (
+                <motion.a
+                  variants={{
+                    initial: { opacity: 0, x: -10, scale: 0.8, rotate: -15 },
+                    hover: { opacity: 1, x: 26, scale: 1, rotate: 0 }
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bg-transparent opacity-0 hover:bg-border/40 p-1.5 rounded-full top-1/2 -translate-y-1/2 right-0 flex items-center justify-center transition-colors duration-200"
+                >
+                  <Link size={12} className="text-foreground" />
+                </motion.a>
               )}
             </h5>
-          </div>
+          </motion.div>
 
           {item.year && (
             <span className="text-foreground/50 text-sm font-cabin-sketch tracking-wide md:tracking-widest">{item.year}</span>
           )}
-
         </div>
 
         {item.description && (
           <div>
-            <div
-              ref={wrapperRef}
-              className="relative mt-2"
-              onTransitionEnd={(e: React.TransitionEvent<HTMLDivElement>) => {
-                if (e.propertyName !== "max-height") return;
-                if (open) {
-                  // expanded: keep a stable pixel max-height equal to current content height
-                  if (contentRef.current) {
-                    const full = contentRef.current.scrollHeight;
-                    setMaxH(full);
-                  }
-                  if (wrapperRef.current) wrapperRef.current.style.overflow = "visible";
-                } else {
-                  // collapsed: ensure overflow hidden to clip overlay
-                  if (wrapperRef.current) wrapperRef.current.style.overflow = "hidden";
-                }
-              }}
-              style={{
-                maxHeight: maxH === "none" ? "none" : typeof maxH === "number" ? `${maxH}px` : maxH,
-                overflow: "hidden",
-                transition: `max-height ${ANIM_DURATION}ms ${ANIM_EASING}`,
-              }}
+            <motion.div
+              initial={false}
+              animate={{ height: open ? "auto" : COLLAPSED_PX }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="relative mt-2 overflow-hidden"
             >
-              <p ref={contentRef} className="text-foreground/60 text-sm tracking-wide">
+              <p className="text-foreground/60 text-sm tracking-wide">
                 {item.description}
               </p>
 
-              {/* overlay gradient that moves out when expanded */}
-              <div
-                className={`absolute left-0 w-full h-[30%] bg-linear-to-t from-background via-background/60 to-transparent transform`}
-                style={{
-                  bottom: 0,
-                  transform: open ? "translateY(100%)" : "translateY(0)",
-                  opacity: open ? 0 : 1,
-                  pointerEvents: "none",
-                  transition: `transform ${ANIM_DURATION}ms ${ANIM_EASING}, opacity ${ANIM_DURATION}ms ${ANIM_EASING}`,
-                }}
-              />
-            </div>
+              <AnimatePresence>
+                {!open && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute bottom-0 left-0 w-full h-[60%] bg-linear-to-t from-background via-background/80 to-transparent pointer-events-none"
+                  />
+                )}
+              </AnimatePresence>
+            </motion.div>
 
-            <button
-              onClick={() => {
-                if (!contentRef.current || !wrapperRef.current) {
-                  setOpen((s) => !s);
-                  return;
-                }
-
-                const full = contentRef.current.scrollHeight;
-                const collapsed = Math.min(full, COLLAPSED_PX);
-
-                if (!open) {
-                  // Opening: start from collapsed height, then animate to full
-                  setMaxH(collapsed);
-                  if (wrapperRef.current) wrapperRef.current.style.overflow = "hidden";
-                  // force reflow so transition has a starting point
-                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                  wrapperRef.current.offsetHeight;
-                  // start overlay animation
-                  setOpen(true);
-                  // in next frame set to full height to trigger transition
-                  requestAnimationFrame(() => setMaxH(full));
-                } else {
-                  // Closing: set maxHeight to current scrollHeight first to have a smooth collapse
-                  const current = contentRef.current.scrollHeight;
-                  setMaxH(current);
-                  // force reflow
-                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                  wrapperRef.current.offsetHeight;
-
-                  // start overlay/button animation immediately and ensure clipping during collapse
-                  setOpen(false);
-                  if (wrapperRef.current) wrapperRef.current.style.overflow = "hidden";
-
-                  // then in next frame set target collapsed height to trigger transition
-                  requestAnimationFrame(() => setMaxH(collapsed));
-                }
-              }}
+            <motion.button
+              onClick={() => setOpen(!open)}
               className="cursor-pointer hover:text-foreground transition-colors duration-200 text-sm flex items-center gap-2 mt-2 text-foreground/60"
               aria-expanded={open}
+              whileTap={{ scale: 0.95 }}
             >
               {open ? "View Less" : "View More"}
-              <ChevronsUpDown size={12} />
-            </button>
+              <motion.div
+                animate={{ rotate: open ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronsUpDown size={12} />
+              </motion.div>
+            </motion.button>
           </div>
         )}
       </div>
     );
   }
 
-  return <div className="flex gap-8 flex-col">{items.map((it, i) => <ExperienceCard key={`${it.title}-${i}`} item={it} idx={i} />)}</div>;
+  return (
+    <div className="flex gap-8 flex-col">
+      {items.map((it, i) => (
+        <ExperienceCard key={`${it.title}-${i}`} item={it} idx={i} />
+      ))}
+    </div>
+  );
 }

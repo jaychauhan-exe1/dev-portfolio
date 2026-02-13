@@ -1,15 +1,12 @@
 "use client";
+import { motion, useAnimation, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import ExpandableContent from "../components/expandableContent";
 import { GitHubCalendar } from "react-github-calendar";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
-import { Navbar } from "@/components/ui/Navbar";
-import { RawData } from "@/components/RawData";
 import Link from "next/link";
-
-
-
+import { GradientButton } from "../components/ui/gradientButton";
 
 const data = {
   experience: [
@@ -91,7 +88,7 @@ export default function Home() {
     // Cycle through greetings every 2 seconds
     const interval = setInterval(() => {
       setGreetingIndex((prev) => (prev + 1) % greetings.length);
-    }, 2000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
@@ -112,28 +109,85 @@ export default function Home() {
   const achievementsContent = useMemo(() => <ExpandableContent items={data.achievements} />, []);
   const projectsContent = useMemo(() => <ExpandableContent items={data.projects} />, []);
 
+  const controls = useAnimation();
+  const [lastTap, setLastTap] = useState(0);
+
+  const handleReset = () => {
+    controls.start({
+      x: 0,
+      y: 0,
+      transition: { type: "spring", stiffness: 200, damping: 20 }
+    });
+  };
+
+  const handleTap = () => {
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      handleReset();
+    }
+    setLastTap(now);
+  };
+
   // Prevent rendering before theme is determined to avoid flicker
   if (!theme) return null;
-
-
 
   return (
     <div id='master-container' className="max-w-2xl w-full mx-auto p-4 pb-20 relative">
       <section className="flex justify-center flex-col items-center mt-20 my-8">
-        <div className="relative mb-10">
+        <motion.div
+          animate={controls}
+          drag
+          dragMomentum={false}
+          onTap={handleTap}
+          onDoubleClick={handleReset}
+          whileDrag={{ scale: 1.05, zIndex: 10 }}
+          className="relative mb-10 cursor-grab active:cursor-grabbing touch-none z-10"
+        >
           <Image
             src="/me.webp"
             alt="profile picture"
             width={216}
             height={300}
+            draggable={false}
           />
-          <div className="absolute bottom-0 bg-linear-to-t from-background via-background/60 to-transparentleft-0 w-full h-[30%]"></div>
-        </div>
+          <div className="absolute bottom-0 bg-linear-to-t from-background via-background/60 to-transparent left-0 w-full h-[30%] pointer-events-none"></div>
+        </motion.div>
+        <Link href="/components" className="z-1 -top-30 absolute top-55">
+          <GradientButton className='px-4! py-2!'>
+            components
+          </GradientButton>
+        </Link>
 
         <div className="text-xl font-bold text-foreground text-center flex flex-col gap-4 mb-2">
-          <div className="flex flex-row w-full justify-center items-center gap-2">
-            <span key={greetingIndex} style={{ animation: 'slideUp 0.5s ease-out' }}>{greetings[greetingIndex]}</span>, I'm <br />{" "}
-          </div>
+          <motion.div
+            layout
+            transition={{ layout: { type: "spring", stiffness: 300, damping: 30 } }}
+            className="flex flex-row w-full justify-center items-center gap-1 h-8"
+          >
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={greetingIndex}
+                layout
+                initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                transition={{
+                  filter: { duration: 0.3, ease: "easeOut" },
+                  opacity: { duration: 0.2 },
+                  y: { duration: 0.3 },
+                  layout: { type: "spring", stiffness: 300, damping: 30 }
+                }}
+              >
+                {greetings[greetingIndex]}
+              </motion.span>
+            </AnimatePresence>
+            <motion.span
+              layout
+              transition={{ layout: { type: "spring", stiffness: 300, damping: 30 } }}
+            >
+              , I&apos;m
+            </motion.span>
+          </motion.div>
           <h1 className="">
             <span className="text-5xl font-cabin-sketch">Jay Singh Chauhan</span>
           </h1>
@@ -205,17 +259,54 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <div onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch">
-
-          <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase ">
-            <span className="inline-block left-0 rotate-0 opacity-100 group-hover/dark:-rotate-12 group-hover/dark:opacity-0 transition-all duration-100">//</span>
-            <span className="absolute top-1/2 -translate-y-1/2 left-0 rotate-12 opacity-0 group-hover/dark:rotate-0 group-hover/dark:opacity-100 transition-transform duration-200">| |</span>
-            <span className="inline-block translate-x-2 group-hover/dark:translate-x-0 transition-transform duration-200">Off the Screen</span>
+        <motion.div
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          whileHover="hover"
+          initial="initial"
+          className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch"
+        >
+          <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase flex items-center gap-2">
+            <span className="relative w-4 h-4 mr-1">
+              <motion.span
+                variants={{
+                  initial: { rotate: 0, opacity: 1 },
+                  hover: { rotate: -15, opacity: 0 }
+                }}
+                className="absolute inset-0 inline-block"
+              >
+                //
+              </motion.span>
+              <motion.span
+                variants={{
+                  initial: { rotate: 15, opacity: 0 },
+                  hover: { rotate: 0, opacity: 1 }
+                }}
+                className="absolute inset-0 inline-block"
+              >
+                ||
+              </motion.span>
+            </span>
+            <motion.span
+              variants={{
+                initial: { x: 0 },
+                hover: { x: 4 }
+              }}
+              className="inline-block"
+            >
+              Off the Screen
+            </motion.span>
           </h4>
-          <ThemeIcon
-            size={14}
-            className="absolute right-0 top-[calc(50%-1px)] -translate-y-1/2 opacity-0 transform-style-preserve-3d transition-all duration-400 group-hover/dark:translate-x-5 group-hover/dark:opacity-100 group-hover/dark:rotate-y-360"
-          /> </div>
+          <motion.div
+            variants={{
+              initial: { opacity: 0, x: -10, rotate: -45 },
+              hover: { opacity: 1, x: 20, rotate: 0 }
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="absolute right-0 top-1/2 -translate-y-1/2"
+          >
+            <ThemeIcon size={14} />
+          </motion.div>
+        </motion.div>
         <p className="text-sm text-foreground/60 tracking-wide">
           Off the screen, I enjoy slowing things down and paying attention to
           the details that usually get missed. I like spending time learning new
@@ -240,37 +331,14 @@ export default function Home() {
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
-          <button className="cursor-pointer font-medium relative h-12 w-48 group overflow-hidden rounded-full bg-foreground text-background hover:bg-background hover:text-foreground dark:hover:bg-foreground dark:hover:text-background transition-colors duration-300">
-            {/* The Container for the "Edges" movement */}
-            <div className="absolute inset-0 z-0">
-              <div
-                className="absolute h-2 w-[80%] bg-[#26F9D6] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
-                style={{
-                  offsetPath: "rect(0% 100% 100% 0% round 9999px)",
-                  animation: "move-around 4s linear infinite"
-                }}
-              />
-              <div
-                className="absolute h-2 w-[90%] bg-[#E1BFFF] blur-lg rounded-full group-hover:h-40 group-hover:w-40 transition-all duration-300"
-                style={{
-                  offsetPath: "rect(0% 100% 100% 0% round 9999px)",
-                  animation: "move-around 4s linear infinite",
-                  animationDelay: "-2s"
-                }}
-              />
-            </div>
-            <a href="mailto:jaychauhan.exe@gmail.com"><span className="relative z-10">work with me</span></a>
-
-          </button>
+          <a href="mailto:jaychauhan.exe@gmail.com">
+            <GradientButton>
+              work with me
+            </GradientButton>
+          </a>
         </div>
       </section>
-      <div
-        id="raw"
-        className='pt-0 md:pt-20 fixed left-1/2 -translate-x-1/2 bg-background top-full h-screen w-full max-w-2xl transition-all duration-300 ease-in-out '
-      >
-        <RawData />
-      </div>
-      <Navbar />
+
     </div>
   );
 }
