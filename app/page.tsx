@@ -311,7 +311,7 @@ export default function Home() {
                   initial: { rotate: 0, opacity: 1 },
                   hover: { rotate: -15, opacity: 0 }
                 }}
-                className="absolute inset-0 inline-block"
+                className="absolute top-1/2 -translate-y-1/2 inline-block"
               >
                 //
               </motion.span>
@@ -320,15 +320,15 @@ export default function Home() {
                   initial: { rotate: 15, opacity: 0 },
                   hover: { rotate: 0, opacity: 1 }
                 }}
-                className="absolute inset-0 inline-block"
+                className="absolute top-1/2 -translate-y-1/2 inline-block"
               >
-                ||
+                | |
               </motion.span>
             </span>
             <motion.span
               variants={{
-                initial: { x: 0 },
-                hover: { x: 4 }
+                initial: { x: -4 },
+                hover: { x: -8 }
               }}
               className="inline-block"
             >
@@ -338,7 +338,7 @@ export default function Home() {
           <motion.div
             variants={{
               initial: { opacity: 0, x: -10, rotate: -45 },
-              hover: { opacity: 1, x: 20, rotate: 0 }
+              hover: { opacity: 1, x: 15, rotate: 0 }
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="absolute right-0 top-1/2 -translate-y-1/2"

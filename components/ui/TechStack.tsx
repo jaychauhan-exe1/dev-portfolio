@@ -72,10 +72,6 @@ const techStack = {
             icon: "cursor",
         },
         {
-            name: "Postman",
-            icon: "postman",
-        },
-        {
             name: "Docker",
             icon: "docker",
         },
