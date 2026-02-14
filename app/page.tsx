@@ -3,7 +3,7 @@ import { motion, useAnimation, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import ExpandableContent from "../components/expandableContent";
 import { GitHubCalendar } from "react-github-calendar";
-import { Moon, Sun } from "lucide-react";
+import { Cat, Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { GradientButton } from "../components/ui/gradientButton";
@@ -153,11 +153,11 @@ export default function Home() {
           />
           <div className="absolute bottom-0 bg-linear-to-t from-background via-background/60 to-transparent left-0 w-full h-[30%] pointer-events-none"></div>
         </motion.div>
-        <Link href="/components" className="z-1 -top-30 absolute top-55">
-          <GradientButton className='px-4! py-2!'>
-            components
+        <a className="z-1 -top-30 absolute top-55">
+          <GradientButton className='p-2!'>
+            <Cat />
           </GradientButton>
-        </Link>
+        </a>
 
         <div className="text-xl font-bold text-foreground text-center flex flex-col gap-4 mb-2">
           <motion.div
@@ -260,7 +260,7 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <motion.div
+        <motion.a
           onClick={toggleTheme}
           whileHover="hover"
           initial="initial"
@@ -307,7 +307,7 @@ export default function Home() {
           >
             <ThemeIcon size={14} />
           </motion.div>
-        </motion.div>
+        </motion.a>
         <p className="text-sm text-foreground/60 tracking-wide">
           Off the screen, I enjoy slowing things down and paying attention to
           the details that usually get missed. I like spending time learning new
