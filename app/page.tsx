@@ -7,6 +7,7 @@ import { Cat, Moon, Sun } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { GradientButton } from "../components/ui/gradientButton";
+import TechStack from "@/components/ui/TechStack";
 
 const data = {
   experience: [
@@ -286,6 +287,7 @@ export default function Home() {
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Tech Stack
         </h4>
+        <TechStack />
       </section>
 
       <section className="flex flex-col gap-6 my-16 p-6 border border-border rounded-xl">
