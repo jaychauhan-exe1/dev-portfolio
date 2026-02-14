@@ -9,23 +9,31 @@ type CatVariant = "gray" | "black" | "yellow" | "white";
 
 // --- Components ---
 
-const Fishbone = ({ size = 24 }: { size?: number }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ shapeRendering: "crispEdges" }}>
-        {/* Tail (Back) */}
-        <rect x="20" y="9" width="2" height="6" fill="currentColor" />
-        <rect x="18" y="10" width="2" height="4" fill="currentColor" />
+const Fishbone = ({ size = 32 }: { size?: number }) => (
+    <svg width={size} height={size * 0.5} viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ shapeRendering: "crispEdges" }}>
+        {/* Head (Left) */}
+        <rect x="1" y="4" width="1" height="4" fill="currentColor" />
+        <rect x="2" y="3" width="1" height="6" fill="currentColor" />
+        <rect x="3" y="2" width="2" height="8" fill="currentColor" />
+        <rect x="5" y="1" width="3" height="10" fill="currentColor" />
+        <rect x="6" y="3" width="1" height="1" fill="white" /> {/* Eye */}
 
         {/* Spine */}
-        <rect x="8" y="11" width="10" height="2" fill="currentColor" />
+        <rect x="8" y="5" width="12" height="2" fill="currentColor" />
 
-        {/* Ribs */}
-        <rect x="14" y="7" width="2" height="10" fill="currentColor" />
-        <rect x="10" y="7" width="2" height="10" fill="currentColor" />
+        {/* Ribs (Decreasing in size) */}
+        <rect x="9" y="1" width="1" height="10" fill="currentColor" />
+        <rect x="11" y="2" width="1" height="8" fill="currentColor" />
+        <rect x="13" y="3" width="1" height="6" fill="currentColor" />
+        <rect x="15" y="4" width="1" height="4" fill="currentColor" />
+        <rect x="17" y="4" width="1" height="4" fill="currentColor" />
 
-        {/* Head (Front) */}
-        <rect x="2" y="9" width="6" height="6" fill="currentColor" />
-        <rect x="4" y="11" width="2" height="2" fill="currentColor" opacity="0.3" /> {/* Eye Socket */}
-        <rect x="1" y="10" width="1" height="4" fill="currentColor" /> {/* Snout Tip */}
+        {/* Tail (Right) */}
+        <rect x="20" y="5" width="1" height="2" fill="currentColor" />
+        <rect x="21" y="3" width="1" height="6" fill="currentColor" />
+        <rect x="22" y="2" width="1" height="8" fill="currentColor" />
+        <rect x="23" y="1" width="1" height="3" fill="currentColor" />
+        <rect x="23" y="8" width="1" height="3" fill="currentColor" />
     </svg>
 );
 
@@ -240,7 +248,7 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
     const [catState, setCatState] = useState<CatState>("SITTING");
     const [isFishboneAttached, setIsFishboneAttached] = useState(true);
     const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
-    const [catPos, setCatPos] = useState({ x: 200, y: 500 }); // Initial cat position
+    const [catPos, setCatPos] = useState({ x: 200, y: 1000 }); // Start below screen
     const [isAngry, setIsAngry] = useState(false);
     const [isHoveringLink, setIsHoveringLink] = useState(false);
     const [variant] = useState<CatVariant>(() => {
@@ -268,6 +276,19 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
     // Smooth movement for cat
     const catX = useSpring(catPos.x, { damping: 30, stiffness: 200 });
     const catY = useSpring(catPos.y, { damping: 30, stiffness: 200 });
+
+    // Position cat at bottom center on mount
+    useEffect(() => {
+        const startX = window.innerWidth / 2;
+        const startY = window.innerHeight + 100;
+        setCatPos({ x: startX, y: startY });
+        catX.set(startX);
+        catY.set(startY);
+
+        // Start running immediately
+        setCatState("RUNNING");
+        setIsAngry(true);
+    }, [catX, catY]);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
