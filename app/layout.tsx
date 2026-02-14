@@ -3,7 +3,7 @@ import { Cabin_Sketch, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import PageTransition from "@/components/PageTransition";
-import { CatCursor } from "@/components/ui/CatCursor";
+import { CatCursorWrapper } from "@/components/ui/CatCursorWrapper";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -45,12 +45,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased w-full max-w-2xl mx-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
+      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-2xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
         <PageTransition>
           {children}
         </PageTransition>
         <Navbar />
-        <CatCursor variant="black" />
+        <CatCursorWrapper variant="black" />
       </body>
     </html>
   );

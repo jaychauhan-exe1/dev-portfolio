@@ -75,6 +75,16 @@ const greetings = ["Hello", "Namaste", "Hola", "Bonjour", "Ciao", "こんにち�
 export default function Home() {
   const [theme, setTheme] = useState<"dark" | "light" | null>(null);
   const [greetingIndex, setGreetingIndex] = useState(0);
+  const [catActivated, setCatActivated] = useState(false);
+  const [showTom, setShowTom] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "dark" | "light";
@@ -133,11 +143,11 @@ export default function Home() {
   if (!theme) return null;
 
   return (
-    <div id='master-container' className="max-w-2xl w-full mx-auto p-4 pb-20 relative">
+    <div id='master-container' className="relative">
       <section className="flex justify-center flex-col items-center mt-20 my-8">
         <motion.div
           animate={controls}
-          drag
+          drag={isDesktop}
           dragMomentum={false}
           onTap={handleTap}
           onDoubleClick={handleReset}
@@ -153,11 +163,37 @@ export default function Home() {
           />
           <div className="absolute bottom-0 bg-linear-to-t from-background via-background/60 to-transparent left-0 w-full h-[30%] pointer-events-none"></div>
         </motion.div>
-        <a className="z-1 -top-30 absolute top-55">
-          <GradientButton className='p-2!'>
-            <Cat />
-          </GradientButton>
-        </a>
+        {showTom ? (
+          <div className="z-1 -top-20 absolute top-20 hidden lg:flex flex-col items-center gap-2 animate-in fade-in slide-in-from-bottom-10 duration-400">
+            <div className="relative w-[100px] h-[100px] overflow-hidden rounded-xl">
+              <Image
+                src="/tom.jpg"
+                alt="bear the cat"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="text-sm font-cabin-sketch text-foreground py-1">
+              stay with her☺️
+            </span>
+          </div>
+        ) : (
+          <div
+            className="z-1 top-30 absolute cursor-pointer hidden lg:block"
+            onClick={() => {
+              if (!catActivated) {
+                window.dispatchEvent(new Event('activateCat'));
+                setCatActivated(true);
+              } else {
+                setShowTom(true);
+              }
+            }}
+          >
+            <GradientButton className='p-2!'>
+              <Cat />
+            </GradientButton>
+          </div>
+        )}
 
         <div className="text-xl font-bold text-foreground text-center flex flex-col gap-4 mb-2">
           <motion.div
@@ -328,7 +364,7 @@ export default function Home() {
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Git in Touch
         </h4>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-col md:flex-row gap-4">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
