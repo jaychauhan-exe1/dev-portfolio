@@ -237,7 +237,7 @@ export default function Home() {
         </div>
         <div className="mb-2">
           <p className="text-foreground/80 text-lg tracking-wide  mb-2">
-            A full-stack developer with extensive experience across strategy,
+            A <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Graphic_designer">graphics engineer</a> with experience across research, strategy,
             design, and engineering, focused on delivering well-designed <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Digital_product_design" target="_blank" rel="noopener noreferrer">digital products.</a>
           </p>
           <p className="text-foreground/80 text-lg tracking-wide mb-2">
@@ -347,26 +347,24 @@ export default function Home() {
           </motion.div>
         </motion.a>
         <p className="text-sm text-foreground/60 tracking-wide">
-          Off the screen, I enjoy slowing things down and paying attention to
-          the details that usually get missed. I like spending time learning new
-          things outside of work, whether that’s exploring how products are
-          built behind the scenes, improving the way I think and communicate, or
-          simply observing how people interact with technology in everyday life.
-          These moments often influence how I approach problems and make
-          decisions when I’m building for others.
-          <br /> <br />I value consistency, clarity, and doing things properly
-          rather than rushing for quick wins. Outside of work, I enjoy quiet
-          routines, experimenting with ideas, and occasionally stepping back to
-          reflect on what’s working and what can be improved. This mindset helps
-          me stay grounded, curious, and intentional—both in my work and beyond
-          it.
+          I believe design is an act of deliberate perception. Off the screen,
+           I practice deceleration, attuning myself to subtleties, textures, and
+           latent patterns that most overlook. I study the architecture behind
+           products, the cadence of human interaction, and the quiet logic 
+           embedded in everyday systems. These observations are not idle curiosities,
+           they are instruments that sharpen how I conceive, construct, and refine 
+           experiences for others.
+          <br /> <br /> Design, to me, is not decoration, it is stewardship. It is 
+          the responsibility to translate complexity into clarity, friction into flow, 
+          and ambiguity into meaning. I remain anchored in curiosity, guided by discernment, 
+          and committed to craft with unwavering resolve—on the canvas, in code, and in thought.
         </p>
       </section>
       <section id="contact" className="flex flex-col gap-6 my-16">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Git in Touch
         </h4>
-        <div className="flex justify-between items-center flex-col md:flex-row gap-4">
+        <div className="flex justify-between md:items-center flex-col md:flex-row gap-4">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
