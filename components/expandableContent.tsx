@@ -64,7 +64,7 @@ export default function ExpandableContent({ items }: Props) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="relative mt-2 overflow-hidden"
             >
-              <p className="text-foreground/60 text-sm tracking-wide">
+              <p className="text-foreground/60 text-sm tracking-wide whitespace-pre-line">
                 {item.description}
               </p>
 
