@@ -14,36 +14,32 @@ const data = {
     {
       title: "Freelance - Fiverr",
       year: "2021 - 2024",
-      description:
-        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+      description: "I began my freelancing journey on Fiverr in 2021, and since then I have successfully completed over 100 projects while maintaining a consistent 5-star rating. Throughout this experience, I’ve had the opportunity to collaborate with clients from around the world, gaining valuable exposure to diverse business needs, workflows, and expectations. My work spans a wide range of industries, including e-commerce, healthcare, education, and pharmaceuticals, with particularly strong experience in projects related to pharmacies and healthcare businesses. \n\n I really enjoy helping businesses grow and making things work better behind the scenes. I like solving problems, improving systems, and building solutions that people actually find useful. I keep things straightforward when working with clients, I’m always up for new challenges and love working on projects that push me to learn something new.",
       link: "https://www.fiverr.com/jaychauhan123",
     },
     {
-      title: "Graphics Design - Internship",
+      title: "Graphics & UI/UX Designer",
       year: "2024",
-      description:
-        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+      description: "I worked as a Graphic Design Intern at Brand Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
+      link:"https://www.insightsmafia.com"
     },
     {
       title: "Aciony Studios - Founder",
       year: "2024 - BREWING",
-      description:
-        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+      description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
     },
   ],
   learnings: [
     {
       title: "I learnt a lot from my experiences",
-      description:
-        "As a full-stack developer at Fiverr, I have been responsible for designing and implementing scalable web applications that meet the needs of our clients. My role involves collaborating with cross-functional teams to gather requirements, develop technical specifications, and deliver high-quality solutions on time. I have experience working with a variety of technologies, including React, Node.js, and MongoDB, and I am committed to writing clean, maintainable code that adheres to industry best practices.",
+      description: "Every project I’ve worked on has taught me something valuable, not just about technology or design, but about people, expectations, and problem-solving. I’ve learned that good work isn’t only about skill, it’s about listening carefully, understanding the bigger picture, and finding practical solutions that actually help. \n\n My experiences have shown me that growth happens when you step outside your comfort zone, take feedback seriously, and stay curious enough to keep improving. Those lessons continue to shape how I think, how I work, and how I approach every new challenge.",
     },
   ],
   achievements: [
     {
       title: "Level 2 account on Fiverr",
       year: "2022",
-      description:
-        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+      description: "Reached Level 2 Seller on Fiverr through consistent 5-star work, positive client feedback, and successful project delivery. It’s a milestone that reflects the trust clients place in me and the effort I put into every project I take on.",
     },
   ],
   projects: [
@@ -51,22 +47,19 @@ const data = {
       title: "Business Reports",
       link: "https://github.com/jaychauhan-exe1/better-reports",
       year: "NEXT JS",
-      description:
-        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+      description: "Better Reports is a business analytics dashboard I built to help businesses understand their data in a clear and practical way. It allows users to compare sales in multiple formats, generate invoices, and view performance insights through clean visual reports, making it easier to track growth and spot trends without digging through complex spreadsheets. \n\n One of its standout features is an AI assistant that can answer questions about business performance, sales data, and trends in real time, helping users get instant insights without manual analysis. I used local AI model using ollama to keep the business data safe and secure. Building this project strengthened my skills in data visualization, system design, and creating tools that are not only powerful but genuinely useful for real business decisions.",
     },
     {
       title: "Sales Mobility App",
       link: "https://github.com/jaychauhan-exe1/bettermobility",
       year: "EXPO APP",
-      description:
-        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+      description: "Sales Mobility App is a field sales management system I built to replace manual, paper-based workflows with a streamlined digital solution. It allows sales representatives to create orders, manage returns, submit field reports, and handle daily sales activities directly from their mobile devices, improving accuracy and saving time for both reps and management. \n\n The app also supports real-time invoice generation with portable printer integration, enabling instant billing during client visits. This project strengthened my ability to design systems that solve real-world business problems and demonstrated how thoughtful digital tools can significantly improve operational efficiency.",
     },
     {
       title: "Think File",
       link: "https://think-file.vercel.app",
       year: "GEN AI",
-      description:
-        "Off the screen, I enjoy slowing things down and paying attention to the details that usually get missed. I like spending time learning new things outside of work, whether that’s exploring how products are built behind the scenes, improving the way I think and communicate, or simply observing how people interact with technology in everyday life. These moments often influence how I approach problems and make decisions when I’m building for others. I value consistency, clarity, and doing things properly rather than rushing for quick wins. Outside of work, I enjoy quiet routines, experimenting with ideas, and occasionally stepping back to reflect on what’s working and what can be improved. This mindset helps me stay grounded, curious, and intentional—both in my work and beyond it.",
+      description: "ThinkFile is a Retrieval-Augmented Generation (RAG) system I built to explore and deepen my understanding of generative AI systems. It allows users to upload and interact with their data through AI-powered conversations, supporting formats such as Word, PDF, CSV, XLSX, Markdown, and other text-based files. Instead of manually searching documents, users can ask questions and receive context-aware answers instantly. \n\n The system currently runs on Gemini 3 Flash and 2.5 models, and includes structured file and project management along with chat history tracking. This project was intentionally built as a hands-on learning experience to better understand GenAI architecture, document processing pipelines, and real-world implementation patterns. While it’s not intended as a final product, it served as a practical foundation for experimenting with advanced AI workflows and system design.",
     },
   ],
 
@@ -237,12 +230,11 @@ export default function Home() {
         </div>
         <div className="mb-2">
           <p className="text-foreground/80 text-lg tracking-wide  mb-2">
-            A full-stack developer with extensive experience across strategy,
-            design, and engineering, focused on delivering well-designed <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Digital_product_design" target="_blank" rel="noopener noreferrer">digital products.</a>
+            A full stack <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
+            design, and engineering, focused on delivering well-designed digital products.
           </p>
           <p className="text-foreground/80 text-lg tracking-wide mb-2">
-            I help businesses turn ideas into scalable, user-friendly solutions
-            that solve real problems.
+            I help businesses turn ideas into <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
           </p>
         </div>
       </section>
@@ -347,26 +339,24 @@ export default function Home() {
           </motion.div>
         </motion.a>
         <p className="text-sm text-foreground/60 tracking-wide">
-          Off the screen, I enjoy slowing things down and paying attention to
-          the details that usually get missed. I like spending time learning new
-          things outside of work, whether that’s exploring how products are
-          built behind the scenes, improving the way I think and communicate, or
-          simply observing how people interact with technology in everyday life.
-          These moments often influence how I approach problems and make
-          decisions when I’m building for others.
-          <br /> <br />I value consistency, clarity, and doing things properly
-          rather than rushing for quick wins. Outside of work, I enjoy quiet
-          routines, experimenting with ideas, and occasionally stepping back to
-          reflect on what’s working and what can be improved. This mindset helps
-          me stay grounded, curious, and intentional—both in my work and beyond
-          it.
+          I believe design is an act of deliberate perception. Off the screen,
+           I practice deceleration, attuning myself to subtleties, textures, and
+           latent patterns that most overlook. I study the architecture behind
+           products, the cadence of human interaction, and the quiet logic 
+           embedded in everyday systems. These observations are not idle curiosities,
+           they are instruments that sharpen how I conceive, construct, and refine 
+           experiences for others.
+          <br /> <br /> Design, to me, is not decoration, it is stewardship. It is 
+          the responsibility to translate complexity into clarity, friction into flow, 
+          and ambiguity into meaning. I remain anchored in curiosity, guided by discernment, 
+          and committed to craft with unwavering resolve—on the canvas, in code, and in thought.
         </p>
       </section>
       <section id="contact" className="flex flex-col gap-6 my-16">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Git in Touch
         </h4>
-        <div className="flex justify-between items-center flex-col md:flex-row gap-4">
+        <div className="flex justify-between md:items-center flex-col md:flex-row gap-4">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
