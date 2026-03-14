@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { CatCursor } from "./CatCursor";
 
-export const CatCursorWrapper = ({ variant }: { variant?: "gray" | "black" | "yellow" | "white" }) => {
-    const [isActive, setIsActive] = useState(false);
+export const CatCursorWrapper = ({ variant, forceActive = false, contained = false }: { variant?: "gray" | "black" | "yellow" | "white", forceActive?: boolean, contained?: boolean }) => {
+    const [isActive, setIsActive] = useState(forceActive);
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+        
         // Initial check
         setIsDesktop(window.innerWidth >= 1024);
 
@@ -31,5 +33,5 @@ export const CatCursorWrapper = ({ variant }: { variant?: "gray" | "black" | "ye
 
     if (!isActive || !isDesktop) return null;
 
-    return <CatCursor variant={variant} />;
+    return <CatCursor variant={variant} contained={contained} />;
 };
