@@ -244,7 +244,8 @@ const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatStat
     );
 };
 
-export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant }) => {
+export const CatCursor = ({ variant: initialVariant, contained = false }: { variant?: CatVariant, contained?: boolean }) => {
+    const rootRef = useRef<HTMLDivElement>(null);
     const [catState, setCatState] = useState<CatState>("SITTING");
     const [isFishboneAttached, setIsFishboneAttached] = useState(true);
     const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
@@ -279,20 +280,45 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
 
     // Position cat at bottom center on mount
     useEffect(() => {
-        const startX = window.innerWidth / 2;
-        const startY = window.innerHeight + 100;
-        setCatPos({ x: startX, y: startY });
-        catX.set(startX);
-        catY.set(startY);
+        requestAnimationFrame(() => {
+            const parent = rootRef.current?.parentElement;
+            let startX = window.innerWidth / 2;
+            let startY = window.innerHeight + 100;
 
-        // Start running immediately
-        setCatState("RUNNING");
-        setIsAngry(true);
-    }, [catX, catY]);
+            if (contained && parent) {
+                const rect = parent.getBoundingClientRect();
+                startX = rect.width / 2;
+                startY = rect.height + 100;
+            }
+
+            setCatPos({ x: startX, y: startY });
+            catX.set(startX);
+            catY.set(startY);
+
+            // Start running immediately
+            setCatState("RUNNING");
+            setIsAngry(true);
+        });
+    }, [catX, catY, contained]);
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePos({ x: e.clientX, y: e.clientY });
+        const parent = rootRef.current?.parentElement;
+        const target = contained && parent ? parent : window;
+
+        const handleMouseMove = (e: MouseEvent | Event) => {
+            const ev = e as MouseEvent;
+            let mx = ev.clientX;
+            let my = ev.clientY;
+
+            // We do a brief safe check of the rect boundings
+            if (contained && parent) {
+                const rect = parent.getBoundingClientRect();
+                mx = ev.clientX - rect.left;
+                my = ev.clientY - rect.top;
+                setMousePos({ x: mx, y: my });
+            } else {
+                setMousePos({ x: mx, y: my });
+            }
 
             isMoving.current = true;
             if (moveTimeout.current) clearTimeout(moveTimeout.current);
@@ -311,7 +337,7 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
                 // If cat is not eating, it should look at or follow the cursor
                 if (catState !== "EATING") {
                     const dist = Math.sqrt(
-                        Math.pow(e.clientX - catPos.x, 2) + Math.pow(e.clientY - catPos.y, 2)
+                        Math.pow(mx - catPos.x, 2) + Math.pow(my - catPos.y, 2)
                     );
 
                     if (dist > 180) { // Increased run distance
@@ -335,15 +361,15 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
             if ((e.target as HTMLElement).closest('a')) setIsHoveringLink(false);
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseover", handleOver);
-        document.addEventListener("mouseout", handleOut);
+        window.addEventListener("mousemove", handleMouseMove as EventListener);
+        window.addEventListener("mouseover", handleOver as EventListener);
+        window.addEventListener("mouseout", handleOut as EventListener);
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseover", handleOver);
-            document.removeEventListener("mouseout", handleOut);
+            window.removeEventListener("mousemove", handleMouseMove as EventListener);
+            window.removeEventListener("mouseover", handleOver as EventListener);
+            window.removeEventListener("mouseout", handleOut as EventListener);
         };
-    }, [catPos, isFishboneAttached, catState, isHoveringLink]);
+    }, [catPos, isFishboneAttached, catState, isHoveringLink, contained]);
 
     // Cat follow logic
     useEffect(() => {
@@ -443,7 +469,7 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
     };
 
     return (
-        <div className="fixed inset-0 pointer-events-none z-[9999]">
+        <div ref={rootRef} className={contained ? "absolute inset-0 pointer-events-none z-10 overflow-hidden" : "fixed inset-0 pointer-events-none z-[9999]"}>
             {/* Dust Particles */}
             <AnimatePresence>
                 {dust.map(p => (
@@ -453,8 +479,8 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
                         animate={{ opacity: 0, scale: 1.5, y: p.y - 5, x: p.x + (Math.random() - 0.5) * 10 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="fixed text-foreground/20"
-                        style={{ x: "-50%", y: "-50%" }}
+                        className="text-foreground/20"
+                        style={{ position: contained ? 'absolute' : 'fixed', x: "-50%", y: "-50%" }}
                     >
                         <DustCloud />
                     </motion.div>
@@ -466,9 +492,10 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
                 {isFishboneAttached && !isHoveringLink && (
                     <motion.div
                         style={{
-                            position: 'fixed',
+                            position: contained ? 'absolute' : 'fixed',
                             left: mousePos.x,
                             top: mousePos.y,
+
                             x: "-50%",
                             y: "-50%"
                         }}
@@ -482,8 +509,9 @@ export const CatCursor = ({ variant: initialVariant }: { variant?: CatVariant })
             {/* Cat */}
             <motion.div
                 style={{
-                    position: 'fixed',
+                    position: contained ? 'absolute' : 'fixed',
                     left: catX,
+
                     top: catY,
                     x: "-50%",
                     y: "-50%"

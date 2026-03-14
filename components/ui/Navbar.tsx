@@ -1,13 +1,13 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Linkedin, QrCode, Power, FolderOpen, CodeXml, Home } from "lucide-react";
+import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
 import { motion } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
 import BootScreens from '../BootScreens';
 import { Tooltip } from './Tooltip';
 
-export const Navbar = () => {
+export const Navbar = ({ className, isDemo = false }: { className?: string, isDemo?: boolean }) => {
   const router = useRouter();
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
@@ -22,6 +22,9 @@ export const Navbar = () => {
   }
 
   const switchOff = () => {
+    // Abort actual redirection inside component playground
+    if (isDemo || className) return;
+
     const master = document.getElementById('master-container');
 
     if (status !== 'idle') return;
@@ -85,14 +88,16 @@ export const Navbar = () => {
     };
   }, [isHovering, status]);
 
-  const navLinks = [
+  const baseNavLinks = [
     { href: "https://www.instagram.com/jaychauhan.exe/", icon: Instagram, tooltip: "Instagram", isExternal: true },
-    { href: "https://www.x.com", icon: Linkedin, tooltip: "LinkedIn", isExternal: true },
+    { href: "https://dribbble.com/jaychauhanexe", icon: Dribbble, tooltip: "Dribbble", isExternal: true },
     { href: "https://github.com/jaychauhan-exe1", icon: Github, tooltip: "GitHub", isExternal: true },
     { href: "https://discord.com/users/851376020132200459", icon: RxDiscordLogo, tooltip: "Discord", isExternal: true, size: 24 },
     { href: "/projects", icon: FolderOpen, tooltip: "Projects" },
     { href: "/components", icon: CodeXml, tooltip: "Components" },
   ];
+
+  const navLinks = isDemo ? baseNavLinks.filter(l => l.isExternal) : baseNavLinks;
 
   return (
     <>
@@ -108,7 +113,7 @@ export const Navbar = () => {
           boxShadow: isVisible ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
-        className="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"
+        className={className || "fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"}
         style={{ transformOrigin: 'center bottom' }}
       >
         <Tooltip content="QR Code">
@@ -118,15 +123,15 @@ export const Navbar = () => {
         </Tooltip>
 
         {navLinks.map((link) => {
-          const isActive = pathname === link.href;
+          const isActive = !isDemo && pathname === link.href;
           const Icon = isActive ? Home : link.icon;
-          const href = isActive ? "/" : link.href;
+          const href = isDemo ? "#" : (isActive ? "/" : link.href);
 
           return (
             <Tooltip key={link.tooltip} content={isActive ? "Home" : link.tooltip}>
               <a
                 href={href}
-                target={link.isExternal ? "_blank" : undefined}
+                target={(!isDemo && link.isExternal) ? "_blank" : undefined}
                 className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out"
               >
                 <Icon size={link.size || 24} className="text-foreground" />
