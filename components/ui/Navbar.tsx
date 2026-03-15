@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
 import BootScreens from '../BootScreens';
 import { Tooltip } from './Tooltip';
@@ -146,6 +146,24 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             <QrCode className="text-foreground" />
           </a>
         </Tooltip>
+
+        <AnimatePresence>
+          {!isDemo && pathname !== '/' && (
+            <motion.div
+              initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+              animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
+              exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex items-center justify-center overflow-hidden"
+            >
+              <Tooltip content="Home">
+                <Link href="/" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out flex items-center justify-center">
+                  <Home className="text-foreground" />
+                </Link>
+              </Tooltip>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {navLinks.map((link) => {
           const isActive = !isDemo && pathname === link.href;
