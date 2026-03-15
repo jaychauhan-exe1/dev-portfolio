@@ -26,9 +26,9 @@ export const ComponentShowcase = ({ title, description, code, children }: Compon
   };
 
   return (
-    <div className="flex flex-col gap-4 my-10 border border-border rounded-xl bg-background">
+    <div className="flex flex-col gap-4 mb-10 border border-border rounded-xl bg-background">
       <div className="p-6 pb-4 border-b border-border/50">
-        <h3 className="text-xl font-bold font-cabin-sketch mb-2">{title}</h3>
+        <h3 className="text-lg  mb-2">{title}</h3>
         <p className="text-foreground/70 text-sm">{description}</p>
       </div>
 

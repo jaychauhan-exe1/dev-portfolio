@@ -21,7 +21,7 @@ const data = {
       title: "Graphics & UI/UX Designer",
       year: "2024",
       description: "I worked as a Graphic Design Intern at Brand Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
-      link:"https://www.insightsmafia.com"
+      link: "https://www.insightsmafia.com"
     },
     {
       title: "Aciony Studios - Founder",
@@ -340,15 +340,15 @@ export default function Home() {
         </motion.a>
         <p className="text-sm text-foreground/60 tracking-wide">
           I believe design is an act of deliberate perception. Off the screen,
-           I practice deceleration, attuning myself to subtleties, textures, and
-           latent patterns that most overlook. I study the architecture behind
-           products, the cadence of human interaction, and the quiet logic 
-           embedded in everyday systems. These observations are not idle curiosities,
-           they are instruments that sharpen how I conceive, construct, and refine 
-           experiences for others.
-          <br /> <br /> Design, to me, is not decoration, it is stewardship. It is 
-          the responsibility to translate complexity into clarity, friction into flow, 
-          and ambiguity into meaning. I remain anchored in curiosity, guided by discernment, 
+          I practice deceleration, attuning myself to subtleties, textures, and
+          latent patterns that most overlook. I study the architecture behind
+          products, the cadence of human interaction, and the quiet logic
+          embedded in everyday systems. These observations are not idle curiosities,
+          they are instruments that sharpen how I conceive, construct, and refine
+          experiences for others.
+          <br /> <br /> Design, to me, is not decoration, it is stewardship. It is
+          the responsibility to translate complexity into clarity, friction into flow,
+          and ambiguity into meaning. I remain anchored in curiosity, guided by discernment,
           and committed to craft with unwavering resolve—on the canvas, in code, and in thought.
         </p>
       </section>
@@ -360,7 +360,7 @@ export default function Home() {
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
-          <a href="mailto:jaychauhan.exe@gmail.com">
+          <a href="mailto:work@jaysinghchauhan.com">
             <GradientButton>
               work with me
             </GradientButton>
