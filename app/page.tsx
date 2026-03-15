@@ -24,8 +24,8 @@ const data = {
       link: "https://www.insightsmafia.com"
     },
     {
-      title: "Aciony Studios - Founder",
-      year: "2024 - BREWING",
+      title: "Aciony Studios - Building",
+      year: "2026 - BREWING",
       description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
     },
   ],
@@ -229,7 +229,7 @@ export default function Home() {
           <a href="#contact" className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out">available for work</a>
         </div>
         <div className="mb-2">
-          <p className="text-foreground/80 text-lg tracking-wide  mb-2">
+          <p className="text-foreground/80 text-lg tracking-wide mt-6 mb-2">
             A full stack <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
             design, and engineering, focused on delivering well-designed digital products.
           </p>
@@ -244,7 +244,7 @@ export default function Home() {
         </h4>
         {experienceContent}
       </section>
-      <section className="flex flex-col gap-6 my-8 border-border px-8 pt-5 relative">
+      <section className="flex flex-col gap-6 mb-8 mt-14 border-border px-8 pt-5 relative">
         <div className="w-[4px] h-full bg-border absolute top-0 left-0"></div>
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Learnings

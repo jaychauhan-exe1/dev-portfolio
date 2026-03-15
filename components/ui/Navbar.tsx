@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home } from "lucide-react";
+import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
 import { motion } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -8,6 +8,7 @@ import BootScreens from '../BootScreens';
 import { Tooltip } from './Tooltip';
 import { GenieModal } from './GenieModal';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const Navbar = ({ className, isDemo = false }: { className?: string, isDemo?: boolean }) => {
   const router = useRouter();
@@ -17,7 +18,9 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   const [isVisible, setIsVisible] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [qrOrigin, setQrOrigin] = useState({ x: 0, y: 0 });
+  const [menuOrigin, setMenuOrigin] = useState({ x: 0, y: 0 });
   const lastScrollTop = useRef(0);
   const [status, setStatus] = useState<'idle' | 'shutting-down' | 'starting-up'>('idle');
 
@@ -32,6 +35,17 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
       y: (rect.top + rect.height / 2) - centerY,
     });
     setIsQRModalOpen(true);
+  }
+  const showMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    setMenuOrigin({
+      x: (rect.left + rect.width / 2) - centerX,
+      y: (rect.top + rect.height / 2) - centerY,
+    });
+    setIsMenuModalOpen(true);
   }
 
   const switchOff = () => {
@@ -106,8 +120,6 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     { href: "https://dribbble.com/jaychauhanexe", icon: Dribbble, tooltip: "Dribbble", isExternal: true },
     { href: "https://github.com/jaychauhan-exe1", icon: Github, tooltip: "GitHub", isExternal: true },
     { href: "https://discord.com/users/851376020132200459", icon: RxDiscordLogo, tooltip: "Discord", isExternal: true, size: 24 },
-    { href: "/projects", icon: FolderOpen, tooltip: "Projects" },
-    { href: "/components", icon: CodeXml, tooltip: "Components" },
   ];
 
   const navLinks = isDemo ? baseNavLinks.filter(l => l.isExternal) : baseNavLinks;
@@ -158,6 +170,11 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             <Power className="text-foreground" />
           </a>
         </Tooltip>
+        <Tooltip content="Menu">
+          <a onClick={showMenu} className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+            <Menu className="text-foreground" />
+          </a>
+        </Tooltip>
       </motion.div>
       <BootScreens status={status} />
       <GenieModal
@@ -166,9 +183,20 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         origin={qrOrigin}
         title="Scan Me"
       >
-        <p className="text-sm text-foreground/60 mb-6 font-medium text-center">Scan to view on your mobile device</p>
-        <div className="p-4 bg-white rounded-xl shadow-inner border border-gray-200 w-full flex justify-center max-w-[300px]">
+        <div className="p-4 bg-background rounded-xl shadow-inner border border-border w-full flex justify-center max-w-[300px] min-w-[300px]">
           <Image src="/QRCode.webp" alt="QR Code" width={300} height={300} />
+        </div>
+      </GenieModal>
+      <GenieModal
+        isOpen={isMenuModalOpen}
+        onClose={() => setIsMenuModalOpen(false)}
+        origin={menuOrigin}
+        title="Menu"
+      >
+        <div className="p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 items-center max-w-[300px] min-w-[300px]">
+          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/">Home</Link>
+          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/projects">Projects</Link>
+          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/components">Components</Link>
         </div>
       </GenieModal>
     </>
