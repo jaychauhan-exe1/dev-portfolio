@@ -27,7 +27,7 @@ export default function Plain() {
           <a href="https://www.insightsmafia.com" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
             Graphics & UI/UX Designer
           </a>
-           - 1 year
+          - 1 year
         </li>
         <li className="pl-4">
           Aciony Studio - 3 years
@@ -59,8 +59,8 @@ export default function Plain() {
       <h4 className="font-medium">
         Contact
       </h4>
-      <a href="mailto:jaychauhan.exe@gmail.com" className="font-semibold underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
-        jaychauhan.exe@gmail.com
+      <a href="mailto:work@jaysinghchauhan.com" className="font-semibold underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+        work@jaysinghchauhan.com
       </a>
     </div>
   )

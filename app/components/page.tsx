@@ -31,27 +31,26 @@ export default function ComponentsPage() {
 
     const expandableDummyData = [
         {
-            title: 'Senior Software Engineer',
-            year: '2022 - Present',
-            description: 'Worked on scalable distributed systems, improving latency by 40% and deploying microservices handling millions of requests.',
+            title: 'Aaj nahi kal baat karte hai',
+            year: 'Pakka Promise',
+            description: 'Lorem Ipsum is the best text placeholder ever. Kyuki isse accha text placeholder koi nahi hai. Aur jab aaj baat hi nahi karni to placeholder lagana pad jata hai. \n\n Isiliye kalse placeholder nahi par kal to kabhi aata hi nahi hai, ye to kuch gadbad hai.',
         },
         {
-            title: 'Frontend Developer',
-            year: '2020 - 2022',
-            description: 'Created beautiful, responsive user interfaces. Delivered a design system used across 5 different products.',
+            title: 'Kal to aaj se accha hoga',
+            year: 'Sahi mein?',
+            description: 'Jab kal aaj se accha hoga to aaj kal se accha kyu nahi ho sakta? Isiliye kal par mat टालो, aaj hi baat karte hai. Bery gud beta. Kal se kuch to naya hoga jab aaj kuch naya nahi hua to.\n\n Aaj to yehi hona tha isiliye kal kisne dekha hai jo karna hai aaj hi karo aur kuch to dhang se likhlo yaha ',
         }
     ];
 
     return (
         <div className="flex flex-col max-w-4xl mx-auto pb-10 mt-20">
             <div className='flex flex-col gap-6'>
-                <Link className='flex gap-1 items-center mb-8' href="/">
+                <Link className='flex gap-1 items-center mb-10' href="/">
                     <ArrowLeftIcon size={12} />
                     <span className='text-sm underline'>Go back</span>
                 </Link>
             </div>
             <div className="mb-10">
-
                 <h1 className="text-2xl mb-4">UI Components</h1>
                 <p className="text-foreground/70">
                     A collection of the custom components used across my portfolio.
