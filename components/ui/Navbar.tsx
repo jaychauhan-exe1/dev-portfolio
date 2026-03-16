@@ -24,7 +24,8 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   const lastScrollTop = useRef(0);
   const [status, setStatus] = useState<'idle' | 'shutting-down' | 'starting-up'>('idle');
 
-  const showQR = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const showQR = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+    if (isDemo) return;
     // Record the exact center of the clicked icon relative to the screen center for the Genie out/in effect
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = window.innerWidth / 2;
@@ -36,7 +37,8 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     });
     setIsQRModalOpen(true);
   }
-  const showMenu = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const showMenu = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+    if (isDemo) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
@@ -142,9 +144,12 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         style={{ transformOrigin: 'center bottom' }}
       >
         <Tooltip content="QR Code">
-          <a onClick={showQR} className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          <div
+            onClick={showQR}
+            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+          >
             <QrCode className="text-foreground" />
-          </a>
+          </div>
         </Tooltip>
 
         <AnimatePresence>
@@ -168,14 +173,25 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         {navLinks.map((link) => {
           const isActive = !isDemo && pathname === link.href;
           const Icon = isActive ? Home : link.icon;
-          const href = isDemo ? "#" : (isActive ? "/" : link.href);
+          const href = isDemo ? undefined : (isActive ? "/" : link.href);
+          const className = `p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`;
+
+          if (isDemo) {
+            return (
+              <Tooltip key={link.tooltip} content={link.tooltip}>
+                <div className={className}>
+                  <Icon size={link.size || 24} className="text-foreground" />
+                </div>
+              </Tooltip>
+            );
+          }
 
           return (
             <Tooltip key={link.tooltip} content={isActive ? "Home" : link.tooltip}>
               <a
                 href={href}
-                target={(!isDemo && link.isExternal) ? "_blank" : undefined}
-                className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out"
+                target={link.isExternal ? "_blank" : undefined}
+                className={className}
               >
                 <Icon size={link.size || 24} className="text-foreground" />
               </a>
@@ -184,14 +200,20 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         })}
 
         <Tooltip content={"Power"}>
-          <a onClick={switchOff} className="power-btn bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          <div
+            onClick={switchOff}
+            className={`power-btn p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+          >
             <Power className="text-foreground" />
-          </a>
+          </div>
         </Tooltip>
         <Tooltip content="Menu">
-          <a onClick={showMenu} className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out">
+          <div
+            onClick={showMenu}
+            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+          >
             <Menu className="text-foreground" />
-          </a>
+          </div>
         </Tooltip>
       </motion.div>
       <BootScreens status={status} />
