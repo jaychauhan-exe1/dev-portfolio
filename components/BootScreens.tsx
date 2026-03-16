@@ -19,7 +19,7 @@ export default function BootScreens({ status }: BootScreensProps) {
                     animate={{ filter: "blur(0px)", opacity: 1 }}
                     exit={{ filter: "blur(10px)", opacity: 0 }}
                     transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                    className="z-[100] fixed top-0 left-1/2 -translate-x-1/2 bg-background h-screen w-full max-w-2xl overflow-y-auto"
+                    className="z-[100] fixed top-0 left-1/2 -translate-x-1/2 bg-background h-screen w-full max-w-3xl overflow-y-auto"
                 >
                     <div className='flex items-center justify-center h-screen gap-3 text-lg font-medium tracking-wide'>
                         {status === 'shutting-down' && "Shutting Down"}

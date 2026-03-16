@@ -44,7 +44,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-2xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
+      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-3xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
         <PageTransition>
           {children}
         </PageTransition>

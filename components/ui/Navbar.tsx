@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu } from "lucide-react";
+import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu, Folder } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -116,7 +116,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   }, [isHovering, status]);
 
   const baseNavLinks = [
-    { href: "https://www.instagram.com/jaychauhan.exe/", icon: Instagram, tooltip: "Instagram", isExternal: true },
+    { href: "https://www.instagram.com/acionystudios/", icon: Instagram, tooltip: "Instagram", isExternal: true },
     { href: "https://dribbble.com/jaychauhanexe", icon: Dribbble, tooltip: "Dribbble", isExternal: true },
     { href: "https://github.com/jaychauhan-exe1", icon: Github, tooltip: "GitHub", isExternal: true },
     { href: "https://discord.com/users/851376020132200459", icon: RxDiscordLogo, tooltip: "Discord", isExternal: true, size: 24 },
@@ -211,10 +211,19 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         origin={menuOrigin}
         title="Menu"
       >
-        <div className="p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 items-center max-w-[300px] min-w-[300px]">
-          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/">Home</Link>
-          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/projects">Projects</Link>
-          <Link className='hover:underline' onClick={() => setIsMenuModalOpen(false)} href="/components">Components</Link>
+        <div className=" grid grid-cols-2 gap-4 items-center max-w-[300px] min-w-[300px] min-h-[200px] justify-center" >
+          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/">
+            <Home size={20} />
+            Home
+          </Link>
+          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/projects">
+            <Folder size={20} />
+            Projects
+          </Link>
+          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 col-span-2 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
+            <CodeXml size={20} />
+            Components
+          </Link>
         </div>
       </GenieModal>
     </>

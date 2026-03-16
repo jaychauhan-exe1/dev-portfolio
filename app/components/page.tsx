@@ -86,7 +86,7 @@ export default function ComponentsPage() {
                     description="An accordion-style list element that expands and collapses content with a smooth layout transition. Perfect for experience or FAQs."
                     code={expandableContentCode}
                 >
-                    <div className="w-full max-w-2xl px-4">
+                    <div className="w-full max-w-3xl px-4">
                         <ExpandableContent items={expandableDummyData} />
                     </div>
                 </ComponentShowcase>

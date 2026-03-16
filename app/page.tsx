@@ -268,7 +268,7 @@ export default function Home() {
           // Github Contributions
         </h4>
         <GitHubCalendar
-          blockSize={9}
+          blockSize={10.9}
           blockMargin={3}
           colorScheme={theme === "dark" ? "dark" : "light"}
           username="jaychauhan-exe1"
@@ -338,25 +338,29 @@ export default function Home() {
             <ThemeIcon size={14} />
           </motion.div>
         </motion.a>
-        <p className="text-sm text-foreground/60 tracking-wide">
+        <p className="tracking-wide text-foreground/60">
           I believe design is an act of deliberate perception. Off the screen,
           I practice deceleration, attuning myself to subtleties, textures, and
           latent patterns that most overlook. I study the architecture behind
           products, the cadence of human interaction, and the quiet logic
           embedded in everyday systems. These observations are not idle curiosities,
           they are instruments that sharpen how I conceive, construct, and refine
-          experiences for others.
-          <br /> <br /> Design, to me, is not decoration, it is stewardship. It is
+          experiences for others.</p>
+
+        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4" src="/portfolio-meme.png" alt="QR Code" width={1000} height={1100} />
+        <p className="tracking-wide text-foreground/60">
+          Design, to me, is not decoration, it is stewardship. It is
           the responsibility to translate complexity into clarity, friction into flow,
           and ambiguity into meaning. I remain anchored in curiosity, guided by discernment,
           and committed to craft with unwavering resolve—on the canvas, in code, and in thought.
         </p>
+
       </section>
       <section id="contact" className="flex flex-col gap-6 my-16">
         <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Git in Touch
         </h4>
-        <div className="flex justify-between md:items-center flex-col md:flex-row gap-4">
+        <div className="flex justify-between md:items-center flex-col md:flex-row gap-4 mb-8">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅
           </h3>
