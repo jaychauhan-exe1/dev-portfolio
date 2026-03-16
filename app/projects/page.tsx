@@ -43,7 +43,7 @@ const projects = [
 
 export default function Projects() {
     return (
-        <div className='w-full max-w-2xl mx-auto pb-20'>
+        <div className='w-full max-w-3xl mx-auto pb-20'>
             <div className='mt-20 flex flex-col gap-6'>
                 <Link className='flex gap-1 items-center' href="/">
                     <ArrowLeftIcon size={12} />

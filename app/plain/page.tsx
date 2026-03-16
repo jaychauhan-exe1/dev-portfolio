@@ -38,12 +38,12 @@ export default function Plain() {
       </h4>
       <ul className="">
         <li className="pl-4">
-          <a href="https://www.fiverr.com/sellers/jaychauhan123/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+          <a href="https://www.better-reports.vercel.app/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
             Better Reports - Business analytics and reporting platform
           </a>
         </li>
         <li className="pl-4">
-          <a href="https://www.better-reports.vercel.app/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+          <a href="" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
             Better Mobility - Android app for salesmen
           </a>
         </li>
