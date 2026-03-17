@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { Cabin_Sketch, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import PageTransition from "@/components/PageTransition";
 import { CatCursorWrapper } from "@/components/ui/CatCursorWrapper";
+import { constructMetadata } from "@/lib/metadata";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -16,10 +16,7 @@ const cabinSketch = Cabin_Sketch({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Jay Singh Chauhan",
-  description: "Developer Portfolio",
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
