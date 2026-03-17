@@ -1,8 +1,8 @@
 import { constructMetadata } from "@/lib/metadata"
 
 export const metadata = constructMetadata({
-    title: "Minimalist Portfolio - Jay Singh Chauhan | Text-Only Version",
-    description: "Access the minimalist, text-only version of Jay Singh Chauhan's portfolio for a fast, accessible, and clutter-free view of my professional experience and technical projects.",
+    title: "Minimalist Index | Jay Singh Chauhan - Text Only Portfolio",
+    description: "A fast, accessible, and clutter-free minimalist version of Jay Singh Chauhan's portfolio for efficient reading of experience and projects.",
     canonical: "/plain",
 })
 
