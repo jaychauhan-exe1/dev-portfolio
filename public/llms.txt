@@ -1,0 +1,24 @@
+# Jay Singh Chauhan
+
+Jay Singh Chauhan is a full stack product engineer and designer specializing in building scalable, user-friendly digital solutions.
+
+## Experience
+- **Fiverr (Freelance)**: 2021 - 2024. Completed 100+ projects with 5-star ratings.
+- **Brand Insights Mafia**: 2024. Graphics & UI/UX Designer.
+- **Aciony Studios**: 2026 - Present. Founder and Lead Engineer.
+
+## Key Projects
+- **Business Reports**: Business analytics dashboard with local AI assistant (Ollama).
+- **Sales Mobility App**: Field sales management system with real-time invoicing.
+- **Think File**: RAG-based AI document interaction platform.
+- **Manager**: AI-powered project management system.
+
+## Tech Stack
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion.
+- **Backend/Database**: Prisma, SQL, Node.js.
+- **Tools**: GitHub, Vercel, Figma.
+
+## Contact
+- Email: work@jaysinghchauhan.com
+- GitHub: https://github.com/jaychauhan-exe1
+- Instagram: https://www.instagram.com/acionystudios/

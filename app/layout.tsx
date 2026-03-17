@@ -40,6 +40,29 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Jay Singh Chauhan",
+              "url": "https://jaysinghchauhan.com",
+              "image": "https://jaysinghchauhan.com/me.webp",
+              "sameAs": [
+                "https://github.com/jaychauhan-exe1",
+                "https://www.instagram.com/acionystudios/",
+                "https://dribbble.com/jaychauhanexe"
+              ],
+              "jobTitle": "Full Stack Product Engineer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Aciony Studios"
+              },
+              "description": "Full stack product engineer and designer specializing in scalable digital solutions."
+            })
+          }}
+        />
       </head>
       <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-3xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
         <PageTransition>

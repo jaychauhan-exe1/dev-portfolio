@@ -267,12 +267,14 @@ export default function Home() {
         <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Github Contributions
         </h2>
-        <GitHubCalendar
-          blockSize={10.9}
-          blockMargin={3}
-          colorScheme={theme === "dark" ? "dark" : "light"}
-          username="jaychauhan-exe1"
-        />
+        {theme && (
+          <GitHubCalendar
+            blockSize={10.9}
+            blockMargin={3}
+            colorScheme={theme === "dark" ? "dark" : "light"}
+            username="jaychauhan-exe1"
+          />
+        )}
       </section>
 
       <section className="flex flex-col gap-6 my-16">
