@@ -8,11 +8,13 @@ import ExpandableContent from '@/components/expandableContent';
 import { CatCursorWrapper } from '@/components/ui/CatCursorWrapper';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
+import { constructMetadata } from '@/lib/metadata';
 
-export const metadata = {
-    title: 'Components | Jay Singh Chauhan',
-    description: 'A collection of custom components built for this portfolio.',
-};
+export const metadata = constructMetadata({
+    title: "UI Components Library | Jay Singh Chauhan - Portfolio Assets",
+    description: "Explore a curated library of custom-built React and Next.js components used in this portfolio, including animated navbars, orbiting tech stacks, and playful interactive elements like the Cat Cursor.",
+    canonical: "/components",
+});
 
 export default function ComponentsPage() {
     const getComponentCode = (filePath: string) => {

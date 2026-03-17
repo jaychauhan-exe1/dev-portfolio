@@ -133,8 +133,8 @@ export default function Home() {
     setLastTap(now);
   };
 
-  // Prevent rendering before theme is determined to avoid flicker
-  if (!theme) return null;
+  // No longer returning null to avoid SEO issues and layout shifts
+  // theme is handled by initial state or script in layout
 
   return (
     <div id='master-container' className="relative">
@@ -239,23 +239,23 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col gap-6 my-8">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Experience
-        </h4>
+        </h2>
         {experienceContent}
       </section>
       <section className="flex flex-col gap-6 mb-8 mt-14 border-border px-8 pt-5 relative">
         <div className="w-[4px] h-full bg-border absolute top-0 left-0"></div>
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Learnings
-        </h4>
+        </h2>
         {learningsContent}
       </section>
       <section className="flex flex-col gap-6 my-16">
         <div className="flex justify-between items-center">
-          <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+          <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
         // Projects
-          </h4>
+          </h2>
           <Link href="/projects">
             <button className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out">All Projects</button>
           </Link>
@@ -264,9 +264,9 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Github Contributions
-        </h4>
+        </h2>
         <GitHubCalendar
           blockSize={10.9}
           blockMargin={3}
@@ -276,34 +276,34 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Tech Stack
-        </h4>
+        </h2>
         <TechStack />
       </section>
 
       <section className="flex flex-col gap-6 my-16 p-6 border border-border rounded-xl">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Achievements
-        </h4>
+        </h2>
         {achievementsContent}
       </section>
 
       <section className="flex flex-col gap-6 my-16">
-        <motion.a
+        <motion.button
           onClick={toggleTheme}
           whileHover="hover"
           initial="initial"
-          className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch"
+          className="cursor-pointer group/dark w-fit relative text-foreground/80 text-cabin-sketch bg-transparent border-none p-0"
         >
-          <h4 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase flex items-center gap-2">
-            <span className="relative w-4 h-4 mr-1">
+          <h2 className="text-foreground text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase flex items-center gap-2">
+            <span className="relative w-7 h-4 mr-1 flex items-center justify-center">
               <motion.span
                 variants={{
                   initial: { rotate: 0, opacity: 1 },
                   hover: { rotate: -15, opacity: 0 }
                 }}
-                className="absolute top-1/2 -translate-y-1/2 inline-block"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-block whitespace-nowrap"
               >
                 //
               </motion.span>
@@ -312,7 +312,7 @@ export default function Home() {
                   initial: { rotate: 15, opacity: 0 },
                   hover: { rotate: 0, opacity: 1 }
                 }}
-                className="absolute top-1/2 -translate-y-1/2 inline-block"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-block whitespace-nowrap"
               >
                 | |
               </motion.span>
@@ -326,7 +326,7 @@ export default function Home() {
             >
               Off the Screen
             </motion.span>
-          </h4>
+          </h2>
           <motion.div
             variants={{
               initial: { opacity: 0, x: -10, rotate: -45 },
@@ -337,7 +337,7 @@ export default function Home() {
           >
             <ThemeIcon size={14} />
           </motion.div>
-        </motion.a>
+        </motion.button>
         <p className="tracking-wide text-foreground/60">
           I believe design is an act of deliberate perception. Off the screen,
           I practice deceleration, attuning myself to subtleties, textures, and
@@ -357,9 +357,9 @@ export default function Home() {
 
       </section>
       <section id="contact" className="flex flex-col gap-6 my-16">
-        <h4 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
+        <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
           // Git in Touch
-        </h4>
+        </h2>
         <div className="flex justify-between md:items-center flex-col md:flex-row gap-4 mb-8">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
             Help me improve by providing me work 😅

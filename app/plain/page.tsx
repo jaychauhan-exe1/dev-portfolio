@@ -1,8 +1,9 @@
 import { constructMetadata } from "@/lib/metadata"
 
 export const metadata = constructMetadata({
-    title: "Jay Singh Chauhan | Plain",
-    description: "A minimalist, text-only version of my portfolio.",
+    title: "Minimalist Portfolio - Jay Singh Chauhan | Text-Only Version",
+    description: "Access the minimalist, text-only version of Jay Singh Chauhan's portfolio for a fast, accessible, and clutter-free view of my professional experience and technical projects.",
+    canonical: "/plain",
 })
 
 export default function Plain() {
@@ -48,7 +49,7 @@ export default function Plain() {
           </a>
         </li>
         <li className="pl-4">
-          <a href="" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+          <a href="https://github.com/jaychauhan-exe1/bettermobility" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
             Better Mobility - Android app for salesmen
           </a>
         </li>

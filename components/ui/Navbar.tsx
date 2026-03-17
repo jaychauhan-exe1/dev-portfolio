@@ -24,7 +24,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   const lastScrollTop = useRef(0);
   const [status, setStatus] = useState<'idle' | 'shutting-down' | 'starting-up'>('idle');
 
-  const showQR = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+  const showQR = (e: React.MouseEvent<HTMLElement>) => {
     if (isDemo) return;
     // Record the exact center of the clicked icon relative to the screen center for the Genie out/in effect
     const rect = e.currentTarget.getBoundingClientRect();
@@ -37,7 +37,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     });
     setIsQRModalOpen(true);
   }
-  const showMenu = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+  const showMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (isDemo) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = window.innerWidth / 2;
@@ -144,12 +144,13 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         style={{ transformOrigin: 'center bottom' }}
       >
         <Tooltip content="QR Code">
-          <div
+          <button
+            type="button"
             onClick={showQR}
-            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
           >
             <QrCode className="text-foreground" />
-          </div>
+          </button>
         </Tooltip>
 
         <AnimatePresence>
@@ -200,20 +201,22 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         })}
 
         <Tooltip content={"Power"}>
-          <div
+          <button
+            type="button"
             onClick={switchOff}
-            className={`power-btn p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+            className={`power-btn p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
           >
             <Power className="text-foreground" />
-          </div>
+          </button>
         </Tooltip>
         <Tooltip content="Menu">
-          <div
+          <button
+            type="button"
             onClick={showMenu}
-            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
           >
             <Menu className="text-foreground" />
-          </div>
+          </button>
         </Tooltip>
       </motion.div>
       <BootScreens status={status} />
