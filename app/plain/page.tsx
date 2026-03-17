@@ -1,4 +1,9 @@
+import { constructMetadata } from "@/lib/metadata"
 
+export const metadata = constructMetadata({
+    title: "Jay Singh Chauhan | Plain",
+    description: "A minimalist, text-only version of my portfolio.",
+})
 
 export default function Plain() {
   return (

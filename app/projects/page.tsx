@@ -2,6 +2,12 @@ import React from 'react'
 import ExpandableContent from '@/components/expandableContent'
 import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
+import { constructMetadata } from '@/lib/metadata'
+
+export const metadata = constructMetadata({
+    title: "Projects | Jay Singh Chauhan",
+    description: "A showcase of my recent projects, including business analytics, mobile apps, and AI-powered systems.",
+})
 
 const projects = [
     {
