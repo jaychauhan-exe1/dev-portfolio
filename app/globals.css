@@ -37,7 +37,7 @@
     --foreground: #ededed
   }
 } */
-ul li:before {
+ul:not(.list-none) li:before {
   content: " ";
   background-color: var(--color-foreground);
   border-radius: 40%;
@@ -86,4 +86,50 @@ body::-moz-selection {
 
 ul li {
   position: relative;
+}
+
+/* Rehype Pretty Code */
+pre[data-language] {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.714;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  background-color: var(--blackish) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+[data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 2px solid var(--primary);
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+[data-rehype-pretty-code-figure] {
+  margin: 2rem 0;
+}
+
+[data-rehype-pretty-code-title] {
+  background-color: var(--border);
+  color: var(--foreground);
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: -2rem;
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+}
+
+/* Blog Animations */
+.blog-entry {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+h1{
+  line-height: 3rem
 }

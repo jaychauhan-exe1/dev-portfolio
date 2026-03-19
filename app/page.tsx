@@ -230,17 +230,17 @@ export default function Home() {
         </div>
         <div className="mb-2">
           <p className="text-foreground/80 text-lg tracking-wide mt-6 mb-2">
-            A full stack <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
+            A full stack <a target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/10 decoration-1 underline hover:decoration-foreground transition-colors duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
             design, and engineering, focused on delivering well-designed digital products.
           </p>
           <p className="text-foreground/80 text-lg tracking-wide mb-2">
-            I help businesses turn ideas into <a className="underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
+            I help businesses turn ideas into <a className="underline underline-offset-4 decoration-foreground/10 decoration-1 underline hover:decoration-foreground transition-colors duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
           </p>
         </div>
       </section>
       <section className="flex flex-col gap-6 my-8">
         <h2 className="text-foreground/60 text-sm font-cabin-sketch tracking-wide md:tracking-wider uppercase">
-          // Experience
+          // Work Experience
         </h2>
         {experienceContent}
       </section>
@@ -257,7 +257,7 @@ export default function Home() {
         // Projects
           </h2>
           <Link href="/projects">
-            <button className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 hover:bg-primary/30 transition-colors duration-300 ease-out">All Projects</button>
+            <button className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 transition-colors duration-300 ease-out">All Projects</button>
           </Link>
         </div>
         {projectsContent}
@@ -324,7 +324,7 @@ export default function Home() {
                 initial: { x: -4 },
                 hover: { x: -8 }
               }}
-              className="inline-block"
+              className="inline-block mt-0.5"
             >
               Off the Screen
             </motion.span>
@@ -349,7 +349,7 @@ export default function Home() {
           they are instruments that sharpen how I conceive, construct, and refine
           experiences for others.</p>
 
-        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4" src="/portfolio-meme.png" alt="QR Code" width={1000} height={1100} />
+        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" src="/portfolio-meme.png" alt="QR Code" width={400} height={500} />
         <p className="tracking-wide text-foreground/60">
           Design, to me, is not decoration, it is stewardship. It is
           the responsibility to translate complexity into clarity, friction into flow,
