@@ -8,10 +8,11 @@ interface ComponentShowcaseProps {
   title: string;
   description: string;
   code: string;
+  highlightedCode?: React.ReactNode;
   children: React.ReactNode;
 }
 
-export const ComponentShowcase = ({ title, description, code, children }: ComponentShowcaseProps) => {
+export const ComponentShowcase = ({ title, description, code, highlightedCode, children }: ComponentShowcaseProps) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [copied, setCopied] = useState(false);
 
@@ -87,11 +88,17 @@ export const ComponentShowcase = ({ title, description, code, children }: Compon
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="w-full h-[400px] overflow-y-auto text-sm"
+              className="w-full h-fit max-h-[500px] overflow-y-auto text-sm"
             >
-              <pre className="p-4 rounded-lg bg-border/40 text-foreground font-mono text-xs md:text-sm overflow-x-auto border border-border/40">
-                <code>{code}</code>
-              </pre>
+              {highlightedCode ? (
+                <div className="w-full h-full max-w-full overflow-x-auto">
+                    {highlightedCode}
+                </div>
+              ) : (
+                <pre className="p-4 rounded-lg bg-border/40 text-foreground font-mono text-xs md:text-sm overflow-x-auto border border-border/40">
+                  <code>{code}</code>
+                </pre>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

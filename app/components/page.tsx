@@ -9,6 +9,7 @@ import { CatCursorWrapper } from '@/components/ui/CatCursorWrapper';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { constructMetadata } from '@/lib/metadata';
+import { CodeBlock } from '@/components/ui/CodeBlock';
 
 export const metadata = constructMetadata({
     title: "UI Components Library | Jay Singh Chauhan - Portfolio Assets",
@@ -47,9 +48,9 @@ export default function ComponentsPage() {
     return (
         <div className="flex flex-col max-w-4xl mx-auto pb-10 mt-20">
             <div className='flex flex-col gap-6'>
-                <Link className='flex gap-1 items-center mb-10' href="/">
-                    <ArrowLeftIcon size={12} />
-                    <span className='text-sm underline'>Go back</span>
+                <Link className='flex gap-1 items-center mb-10 text-foreground group w-fit' href="/">
+                    <ArrowLeftIcon size={12} className="" />
+                    <span className='text-sm underline underline-offset-4 decoration-foreground/10 group-hover:decoration-foreground'>Go back</span>
                 </Link>
             </div>
             <div className="mb-10">
@@ -65,6 +66,7 @@ export default function ComponentsPage() {
                     title="Navbar"
                     description="A floating, sticky navigation bar with fluid spring animations. Includes a dynamic boot/shutdown animation when navigating."
                     code={navbarCode}
+                    highlightedCode={<CodeBlock code={navbarCode} />}
                 >
                     <div className="relative w-full h-[200px] bg-border/20 rounded-xl overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-x-0 bottom-4 pointer-events-auto transform-none flex justify-center">
@@ -77,6 +79,7 @@ export default function ComponentsPage() {
                     title="Tech Stack Orbit"
                     description="An animated orbiting tech stack component. It displays languages and tools in continuous rotating circles using purely CSS/Framer Motion."
                     code={techStackCode}
+                    highlightedCode={<CodeBlock code={techStackCode} />}
                 >
                     <div className="w-full flex justify-center py-10 transform scale-75 md:scale-100">
                         <TechStack />
@@ -87,6 +90,7 @@ export default function ComponentsPage() {
                     title="Expandable Content"
                     description="An accordion-style list element that expands and collapses content with a smooth layout transition. Perfect for experience or FAQs."
                     code={expandableContentCode}
+                    highlightedCode={<CodeBlock code={expandableContentCode} />}
                 >
                     <div className="w-full max-w-3xl px-4">
                         <ExpandableContent items={expandableDummyData} />
@@ -97,6 +101,7 @@ export default function ComponentsPage() {
                     title="Tooltip"
                     description="A highly responsive tooltip wrapper component. Supports dynamic positioning and slick fade-in animations."
                     code={tooltipCode}
+                    highlightedCode={<CodeBlock code={tooltipCode} />}
                 >
                     <div className="flex gap-10">
                         <Tooltip content="I am a simple tooltip!">
@@ -112,10 +117,10 @@ export default function ComponentsPage() {
                     title="Cat Cursor"
                     description="A playful custom cursor component featuring Tom the cat interacting dynamically with mouse movements and clicks. Works best on desktop."
                     code={catCursorCode}
+                    highlightedCode={<CodeBlock code={catCursorCode} />}
                 >
                     <div className="w-full h-[300px] flex items-center justify-center border border-dashed border-border/50 rounded-xl relative overflow-hidden bg-background">
                         <p className="text-foreground/50 z-10 pointer-events-none">Interact within this box with the cat cursor!</p>
-                        {/* We render a sandboxed instance of the CatCursor strictly for this preview box */}
                         <div className="absolute inset-0 z-0">
                             <CatCursorWrapper variant="black" forceActive={true} contained={true} />
                         </div>

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export function constructMetadata({
-  title = "Jay Singh Chauhan | Full Stack Engineer & Designer",
-  description = "Jay Singh Chauhan is a full stack product engineer and designer building scalable, user-friendly digital solutions from research to engineering.",
+  title = "Jay Singh Chauhan | Full Stack Engineer & Designer | Work & Experience",
+  description = "Explore how I help businesses turn ideas into scalable digital products. View Jay Singh Chauhan's work experience as a designer and full stack engineer at Aciony Studios.",
   image = "/me.webp",
   icons = "/favicon.ico",
   noIndex = false,

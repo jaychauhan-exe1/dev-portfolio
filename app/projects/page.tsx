@@ -52,9 +52,9 @@ export default function Projects() {
     return (
         <div className='w-full max-w-3xl mx-auto pb-20'>
             <div className='mt-20 flex flex-col gap-6'>
-                <Link className='flex gap-1 items-center' href="/">
-                    <ArrowLeftIcon size={12} />
-                    <span className='text-sm underline'>Go back</span>
+                <Link className='flex gap-1 items-center mb-2 text-foreground group w-fit' href="/">
+                    <ArrowLeftIcon size={12} className="" />
+                    <span className='text-sm underline underline-offset-4 decoration-foreground/10 group-hover:decoration-foreground'>Go back</span>
                 </Link>
                 <h1 className='text-2xl mt-4'>All Projects</h1>
                 <ExpandableContent items={projects} />

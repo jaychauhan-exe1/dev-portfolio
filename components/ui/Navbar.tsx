@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu, Folder } from "lucide-react";
+import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu, Folder, PenLine } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -245,7 +245,11 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             <Folder size={20} />
             Projects
           </Link>
-          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 col-span-2 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
+          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/blog">
+            <PenLine size={20} />
+            Blog
+          </Link>
+          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
             <CodeXml size={20} />
             Components
           </Link>
