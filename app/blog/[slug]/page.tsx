@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Navigation */}
         <Link className="flex gap-1 items-center text-foreground text-sm group w-fit" href="/blog">
           <ArrowLeftIcon size={14} />
-          <span className="underline-offset-4 decoration-foreground/10 decoration-1 underline group-hover:decoration-foreground">Go Back to Blog</span>
+          <span className="underline-offset-4 decoration-foreground/10 decoration-1 underline group-hover:decoration-foreground transition-all duration-300">Go Back to Blog</span>
         </Link>
 
         {/* Header */}

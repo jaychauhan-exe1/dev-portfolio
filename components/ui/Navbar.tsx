@@ -76,6 +76,14 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     }, 1000);
   }
 
+  const [isForcedHidden, setIsForcedHidden] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = (e: any) => setIsForcedHidden(e.detail.hidden);
+    window.addEventListener('hideNavbar', handleToggle as EventListener);
+    return () => window.removeEventListener('hideNavbar', handleToggle as EventListener);
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
     };
@@ -92,7 +100,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
 
       const isAtBottom = windowHeight + st >= fullHeight - 20;
 
-      if (isHovering || status !== 'idle') {
+      if (isHovering || status !== 'idle' || isForcedHidden) {
         lastScrollTop.current = st <= 0 ? 0 : st;
         return;
       }
@@ -115,7 +123,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHovering, status]);
+  }, [isHovering, status, isForcedHidden]);
 
   const baseNavLinks = [
     { href: "https://www.instagram.com/acionystudios/", icon: Instagram, tooltip: "Instagram", isExternal: true },
@@ -130,14 +138,14 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     <>
       <motion.div
         ref={navRef}
-        onMouseEnter={() => { setIsHovering(true); setIsVisible(true); }}
+        onMouseEnter={() => { setIsHovering(true); if(!isForcedHidden) setIsVisible(true); }}
         onMouseLeave={() => setIsHovering(false)}
         initial={false}
         animate={{
-          y: isVisible ? 0 : 20,
-          opacity: isVisible ? 1 : 0.5,
-          scale: isVisible ? 1 : 0.98,
-          boxShadow: isVisible ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
+          y: (isVisible && !isForcedHidden) ? 0 : (isForcedHidden ? 100 : 20),
+          opacity: (isVisible && !isForcedHidden) ? 1 : (isForcedHidden ? 0 : 0.5),
+          scale: (isVisible && !isForcedHidden) ? 1 : 0.98,
+          boxShadow: (isVisible && !isForcedHidden) ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
         className={className || "fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"}
@@ -155,13 +163,13 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
 
         <AnimatePresence>
           {!isDemo && pathname !== '/' && (
-            <motion.div
-              initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
-              exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="flex items-center justify-center overflow-hidden"
-            >
+              <motion.div
+                initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+                animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
+                exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="flex items-center justify-center"
+              >
               <Tooltip content="Home">
                 <Link href="/" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out flex items-center justify-center">
                   <Home className="text-foreground" />
@@ -200,15 +208,27 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
           );
         })}
 
-        <Tooltip content={"Power"}>
-          <button
-            type="button"
-            onClick={switchOff}
-            className={`power-btn p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
-          >
-            <Power className="text-foreground" />
-          </button>
-        </Tooltip>
+        <AnimatePresence>
+          {!isDemo && (pathname === '/' || pathname === '/plain') && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, width: 0 }}
+              animate={{ opacity: 1, scale: 1, width: 'auto' }}
+              exit={{ opacity: 0, scale: 0.5, width: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex items-center justify-center"
+            >
+              <Tooltip content={"Power"}>
+                <button
+                  type="button"
+                  onClick={switchOff}
+                  className={`power-btn p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+                >
+                  <Power className="text-foreground" />
+                </button>
+              </Tooltip>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <Tooltip content="Menu">
           <button
             type="button"
