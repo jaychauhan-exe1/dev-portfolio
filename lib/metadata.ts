@@ -29,7 +29,9 @@ export function constructMetadata({
       "Aciony Studios",
       "Jay Singh Chauhan Aciony",
     ],
-    authors: [{ name: "Jay Singh Chauhan", url: "https://jaysinghchauhan.com" }],
+    authors: [
+      { name: "Jay Singh Chauhan", url: "https://jaysinghchauhan.com" },
+    ],
     creator: "Jay Singh Chauhan",
     openGraph: {
       title,
