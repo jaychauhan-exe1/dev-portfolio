@@ -18,6 +18,19 @@ export function constructMetadata({
   return {
     title,
     description,
+    keywords: [
+      "Jay Singh Chauhan",
+      "Jay Chauhan",
+      "Jay Chauhan Portfolio",
+      "Jay Singh Chauhan Developer",
+      "Jay Singh Chauhan Designer",
+      "Full Stack Engineer",
+      "Product Engineer",
+      "Aciony Studios",
+      "Jay Singh Chauhan Aciony",
+    ],
+    authors: [{ name: "Jay Singh Chauhan", url: "https://jaysinghchauhan.com" }],
+    creator: "Jay Singh Chauhan",
     openGraph: {
       title,
       description,

@@ -150,7 +150,7 @@ export default function Home() {
         >
           <Image
             src="/me.webp"
-            alt="profile picture"
+            alt="Jay Singh Chauhan - Full Stack Engineer & Designer"
             width={216}
             height={300}
             draggable={false}
