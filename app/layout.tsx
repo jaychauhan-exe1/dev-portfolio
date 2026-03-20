@@ -47,6 +47,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Jay Singh Chauhan",
+              "alternateName": "Jay Chauhan",
               "url": "https://jaysinghchauhan.com",
               "image": "https://jaysinghchauhan.com/me.webp",
               "sameAs": [
@@ -59,7 +60,16 @@ export default function RootLayout({
                 "@type": "Organization",
                 "name": "Aciony Studios"
               },
-              "description": "Full stack product engineer and designer specializing in scalable digital solutions."
+              "description": "Full stack product engineer and designer specializing in scalable digital solutions.",
+              "knowsAbout": [
+                "Full Stack Development",
+                "UI/UX Design",
+                "Product Engineering",
+                "Next.js",
+                "React",
+                "TypeScript"
+              ],
+              "knowsLanguage": ["English", "Hindi"]
             })
           }}
         />
