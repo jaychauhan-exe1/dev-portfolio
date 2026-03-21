@@ -1,4 +1,5 @@
 import { Cabin_Sketch, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import PageTransition from "@/components/PageTransition";
@@ -75,6 +76,20 @@ export default function RootLayout({
         />
       </head>
       <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-3xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LQHZVXJREJ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-LQHZVXJREJ');
+          `}
+        </Script>
         <PageTransition>
           {children}
         </PageTransition>
