@@ -1,7 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
 import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu, Folder, PenLine } from "lucide-react";
-import { RxDiscordLogo } from "react-icons/rx";
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
 import BootScreens from '../BootScreens';
@@ -9,6 +8,7 @@ import { Tooltip } from './Tooltip';
 import { GenieModal } from './GenieModal';
 import Image from 'next/image';
 import Link from 'next/link';
+import { RiLinkedinLine } from 'react-icons/ri';
 
 export const Navbar = ({ className, isDemo = false }: { className?: string, isDemo?: boolean }) => {
   const router = useRouter();
@@ -126,10 +126,10 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   }, [isHovering, status, isForcedHidden]);
 
   const baseNavLinks = [
-    { href: "https://www.instagram.com/acionystudios/", icon: Instagram, tooltip: "Instagram", isExternal: true },
+    { href: "https://instagram.com/acionystudios/", icon: Instagram, tooltip: "Instagram", isExternal: true },
     { href: "https://dribbble.com/jaychauhanexe", icon: Dribbble, tooltip: "Dribbble", isExternal: true },
     { href: "https://github.com/jaychauhan-exe1", icon: Github, tooltip: "GitHub", isExternal: true },
-    { href: "https://discord.com/users/851376020132200459", icon: RxDiscordLogo, tooltip: "Discord", isExternal: true, size: 24 },
+    { href: "https://linkedin.com/in/jaychauhanexe", icon: RiLinkedinLine, tooltip: "LinkedIn", isExternal: true, size: 24 },
   ];
 
   const navLinks = isDemo ? baseNavLinks.filter(l => l.isExternal) : baseNavLinks;
@@ -138,7 +138,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     <>
       <motion.div
         ref={navRef}
-        onMouseEnter={() => { setIsHovering(true); if(!isForcedHidden) setIsVisible(true); }}
+        onMouseEnter={() => { setIsHovering(true); if (!isForcedHidden) setIsVisible(true); }}
         onMouseLeave={() => setIsHovering(false)}
         initial={false}
         animate={{
@@ -163,13 +163,13 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
 
         <AnimatePresence>
           {!isDemo && pathname !== '/' && (
-              <motion.div
-                initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-                animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
-                exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="flex items-center justify-center"
-              >
+            <motion.div
+              initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+              animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
+              exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex items-center justify-center"
+            >
               <Tooltip content="Home">
                 <Link href="/" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out flex items-center justify-center">
                   <Home className="text-foreground" />
