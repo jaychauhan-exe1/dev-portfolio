@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export function constructMetadata({
-  title = "Jay Singh Chauhan | Full Stack Engineer & Designer | Work & Experience",
-  description = "Explore how I help businesses turn ideas into scalable digital products. View Jay Singh Chauhan's work experience as a designer and full stack engineer at Aciony Studios.",
+  title = "Jay Singh Chauhan | Full Stack Engineer & Designer",
+  description = "Explore Jay Singh Chauhan's work as a full stack engineer & designer. I help businesses turn ideas into scalable digital products at Aciony Studios.",
   image = "/me.webp",
   icons = "/favicon.ico",
   noIndex = false,
@@ -56,6 +56,10 @@ export function constructMetadata({
     manifest: "/manifest.json",
     alternates: {
       canonical: canonical,
+      languages: {
+        "en-US": canonical,
+        "x-default": canonical,
+      },
     },
     ...(noIndex && {
       robots: {
