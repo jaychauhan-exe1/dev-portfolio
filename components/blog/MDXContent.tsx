@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +10,12 @@ const components = {
   h1: (props: any) => <h1 className="text-4xl font-extrabold mt-12 mb-6 tracking-tight text-foreground leading-tight" {...props} />,
   h2: (props: any) => <h2 className="text-2xl font-bold mt-12 mb-5 tracking-tight text-foreground/90 border-b border-border pb-2" {...props} />,
   h3: (props: any) => <h3 className="text-xl font-semibold mt-10 mb-4 tracking-tight text-foreground/80" {...props} />,
-  p: (props: any) => <p className="text-lg leading-[1.8] mb-8 text-foreground/70 font-normal md:text-[1.125rem]" {...props} />,
+  p: (props: any) => (
+    <div
+      className="text-lg leading-[1.8] mb-8 text-foreground/70 font-normal md:text-[1.125rem]"
+      {...props}
+    />
+  ),
   ul: (props: any) => <ul className="list-none pl-6 mb-8 space-y-4 text-lg text-foreground/70" {...props} />,
   ol: (props: any) => <ol className="list-decimal pl-6 mb-8 space-y-4 text-lg text-foreground/70" {...props} />,
   li: (props: any) => <li className="relative pl-2" {...props} />,
@@ -17,15 +23,21 @@ const components = {
     <blockquote className="border-l-2 border-primary/40 pl-8 italic my-12 text-foreground/60 font-medium text-xl leading-relaxed py-2" {...props} />
   ),
   img: (props: any) => (
-    <div className="my-12 overflow-hidden rounded-2xl border border-border/50 shadow-sm bg-foreground/[0.02]">
-      <Image
-        {...props}
-        width={1000}
-        height={600}
-        className="w-full object-cover"
-        alt={props.alt || "Blog image"}
-      />
-      {props.alt && <p className="text-center text-xs text-foreground/40 mt-4 p-4 uppercase tracking-widest">{props.alt}</p>}
+    <div className="my-12 overflow-hidden rounded-2xl border border-border/50 shadow-sm bg-foreground/[0.02] group/img relative">
+      <ImageLightbox src={props.src} alt={props.alt || "Blog image"}>
+        <Image
+          {...props}
+          width={1000}
+          height={600}
+          className="w-full object-cover cursor-zoom-in hover:scale-[1.02] transition-transform duration-700 ease-out"
+          alt={props.alt || "Blog image"}
+        />
+      </ImageLightbox>
+      {props.alt && (
+        <div className="text-center text-xs text-foreground/40 mt-4 p-4 uppercase tracking-widest bg-foreground/[0.01]">
+          {props.alt}
+        </div>
+      )}
     </div>
   ),
   a: ({ href, children, ...props }: any) => {
@@ -33,7 +45,7 @@ const components = {
     return (
       <a
         href={href}
-        className="text-foreground font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all decoration-2"
+        className="text-foreground font-medium underline underline-offset-4 decoration-primary hover:decoration-foreground transition-all decoration-1"
         {...(isInternal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
         {...props}
       >

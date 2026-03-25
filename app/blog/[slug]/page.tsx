@@ -6,6 +6,7 @@ import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { constructMetadata } from "@/lib/metadata";
 import { MDXContent } from "@/components/blog/MDXContent";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import Image from "next/image";
 
 interface BlogPostPageProps {
@@ -125,14 +126,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ))}
           </div>
 
-          <div className="my-8 overflow-hidden rounded-2xl relative aspect-video group">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
-              priority
-            />
+          <div className="my-8 overflow-hidden rounded-2xl relative aspect-video group cursor-zoom-in">
+            <ImageLightbox src={post.image} alt={post.title}>
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
+                priority
+              />
+            </ImageLightbox>
           </div>
         </header>
 
