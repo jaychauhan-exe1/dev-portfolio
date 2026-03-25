@@ -6,7 +6,7 @@ import { constructMetadata } from "@/lib/metadata";
 import { BlogList } from "@/components/blog/BlogList";
 
 export const metadata = constructMetadata({
-  title: "Blog & Insights | Jay Singh Chauhan",
+  title: "Blog & Writings | Jay Singh Chauhan - Full Stack Engineer",
   description: "Diving deep into code, design, and digital experiences. Explore my latest articles and thoughts on web development and master aesthetics.",
   canonical: "/blog",
 });
