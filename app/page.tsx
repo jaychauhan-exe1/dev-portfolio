@@ -153,6 +153,9 @@ export default function Home() {
             alt="Jay Singh Chauhan - Full Stack Engineer & Designer"
             width={216}
             height={300}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             draggable={false}
           />
           <div className="absolute bottom-0 bg-linear-to-t from-background via-background/60 to-transparent left-0 w-full h-[30%] pointer-events-none"></div>
@@ -350,7 +353,14 @@ export default function Home() {
           they are instruments that sharpen how I conceive, construct, and refine
           experiences for others.</p>
 
-        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" src="/portfolio-meme.webp" alt="QR Code" width={400} height={500} />
+        <Image 
+          className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" 
+          src="/portfolio-meme.webp" 
+          alt="QR Code" 
+          width={400} 
+          height={500}
+          sizes="(max-width: 768px) 100vw, 400px"
+        />
         <p className="tracking-wide text-foreground/60">
           Design, to me, is not decoration, it is stewardship. It is
           the responsibility to translate complexity into clarity, friction into flow,
