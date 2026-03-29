@@ -350,7 +350,7 @@ export default function Home() {
           they are instruments that sharpen how I conceive, construct, and refine
           experiences for others.</p>
 
-        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" src="/portfolio-meme.png" alt="QR Code" width={400} height={500} />
+        <Image className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" src="/portfolio-meme.webp" alt="QR Code" width={400} height={500} />
         <p className="tracking-wide text-foreground/60">
           Design, to me, is not decoration, it is stewardship. It is
           the responsibility to translate complexity into clarity, friction into flow,
