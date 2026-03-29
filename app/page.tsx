@@ -225,7 +225,7 @@ export default function Home() {
         </div>
 
         <div className="text-foreground/40 mb-4">
-          <span>/dʒeɪ sɪŋ tʃɔːˈhɑːn/</span> • <span>noun</span> •{" "}
+          <span>New Delhi, India</span> • <span>Design Engineer</span> •{" "}
           <a href="#contact" className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out">available for work</a>
         </div>
         <div className="mb-2">
@@ -365,7 +365,7 @@ export default function Home() {
         </h2>
         <div className="flex justify-between md:items-center flex-col md:flex-row gap-4 mb-8">
           <h3 className="text-foreground/80 text-lg tracking-wide md:tracking-wider mb-2">
-            Help me improve by providing me work 😅
+            Have something for me?
           </h3>
           <a href="mailto:work@jaysinghchauhan.com">
             <GradientButton>

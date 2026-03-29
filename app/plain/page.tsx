@@ -1,9 +1,9 @@
 import { constructMetadata } from "@/lib/metadata"
 
 export const metadata = constructMetadata({
-    title: "Minimalist Index | Jay Singh Chauhan - Text Only Portfolio",
-    description: "A fast, accessible, and clutter-free minimalist version of Jay Singh Chauhan's portfolio for efficient reading of experience and projects.",
-    canonical: "/plain",
+  title: "Minimal Index",
+  description: "A fast, accessible, and clutter-free minimalist version of Jay Singh Chauhan's portfolio for efficient reading of experience and projects.",
+  canonical: "/plain",
 })
 
 export default function Plain() {
@@ -36,7 +36,7 @@ export default function Plain() {
           - 1 year
         </li>
         <li className="pl-4">
-          Aciony Studio - 3 years
+          Aciony Studio - 1 year
         </li>
       </ul>
       <h4 className="font-medium">
