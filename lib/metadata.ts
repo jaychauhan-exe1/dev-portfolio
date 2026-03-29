@@ -15,8 +15,13 @@ export function constructMetadata({
   noIndex?: boolean;
   canonical?: string;
 } = {}): Metadata {
+  const finalTitle = typeof title === "string" ? title : title;
+
   return {
-    title,
+    title: {
+      default: title,
+      template: `%s — ${title}`,
+    },
     description,
     keywords: [
       "Jay Singh Chauhan",
@@ -34,7 +39,7 @@ export function constructMetadata({
     ],
     creator: "Jay Singh Chauhan",
     openGraph: {
-      title,
+      title: title,
       description,
       images: [
         {
@@ -42,11 +47,11 @@ export function constructMetadata({
         },
       ],
       type: "website",
-      siteName: "Jay Singh Chauhan Portfolio",
+      siteName: "Jay Singh Chauhan",
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: title,
       description,
       images: [image],
       creator: "@jaychauhan_exe",

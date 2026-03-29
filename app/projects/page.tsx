@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { constructMetadata } from '@/lib/metadata'
 
 export const metadata = constructMetadata({
-    title: "Selected Projects | Jay Singh Chauhan - Full Stack Engineer",
+    title: "Selected Projects",
     description: "Explore the latest digital products built by Jay Singh Chauhan, including AI systems, business analytics, and mobile applications with modern tech.",
     canonical: "/projects",
 })
