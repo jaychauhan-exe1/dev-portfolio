@@ -97,3 +97,4 @@ export function ImageLightbox({ src, alt, children }: ImageLightboxProps) {
     </>
   );
 }
+

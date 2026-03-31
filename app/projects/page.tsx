@@ -1,8 +1,7 @@
 import React from 'react'
 import ExpandableContent from '@/components/expandableContent'
-import { ArrowLeftIcon } from 'lucide-react'
-import Link from 'next/link'
-import { constructMetadata } from '@/lib/metadata'
+import { GoBack } from '@/components/ui/GoBack'
+import { constructMetadata } from "@/lib/metadata"
 
 export const metadata = constructMetadata({
     title: "Selected Projects",
@@ -52,10 +51,7 @@ export default function Projects() {
     return (
         <div className='w-full max-w-3xl mx-auto pb-20'>
             <div className='mt-20 flex flex-col gap-6'>
-                <Link className='flex gap-1 items-center mb-2 text-foreground group w-fit' href="/">
-                    <ArrowLeftIcon size={12} className="" />
-                    <span className='text-sm underline underline-offset-4 decoration-foreground/10 group-hover:decoration-foreground transition-all duration-300'>Go back</span>
-                </Link>
+                <GoBack />
                 <h1 className='text-2xl mt-4'>All Projects</h1>
                 <ExpandableContent items={projects} />
             </div>

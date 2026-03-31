@@ -1,12 +1,12 @@
 import React from "react";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, CalendarIcon, ClockIcon } from "lucide-react";
+import { CalendarIcon, ClockIcon } from "lucide-react";
 import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { constructMetadata } from "@/lib/metadata";
 import { MDXContent } from "@/components/blog/MDXContent";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
+import { GoBack } from "@/components/ui/GoBack";
 import Image from "next/image";
 
 interface BlogPostPageProps {
@@ -86,10 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <div className="mt-10 lg:mt-20 flex flex-col gap-10">
         {/* Navigation */}
-        <Link className="flex gap-1 items-center text-foreground text-sm group w-fit" href="/blog">
-          <ArrowLeftIcon size={14} />
-          <span className="underline-offset-4 decoration-foreground/10 decoration-1 underline group-hover:decoration-foreground transition-all duration-300">Go Back to Blog</span>
-        </Link>
+        <GoBack href="/blog" text="Go Back to Blog" />
 
         {/* Header */}
         <header className="flex flex-col gap-8 max-w-4xl w-full">

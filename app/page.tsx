@@ -350,14 +350,14 @@ export default function Home() {
           latent patterns that most overlook. I study the architecture behind
           products, the cadence of human interaction, and the quiet logic
           embedded in everyday systems. These observations are not idle curiosities,
-          they are instruments that sharpen how I conceive, construct, and refine
+          they are instruments that saharpen how I conceive, construct, and refine
           experiences for others.</p>
 
-        <Image 
-          className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto" 
-          src="/portfolio-meme.webp" 
-          alt="QR Code" 
-          width={400} 
+        <Image
+          className="rounded-lg grayscale hover:grayscale-20 transition-all duration-300 ease-in-out my-4 mx-auto"
+          src="/portfolio-meme.webp"
+          alt="QR Code"
+          width={400}
           height={500}
           sizes="(max-width: 768px) 100vw, 400px"
         />
