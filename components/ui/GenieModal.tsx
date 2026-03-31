@@ -20,7 +20,7 @@ export function GenieModal({ isOpen, onClose, origin, title, children }: GenieMo
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 bg-background/20 backdrop-blur-sm pointer-events-auto"
+            className="absolute inset-0 bg-background/50 backdrop-blur-sm pointer-events-auto"
             style={{ willChange: "opacity" }}
             onClick={onClose}
           />
@@ -51,7 +51,7 @@ export function GenieModal({ isOpen, onClose, origin, title, children }: GenieMo
               duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative p-8 rounded-3xl bg-background/40 backdrop-blur-lg border border-border shadow-2xl pointer-events-auto flex flex-col items-center gap-4 dark:shadow-border/20 overflow-hidden min-w-[300px]"
+            className="relative p-8 rounded-3xl bg-background/50 backdrop-blur-lg border border-border shadow-2xl pointer-events-auto flex flex-col items-center gap-4 dark:shadow-border/20 overflow-hidden min-w-[300px]"
             style={{
               transformOrigin: "center center",
               willChange: "transform, opacity"

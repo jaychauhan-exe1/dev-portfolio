@@ -148,7 +148,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
           boxShadow: (isVisible && !isForcedHidden) ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
-        className={className || "fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-border/20 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"}
+        className={className || "fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-background/50 border p-2 rounded-full border-border dark:border-border backdrop-blur-sm z-50 pointer-events-auto"}
         style={{ transformOrigin: 'center bottom' }}
       >
         <Tooltip content="QR Code">
@@ -257,19 +257,19 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         title="Menu"
       >
         <div className=" grid grid-cols-2 gap-4 items-center max-w-[300px] min-w-[300px] min-h-[200px] justify-center" >
-          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/">
+          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/">
             <Home size={20} />
             Home
           </Link>
-          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/projects">
+          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/projects">
             <Folder size={20} />
             Projects
           </Link>
-          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/blog">
+          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/blog">
             <PenLine size={20} />
             Blog
           </Link>
-          <Link className='hover:bg-background/10 p-4 bg-background rounded-xl shadow-inner border border-border w-full flex flex-col gap-4 transition-colors duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
+          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
             <CodeXml size={20} />
             Components
           </Link>
