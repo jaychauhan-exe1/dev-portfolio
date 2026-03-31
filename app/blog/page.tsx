@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
+import { BlogList } from "@/components/blog/BlogList";
+import { GoBack } from "@/components/ui/GoBack";
 import { getBlogPosts } from "@/lib/blog";
 import { constructMetadata } from "@/lib/metadata";
-import { BlogList } from "@/components/blog/BlogList";
 
 export const metadata = constructMetadata({
   title: "Blogs",
@@ -18,10 +16,7 @@ export default async function BlogPage() {
     <div className="w-full max-w-4xl mx-auto pb-40 px-4 md:px-0">
       <div className="mt-10 lg:mt-20 flex flex-col gap-10">
         <div className='flex flex-col gap-6'>
-          <Link className='flex gap-1 items-center mb-2 text-foreground group w-fit' href="/">
-            <ArrowLeftIcon size={12} className="" />
-            <span className='text-sm underline underline-offset-4 decoration-foreground/10 group-hover:decoration-foreground transition-all duration-300'>Go back</span>
-          </Link>
+          <GoBack />
         </div>
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl tracking-tighter text-foreground">
