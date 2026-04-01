@@ -256,28 +256,63 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMounted, setIsMounted] = useState(false);
     const [translateX, setTranslateX] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsMounted(true);
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
     // Calculate translation for desktop - Stable dependency array
     useEffect(() => {
-        if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+        if (!isMobile) {
             let offset = 0;
             for (let i = 0; i < activeIndex; i++) {
                 offset += INACTIVE_WIDTH + ITEM_GAP;
             }
             setTranslateX(-offset);
         }
-    }, [activeIndex]);
+    }, [activeIndex, isMobile]);
+
+    const handleScroll = () => {
+        if (!isMobile || !scrollContainerRef.current) return;
+        
+        const container = scrollContainerRef.current;
+        const scrollLeft = container.scrollLeft;
+        const containerWidth = container.clientWidth;
+        
+        // Exact calculation based on child positions
+        const children = Array.from(container.children);
+        const containerCenter = scrollLeft + containerWidth / 2;
+        
+        let closestIndex = activeIndex;
+        let minDistance = Infinity;
+
+        children.forEach((child, index) => {
+            const childEl = child as HTMLElement;
+            const childCenter = childEl.offsetLeft + childEl.clientWidth / 2;
+            const distance = Math.abs(childCenter - containerCenter);
+            
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        if (closestIndex !== activeIndex && closestIndex < project.images.length) {
+            setActiveIndex(closestIndex);
+        }
+    };
 
     const navigateToImage = (index: number) => {
         const actualIndex = (index + project.images.length) % project.images.length;
         setActiveIndex(actualIndex);
 
-        if (typeof window !== 'undefined' && window.innerWidth < 768 && scrollContainerRef.current) {
+        if (isMobile && scrollContainerRef.current) {
             const container = scrollContainerRef.current;
             const children = container.children;
             if (children[actualIndex]) {
@@ -295,7 +330,6 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
 
     if (!isMounted) return <div className='h-[500px]' />;
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const displayImages = [...project.images, ...project.images];
 
     return (
@@ -322,8 +356,24 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                 <motion.div
                     ref={scrollContainerRef}
                     initial={false}
-                    className={`flex gap-4 sm:gap-8 items-end h-full w-full ${isMobile ? 'overflow-x-auto no-scrollbar snap-x snap-mandatory px-4' : ''}`}
+                    className={`flex gap-4 sm:gap-8 items-end h-full w-full select-none ${isMobile ? 'overflow-x-auto no-scrollbar snap-x snap-mandatory px-4' : ''}`}
                     animate={!isMobile ? { x: translateX } : {}}
+                    onScroll={isMobile ? handleScroll : undefined}
+                    drag={!isMobile ? "x" : false}
+                    dragConstraints={!isMobile ? { left: -(project.images.length - 1) * (INACTIVE_WIDTH + ITEM_GAP), right: 0 } : undefined}
+                    dragElastic={0.2}
+                    onDragEnd={(_, info) => {
+                        if (!isMobile) {
+                            const threshold = 50;
+                            if (info.offset.x < -threshold && activeIndex < project.images.length - 1) {
+                                navigateToImage(activeIndex + 1);
+                            } else if (info.offset.x > threshold && activeIndex > 0) {
+                                navigateToImage(activeIndex - 1);
+                            }
+                        }
+                    }}
+                    style={{ cursor: !isMobile ? 'grab' : 'default' }}
+                    whileTap={!isMobile ? { cursor: 'grabbing' } : {}}
                     transition={{ type: "spring", stiffness: 150, damping: 25, mass: 0.5 }}
                 >
                     {(isMobile ? project.images : displayImages).map((img: string, i: number) => {
@@ -346,7 +396,7 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                                         navigateToImage(i % project.images.length);
                                     }
                                 }}
-                                className={`relative shrink-0 cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-card shadow-sm flex items-end justify-center ${isMobile ? 'snap-center' : ''}`}
+                                className={`relative shrink-0 cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-card shadow-sm flex items-end justify-center ${isMobile ? 'snap-center snap-always' : ''}`}
                                 style={{ width: isMobile ? mobileWidth : 'auto' }}
                                 animate={{
                                     height: `${currentHeight}px`,
@@ -361,16 +411,18 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                                     mass: 0.8
                                 }}
                             >
-                                <div className="relative w-full h-full">
+                                <div className="relative w-full h-full select-none pointer-events-none">
                                     {isActive ? (
                                         <ImageLightbox src={img} alt={`${project.title} - ${i}`}>
-                                            <div className="relative w-full h-full cursor-zoom-in">
+                                            <div className="relative w-full h-full cursor-zoom-in pointer-events-auto">
                                                 <Image
                                                     src={img}
                                                     alt={project.title}
                                                     fill
                                                     className="object-cover"
                                                     sizes="(max-width: 768px) 100vw, 33vw"
+                                                    draggable={false}
+                                                    onDragStart={(e) => e.preventDefault()}
                                                 />
                                             </div>
                                         </ImageLightbox>
@@ -382,6 +434,8 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                                                 fill
                                                 className="object-cover"
                                                 sizes="(max-width: 768px) 100vw, 33vw"
+                                                draggable={false}
+                                                onDragStart={(e) => e.preventDefault()}
                                             />
                                         </div>
                                     )}
