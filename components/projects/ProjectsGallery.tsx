@@ -11,7 +11,7 @@ const PROJECTS = [
     {
         title: "Focas - AI Scheduling Assistant",
         description: "A daily habit-tracking and scheduling application powered by AI to help users optimize their productivity and maintain a balanced lifestyle.",
-        tags: ["App", "AI"],
+        tags: ["Web App", "Agentic AI"],
         images: [
             "/designs/focas/Focas.png",
             "/designs/focas/Slide%2016_9%20-%202.png",
@@ -33,7 +33,7 @@ const PROJECTS = [
     {
         title: "Think File - AI Document Intelligence",
         description: "An intelligent RAG (Retrieval-Augmented Generation) application that scans various document types, allowing users to interact with their data and ask complex questions using AI.",
-        tags: ["App", "Gen AI"],
+        tags: ["Web App", "Agentic AI"],
         images: [
             "/designs/think%20file/think-file.png",
             "/designs/think%20file/think-file-dashboard.png",
@@ -52,7 +52,7 @@ const PROJECTS = [
     {
         title: "Toastloshi - Artisan Bakery",
         description: "A sensory digital experience for a luxury bakery, focusing on premium food photography and an elegant layout that captures the essence of artisanal baking.",
-        tags: ["Website"],
+        tags: ["Website", "Ecommerce"],
         images: [
             "/designs/toastloshi/toastloshi%20-%20hero.png",
             "/designs/toastloshi/toastloshi%20-%20homepage.png",
@@ -74,7 +74,7 @@ const PROJECTS = [
     {
         title: "Tevino Men - Luxury Fashion",
         description: "A premium menswear brand based in New Delhi, featuring a high-end web presence that reflects the exclusivity and sophistication of its luxury clothing lines.",
-        tags: ["Website"],
+        tags: ["Website", "Ecommerce"],
         images: [
             "/designs/Tevino/Tevino%20dribble%20shot%20%231.png",
             "/designs/Tevino/Tevino%20dribble%20shot%20%232.png",
@@ -84,7 +84,7 @@ const PROJECTS = [
     {
         title: "Hosting Solutions - Server Infrastructure",
         description: "Comprehensive landing and service pages for a professional hosting provider, designed to communicate reliability and high-performance infrastructure.",
-        tags: ["Website"],
+        tags: ["Website", "Web App"],
         images: [
             "/designs/hosting/Green%20Hosting%20-%20Hero.png",
             "/designs/hosting/Green%20Hosting%20-%20Homepage.png",
@@ -95,7 +95,7 @@ const PROJECTS = [
     {
         title: "Manager - Enterprise Project Collaboration",
         description: "A sophisticated project management tool focused on team collaboration, task tracking, and resource allocation, featuring real-time updates and an intuitive dashboard.",
-        tags: ["App"],
+        tags: ["Web App"],
         images: [
             "/designs/Manager/manager.png",
             "/designs/Manager/manager-dashboard.png",
@@ -119,7 +119,7 @@ const PROJECTS = [
     {
         title: "Talent Velocity - HR Solutions",
         description: "A robust recruitment and human resources platform built for the Indian market, connecting top talent with industry-leading organizations.",
-        tags: ["App"],
+        tags: ["Website"],
         images: [
             "/designs/Talent%20Velocity/Talent%20.png",
             "/designs/Talent%20Velocity/Talent%20Velocity%20-%20hero.png",
@@ -190,64 +190,64 @@ export default function ProjectsGallery() {
                 ))}
             </div>
 
-                <div className='flex flex-col gap-24 mt-2'>
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={(selectedTag ?? 'all') + currentPage}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4 }}
-                            className="flex flex-col gap-24"
-                        >
-                            {paginatedProjects.map((project) => (
-                                <PortfolioCard key={project.title} project={project} />
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+            <div className='flex flex-col gap-24 mt-2'>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={(selectedTag ?? 'all') + currentPage}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex flex-col gap-24"
+                    >
+                        {paginatedProjects.map((project) => (
+                            <PortfolioCard key={project.title} project={project} />
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
 
-                {/* Pagination Controls */}
-                {totalPages > 1 && (
-                    <div className="mt-20 flex justify-center items-center gap-4">
-                        <button
-                            disabled={currentPage === 1}
-                            onClick={() => handlePageChange(currentPage - 1)}
-                            className={`p-2 rounded-full transition-all duration-300 ${currentPage === 1
-                                ? "text-foreground/10 cursor-not-allowed"
-                                : "text-foreground/40 hover:text-foreground hover:bg-foreground/5 cursor-pointer"
-                                }`}
-                        >
-                            <ChevronLeft size={24} />
-                        </button>
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className="mt-20 flex justify-center items-center gap-4">
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        className={`p-2 rounded-full transition-all duration-300 ${currentPage === 1
+                            ? "text-foreground/10 cursor-not-allowed"
+                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/5 cursor-pointer"
+                            }`}
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
 
-                        <div className="flex gap-2">
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                                <button
-                                    key={page}
-                                    onClick={() => handlePageChange(page)}
-                                    className={`w-10 h-10 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === page
-                                        ? "bg-foreground text-background"
-                                        : "bg-foreground/5 text-foreground/50 hover:bg-foreground/10 hover:text-foreground"
-                                        }`}
-                                >
-                                    {page}
-                                </button>
-                            ))}
-                        </div>
-
-                        <button
-                            disabled={currentPage === totalPages}
-                            onClick={() => handlePageChange(currentPage + 1)}
-                            className={`p-2 rounded-full transition-all duration-300 ${currentPage === totalPages
-                                ? "text-foreground/10 cursor-not-allowed"
-                                : "text-foreground/40 hover:text-foreground hover:bg-foreground/5 cursor-pointer"
-                                }`}
-                        >
-                            <ChevronRight size={24} />
-                        </button>
+                    <div className="flex gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                            <button
+                                key={page}
+                                onClick={() => handlePageChange(page)}
+                                className={`w-10 h-10 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === page
+                                    ? "bg-foreground text-background"
+                                    : "bg-foreground/5 text-foreground/50 hover:bg-foreground/10 hover:text-foreground"
+                                    }`}
+                            >
+                                {page}
+                            </button>
+                        ))}
                     </div>
-                )}
+
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        className={`p-2 rounded-full transition-all duration-300 ${currentPage === totalPages
+                            ? "text-foreground/10 cursor-not-allowed"
+                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/5 cursor-pointer"
+                            }`}
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+                </div>
+            )}
         </>
     )
 }
