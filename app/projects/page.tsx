@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
 export default function ProjectsPage() {
     return (
         <div className='w-full pb-32 max-w-7xl mx-auto'>
-            <div className='mt-20 flex flex-col gap-10'>
+            <div className='mt-10 lg:mt-20 flex flex-col gap-10'>
                 <div className='flex flex-col gap-10 sm:text-left'>
                     <div className='w-fit'>
                         <GoBack />
