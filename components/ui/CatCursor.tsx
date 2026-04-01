@@ -166,9 +166,8 @@ const PixelCat = ({ state, isAngry = false, variant = "gray" }: { state: CatStat
                 <motion.g
                     style={{ originX: "8px", originY: "6.5px" }}
                     animate={
-                        state === "RUNNING" ? { rotate: [0, 10, -10, 0], transition: { repeat: Infinity, duration: 0.4 } } :
-                            state === "EATING" ? { rotate: [0, 5, -5, 0], transition: { repeat: Infinity, duration: 1 } } :
-                                { rotate: [0, 15, -15, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } }
+                        state === "RUNNING" ? { rotate: [0, 6, -6, 0], transition: { repeat: Infinity, duration: 0.2, ease: "linear" } } :
+                            { rotate: [0, 5, -5, 0], transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } }
                     }
                 >
                     <rect x="8" y="5" width="2" height="1" fill={colors.body} />
