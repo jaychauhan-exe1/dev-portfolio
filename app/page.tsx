@@ -233,11 +233,11 @@ export default function Home() {
         </div>
         <div className="mb-2">
           <p className="text-foreground/80 text-lg tracking-wide mt-6 mb-2">
-            A full stack <a target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/10 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
+            A full stack <a target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/40 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
             design, and engineering, focused on delivering well-designed digital products.
           </p>
           <p className="text-foreground/80 text-lg tracking-wide mb-2">
-            I help businesses turn ideas into <a className="underline underline-offset-4 decoration-foreground/10 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
+            I help businesses turn ideas into <a className="underline underline-offset-4 decoration-foreground/40 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
           </p>
         </div>
       </section>
@@ -260,7 +260,7 @@ export default function Home() {
         // Projects
           </h2>
           <Link href="/projects" className="group flex items-center gap-1">
-            <span className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 decoration-foreground/10 group-hover:decoration-foreground transition-all duration-300 ease-out">All Projects</span>
+            <span className="cursor-pointer text-foreground/80 text-sm tracking-wide underline underline-offset-4 decoration-foreground/40group-hover:decoration-foreground transition-all duration-300 ease-out">All Projects</span>
             <ArrowRightIcon size={14} className="text-foreground/60" />
           </Link>
         </div>
