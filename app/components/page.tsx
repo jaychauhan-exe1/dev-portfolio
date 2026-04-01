@@ -46,7 +46,7 @@ export default function ComponentsPage() {
     ];
 
     return (
-        <div className="flex flex-col max-w-4xl mx-auto pb-10 mt-20">
+        <div className="flex flex-col max-w-4xl mx-auto pb-10 mt-10 lg:mt-20">
             <div className='flex flex-col gap-6'>
                 <Link className='flex gap-1 items-center mb-10 text-foreground group w-fit' href="/">
                     <ArrowLeftIcon size={12} className="" />

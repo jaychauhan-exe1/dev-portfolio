@@ -40,26 +40,53 @@ export default function Plain() {
         </li>
       </ul>
       <h4 className="font-medium">
-        Work
+        Work & Projects
       </h4>
-      <ul className="">
+      <ul className="flex flex-col gap-1">
         <li className="pl-4">
-          <a href="https://www.better-reports.vercel.app/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
-            Better Reports - Business analytics and reporting platform
-          </a>
+          Focas - AI Scheduling Assistant powered by AI to optimize productivity
         </li>
         <li className="pl-4">
-          <a href="https://github.com/jaychauhan-exe1/bettermobility" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
-            Better Mobility - Android app for salesmen
+          <a href="https://mevasa.in" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+            Mevasa - Modern baby products e-commerce platform
           </a>
         </li>
         <li className="pl-4">
           <a href="https://www.think-file.vercel.app/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
-            Think File - AI based file study platform
+            Think File - AI based document intelligence and RAG application
           </a>
         </li>
         <li className="pl-4">
-          Manager - AI based project management system (coding on it rn)
+          Reflecto - Experimental lighting and ray study in UI design
+        </li>
+        <li className="pl-4">
+          Toastloshi - Sensory digital experience for a luxury bakery
+        </li>
+        <li className="pl-4">
+          <a href="https://github.com/jaychauhan-exe1/bettermobility" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+            Sales Mobility - Comprehensive field sales management ecosystem
+          </a>
+        </li>
+        <li className="pl-4">
+          <a href="https://tevino.in" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+            Tevino Men - Premium luxury fashion web presence
+          </a>
+        </li>
+        <li className="pl-4">
+          Hosting Solutions - Professional server infrastructure and hosting pages
+        </li>
+        <li className="pl-4">
+          <a href="https://manager-project-jay.vercel.app/" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+            Manager - Enterprise project collaboration and management system
+          </a>
+        </li>
+        <li className="pl-4">
+          Floraflo - Vibrant flower and bespoke bouquet marketplace
+        </li>
+        <li className="pl-4">
+          <a href="https://talentvelocity.co.in" className="underline underline-offset-2 hover:decoration-foreground/50 transition-colors duration-300">
+            Talent Velocity - HR and recruitment solutions platform
+          </a>
         </li>
       </ul>
       <h4 className="font-medium">

@@ -13,7 +13,7 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <div className="w-full max-w-4xl mx-auto pb-40 px-4 md:px-0">
+    <div className="w-full max-w-4xl mx-auto pb-40 md:px-0">
       <div className="mt-10 lg:mt-20 flex flex-col gap-10">
         <div className='flex flex-col gap-6'>
           <GoBack />
