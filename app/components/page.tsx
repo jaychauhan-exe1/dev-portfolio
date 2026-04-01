@@ -50,7 +50,7 @@ export default function ComponentsPage() {
             <div className='flex flex-col gap-6'>
                 <Link className='flex gap-1 items-center mb-10 text-foreground group w-fit' href="/">
                     <ArrowLeftIcon size={12} className="" />
-                    <span className='text-sm underline underline-offset-4 decoration-foreground/40group-hover:decoration-foreground transition-all duration-300'>Go back</span>
+                    <span className='text-sm underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all duration-300'>Go back</span>
                 </Link>
             </div>
             <div className="mb-10">
