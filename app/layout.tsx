@@ -75,7 +75,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={` selection:black ${dmSans.className} ${cabinSketch.variable} antialiased max-w-3xl w-full mx-auto p-4 pb-20 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-foreground/50 [&::-webkit-scrollbar-thumb]:rounded-full dark:[&::-webkit-scrollbar-thumb]:bg-foreground/30`}>
+      <body className={`${dmSans.className} ${cabinSketch.variable} antialiased w-full min-h-screen [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-[#808080] [&::-webkit-scrollbar-thumb]:rounded-none`} style={{ background: '#008080', margin: 0, padding: 0, overflow: 'auto' }}>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-LQHZVXJREJ"
