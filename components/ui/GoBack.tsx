@@ -26,7 +26,7 @@ export function GoBack({ text = "Go back", href }: GoBackProps) {
   const Content = (
     <div className="flex gap-1 items-center text-foreground group w-fit">
       <ArrowLeftIcon size={12} className="" />
-      <span className="text-sm underline underline-offset-4 decoration-foreground/40group-hover:decoration-foreground transition-all duration-300">
+      <span className="text-sm underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all duration-300">
         {text}
       </span>
     </div>

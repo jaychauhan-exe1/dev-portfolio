@@ -24,7 +24,7 @@ function ExperienceCard({ item, idx }: { item: ExperienceItem; idx: number }) {
         <motion.div className="group pr-6" whileHover="hover">
           <h5 className="relative text-foreground text-lg tracking-wide">
             {item.link ? (
-              <a href={item.link} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/40decoration-1 underline hover:decoration-foreground transition-colors duration-300 ease-out">
+              <a href={item.link} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-colors duration-300 ease-out">
                 {item.title}
               </a>
             ) : (
