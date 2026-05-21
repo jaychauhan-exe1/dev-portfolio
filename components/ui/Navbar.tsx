@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Github, Instagram, Dribbble, QrCode, Power, FolderOpen, CodeXml, Home, Menu, Folder, PenLine } from "lucide-react";
+import { Github, Dribbble, QrCode, Power, CodeXml, Home, Folder, PenLine } from "lucide-react";
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter, usePathname } from 'next/navigation';
 import BootScreens from '../BootScreens';
@@ -18,9 +18,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   const [isVisible, setIsVisible] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
-  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [qrOrigin, setQrOrigin] = useState({ x: 0, y: 0 });
-  const [menuOrigin, setMenuOrigin] = useState({ x: 0, y: 0 });
   const lastScrollTop = useRef(0);
   const [status, setStatus] = useState<'idle' | 'shutting-down' | 'starting-up'>('idle');
 
@@ -37,18 +35,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
     });
     setIsQRModalOpen(true);
   }
-  const showMenu = (e: React.MouseEvent<HTMLElement>) => {
-    if (isDemo) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
 
-    setMenuOrigin({
-      x: (rect.left + rect.width / 2) - centerX,
-      y: (rect.top + rect.height / 2) - centerY,
-    });
-    setIsMenuModalOpen(true);
-  }
 
   const switchOff = () => {
     // Abort actual redirection inside component playground
@@ -126,10 +113,12 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
   }, [isHovering, status, isForcedHidden]);
 
   const baseNavLinks = [
-    { href: "https://instagram.com/acionystudios/", icon: Instagram, tooltip: "Instagram", isExternal: true },
     { href: "https://dribbble.com/jaychauhanexe", icon: Dribbble, tooltip: "Dribbble", isExternal: true },
     { href: "https://github.com/jaychauhan-exe1", icon: Github, tooltip: "GitHub", isExternal: true },
     { href: "https://linkedin.com/in/jaychauhanexe", icon: RiLinkedinLine, tooltip: "LinkedIn", isExternal: true, size: 24 },
+    { href: "/projects", icon: Folder, tooltip: "Projects", isExternal: false },
+    { href: "/blog", icon: PenLine, tooltip: "Blog", isExternal: false },
+    { href: "/components", icon: CodeXml, tooltip: "Components", isExternal: false },
   ];
 
   const navLinks = isDemo ? baseNavLinks.filter(l => l.isExternal) : baseNavLinks;
@@ -161,24 +150,6 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
           </button>
         </Tooltip>
 
-        <AnimatePresence>
-          {!isDemo && pathname !== '/' && (
-            <motion.div
-              initial={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)', width: 'auto' }}
-              exit={{ opacity: 0, x: -20, filter: 'blur(10px)', width: 0 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="flex items-center justify-center"
-            >
-              <Tooltip content="Home">
-                <Link href="/" className="bg-transparent p-2 rounded-full w-fit cursor-pointer hover:bg-border transition-colors duration-300 ease-out flex items-center justify-center">
-                  <Home className="text-foreground" />
-                </Link>
-              </Tooltip>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {navLinks.map((link) => {
           const isActive = !isDemo && pathname === link.href;
           const Icon = isActive ? Home : link.icon;
@@ -197,13 +168,23 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
 
           return (
             <Tooltip key={link.tooltip} content={isActive ? "Home" : link.tooltip}>
-              <a
-                href={href}
-                target={link.isExternal ? "_blank" : undefined}
-                className={className}
-              >
-                <Icon size={link.size || 24} className="text-foreground" />
-              </a>
+              {link.isExternal ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  <Icon size={link.size || 24} className="text-foreground" />
+                </a>
+              ) : (
+                <Link
+                  href={href || "/"}
+                  className={className}
+                >
+                  <Icon size={link.size || 24} className="text-foreground" />
+                </Link>
+              )}
             </Tooltip>
           );
         })}
@@ -229,15 +210,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             </motion.div>
           )}
         </AnimatePresence>
-        <Tooltip content="Menu">
-          <button
-            type="button"
-            onClick={showMenu}
-            className={`p-2 rounded-full w-fit hover:bg-border transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
-          >
-            <Menu className="text-foreground" />
-          </button>
-        </Tooltip>
+
       </motion.div>
       <BootScreens status={status} />
       <GenieModal
@@ -250,31 +223,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
           <Image src="/QRCode.webp" alt="QR Code" width={300} height={300} />
         </div>
       </GenieModal>
-      <GenieModal
-        isOpen={isMenuModalOpen}
-        onClose={() => setIsMenuModalOpen(false)}
-        origin={menuOrigin}
-        title="Menu"
-      >
-        <div className=" grid grid-cols-2 gap-4 items-center max-w-[300px] min-w-[300px] min-h-[200px] justify-center" >
-          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/">
-            <Home size={20} />
-            Home
-          </Link>
-          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/projects">
-            <Folder size={20} />
-            Projects
-          </Link>
-          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/blog">
-            <PenLine size={20} />
-            Blog
-          </Link>
-          <Link className='hover:bg-background/50 p-4 bg-background/60 rounded-xl hover:shadow-inner shadow-sm border border-border w-full flex flex-col gap-4 transition-all duration-300 ease-out' onClick={() => setIsMenuModalOpen(false)} href="/components">
-            <CodeXml size={20} />
-            Components
-          </Link>
-        </div>
-      </GenieModal>
+
     </>
   );
 }

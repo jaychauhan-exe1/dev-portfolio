@@ -48,18 +48,21 @@ const data = {
       link: "https://github.com/jaychauhan-exe1/better-reports",
       year: "NEXT JS",
       description: "Better Reports is a business analytics dashboard I built to help businesses understand their data in a clear and practical way. It allows users to compare sales in multiple formats, generate invoices, and view performance insights through clean visual reports, making it easier to track growth and spot trends without digging through complex spreadsheets. \n\n One of its standout features is an AI assistant that can answer questions about business performance, sales data, and trends in real time, helping users get instant insights without manual analysis. I used local AI model using ollama to keep the business data safe and secure. Building this project strengthened my skills in data visualization, system design, and creating tools that are not only powerful but genuinely useful for real business decisions.",
+      thumbnail: "/designs/Business Report/sales-reports-dashboard.png",
     },
     {
       title: "Sales Mobility App",
       link: "https://github.com/jaychauhan-exe1/bettermobility",
       year: "EXPO APP",
       description: "Sales Mobility App is a field sales management system I built to replace manual, paper-based workflows with a streamlined digital solution. It allows sales representatives to create orders, manage returns, submit field reports, and handle daily sales activities directly from their mobile devices, improving accuracy and saving time for both reps and management. \n\n The app also supports real-time invoice generation with portable printer integration, enabling instant billing during client visits. This project strengthened my ability to design systems that solve real-world business problems and demonstrated how thoughtful digital tools can significantly improve operational efficiency.",
+      thumbnail: "/designs/Sales Mobility/Slide 4_3 - 3.png",
     },
     {
       title: "Think File",
       link: "https://think-file.vercel.app",
       year: "GEN AI",
       description: "ThinkFile is a Retrieval-Augmented Generation (RAG) system I built to explore and deepen my understanding of generative AI systems. It allows users to upload and interact with their data through AI-powered conversations, supporting formats such as Word, PDF, CSV, XLSX, Markdown, and other text-based files. Instead of manually searching documents, users can ask questions and receive context-aware answers instantly. \n\n The system currently runs on Gemini 3 Flash and 2.5 models, and includes structured file and project management along with chat history tracking. This project was intentionally built as a hands-on learning experience to better understand GenAI architecture, document processing pipelines, and real-world implementation patterns. While it’s not intended as a final product, it served as a practical foundation for experimenting with advanced AI workflows and system design.",
+      thumbnail: "/designs/think file/think-file.png",
     },
   ],
 
@@ -72,6 +75,7 @@ export default function Home() {
   const [catActivated, setCatActivated] = useState(false);
   const [showTom, setShowTom] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesignHovered, setIsDesignHovered] = useState(false);
 
   useEffect(() => {
     const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
@@ -227,17 +231,56 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="text-foreground/40 mb-4">
-          <span>New Delhi, India</span> • <span>Design Engineer</span> •{" "}
-          <a href="#contact" className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out">available for work</a>
-        </div>
+        <motion.div
+          layout
+          className="text-foreground/40 mb-4 flex items-center justify-center gap-1.5 flex-wrap"
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>New Delhi, India</motion.span>
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>•</motion.span>
+          <motion.span
+            layout
+            className="cursor-pointer hover:text-foreground transition-colors duration-300 inline-grid grid-cols-1 grid-rows-1 place-items-center relative min-h-[24px]"
+            onMouseEnter={() => setIsDesignHovered(true)}
+            onMouseLeave={() => setIsDesignHovered(false)}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={isDesignHovered ? "hovered" : "normal"}
+                layout
+                initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                transition={{
+                  filter: { duration: 0.3, ease: "easeOut" },
+                  opacity: { duration: 0.2 },
+                  y: { duration: 0.3 },
+                  layout: { type: "spring", stiffness: 300, damping: 30 }
+                }}
+                className="col-start-1 row-start-1 whitespace-nowrap"
+              >
+                {isDesignHovered ? "UI UX + Full Stack" : "Design Engineer"}
+              </motion.span>
+            </AnimatePresence>
+          </motion.span>
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>•</motion.span>
+          <motion.a
+            layout
+            href="#contact"
+            className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            available for work
+          </motion.a>
+        </motion.div>
         <div className="mb-2">
-          <p className="text-foreground/80 text-lg tracking-wide mt-6 mb-2">
-            A full stack <a target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
+          <p className="text-foreground/70 text-lg tracking-wide mt-6 mb-2">
+            A full stack <a target="_blank" rel="noopener noreferrer" className="underline text-foreground underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
             design, and engineering, focused on delivering well-designed digital products.
           </p>
-          <p className="text-foreground/80 text-lg tracking-wide mb-2">
-            I help businesses turn ideas into <a className="underline underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
+          <p className="text-foreground/70 text-lg tracking-wide mb-2">
+            I help businesses turn ideas into <a className="underline underline-offset-4 text-foreground decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
           </p>
         </div>
       </section>
