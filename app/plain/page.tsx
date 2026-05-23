@@ -35,14 +35,17 @@ export default function Plain() {
           </a>
           - 1 year
         </li>
-        <li className="pl-4">
+        {/* <li className="pl-4">
           Aciony Studio - 1 year
-        </li>
+        </li> */}
       </ul>
       <h4 className="font-medium">
         Work & Projects
       </h4>
       <ul className="flex flex-col gap-1">
+        <li className="pl-4">
+          Train station web design concept - A concept inspired by Changi Airport in Singapore
+        </li>
         <li className="pl-4">
           Focas - AI Scheduling Assistant powered by AI to optimize productivity
         </li>

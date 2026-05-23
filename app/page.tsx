@@ -20,14 +20,14 @@ const data = {
     {
       title: "Graphics & UI/UX Designer",
       year: "2024",
-      description: "I worked as a Graphic Design Intern at Brand Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
+      description: "I worked as a Graphic Design Intern at Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
       link: "https://www.insightsmafia.com"
     },
-    {
-      title: "Aciony Studios - Building",
-      year: "2026 - BREWING",
-      description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
-    },
+    // {
+    //   title: "Aciony Studios - Building",
+    //   year: "2026 - BREWING",
+    //   description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
+    // },
   ],
   learnings: [
     {
@@ -44,22 +44,25 @@ const data = {
   ],
   projects: [
     {
-      title: "Business Reports",
-      link: "https://github.com/jaychauhan-exe1/better-reports",
-      year: "NEXT JS",
-      description: "Better Reports is a business analytics dashboard I built to help businesses understand their data in a clear and practical way. It allows users to compare sales in multiple formats, generate invoices, and view performance insights through clean visual reports, making it easier to track growth and spot trends without digging through complex spreadsheets. \n\n One of its standout features is an AI assistant that can answer questions about business performance, sales data, and trends in real time, helping users get instant insights without manual analysis. I used local AI model using ollama to keep the business data safe and secure. Building this project strengthened my skills in data visualization, system design, and creating tools that are not only powerful but genuinely useful for real business decisions.",
+      title: "Mevasa",
+      link: "https://mevasa.in",
+      year: "ECOMMERCE",
+      description: "Mevasa is an exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents. I built this platform to deliver a seamless shopping experience, combining a warm design direction with performant frontend interactions.\n\n The project focuses on micro-interactions, clean layout structures, and high-fidelity product galleries to make digital retail feel tactile and alive. Designing and developing Mevasa helped me refine my skills in creating motion-heavy, component-driven interfaces that balance premium visual storytelling with smooth performance across all devices.",
+      thumbnail: "/designs/mevasa/Product%20page%20%231.png",
     },
     {
       title: "Sales Mobility App",
       link: "https://github.com/jaychauhan-exe1/bettermobility",
       year: "EXPO APP",
       description: "Sales Mobility App is a field sales management system I built to replace manual, paper-based workflows with a streamlined digital solution. It allows sales representatives to create orders, manage returns, submit field reports, and handle daily sales activities directly from their mobile devices, improving accuracy and saving time for both reps and management. \n\n The app also supports real-time invoice generation with portable printer integration, enabling instant billing during client visits. This project strengthened my ability to design systems that solve real-world business problems and demonstrated how thoughtful digital tools can significantly improve operational efficiency.",
+      thumbnail: "/designs/Sales Mobility/Slide 4_3 - 3.png",
     },
     {
       title: "Think File",
       link: "https://think-file.vercel.app",
       year: "GEN AI",
       description: "ThinkFile is a Retrieval-Augmented Generation (RAG) system I built to explore and deepen my understanding of generative AI systems. It allows users to upload and interact with their data through AI-powered conversations, supporting formats such as Word, PDF, CSV, XLSX, Markdown, and other text-based files. Instead of manually searching documents, users can ask questions and receive context-aware answers instantly. \n\n The system currently runs on Gemini 3 Flash and 2.5 models, and includes structured file and project management along with chat history tracking. This project was intentionally built as a hands-on learning experience to better understand GenAI architecture, document processing pipelines, and real-world implementation patterns. While it’s not intended as a final product, it served as a practical foundation for experimenting with advanced AI workflows and system design.",
+      thumbnail: "/designs/think file/think-file.png",
     },
   ],
 
@@ -72,6 +75,7 @@ export default function Home() {
   const [catActivated, setCatActivated] = useState(false);
   const [showTom, setShowTom] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesignHovered, setIsDesignHovered] = useState(false);
 
   useEffect(() => {
     const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
@@ -227,17 +231,56 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="text-foreground/40 mb-4">
-          <span>New Delhi, India</span> • <span>Design Engineer</span> •{" "}
-          <a href="#contact" className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out">available for work</a>
-        </div>
+        <motion.div
+          layout
+          className="text-foreground/40 mb-4 flex items-center justify-center gap-1.5 flex-wrap"
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>New Delhi, India</motion.span>
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>•</motion.span>
+          <motion.span
+            layout
+            className="cursor-pointer hover:text-foreground transition-colors duration-300 inline-grid grid-cols-1 grid-rows-1 place-items-center relative min-h-[24px]"
+            onMouseEnter={() => setIsDesignHovered(true)}
+            onMouseLeave={() => setIsDesignHovered(false)}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={isDesignHovered ? "hovered" : "normal"}
+                layout
+                initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                transition={{
+                  filter: { duration: 0.3, ease: "easeOut" },
+                  opacity: { duration: 0.2 },
+                  y: { duration: 0.3 },
+                  layout: { type: "spring", stiffness: 300, damping: 30 }
+                }}
+                className="col-start-1 row-start-1 whitespace-nowrap"
+              >
+                {isDesignHovered ? "UI UX + Full Stack" : "Design Engineer"}
+              </motion.span>
+            </AnimatePresence>
+          </motion.span>
+          <motion.span layout transition={{ type: "spring", stiffness: 300, damping: 30 }}>•</motion.span>
+          <motion.a
+            layout
+            href="#contact"
+            className="hover:text-emerald-500 cursor-pointer transition-colors duration-300 ease-out"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            available for work
+          </motion.a>
+        </motion.div>
         <div className="mb-2">
-          <p className="text-foreground/80 text-lg tracking-wide mt-6 mb-2">
-            A full stack <a target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
+          <p className="text-foreground/70 text-lg tracking-wide mt-6 mb-2">
+            A full stack <a target="_blank" rel="noopener noreferrer" className="underline text-foreground underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://www.ibm.com/think/topics/product-engineering">product engineer</a> and designer with experience across research, strategy,
             design, and engineering, focused on delivering well-designed digital products.
           </p>
-          <p className="text-foreground/80 text-lg tracking-wide mb-2">
-            I help businesses turn ideas into <a className="underline underline-offset-4 decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
+          <p className="text-foreground/70 text-lg tracking-wide mb-2">
+            I help businesses turn ideas into <a className="underline underline-offset-4 text-foreground decoration-foreground/20 decoration-1 underline hover:decoration-foreground transition-all duration-300 ease-out" href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener noreferrer">scalable</a> user-friendly solutions that solve real problems.
           </p>
         </div>
       </section>

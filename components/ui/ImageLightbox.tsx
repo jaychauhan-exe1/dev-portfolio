@@ -59,11 +59,24 @@ export function ImageLightbox({ src, alt, children }: ImageLightboxProps) {
                 <X size={20} className="md:w-6 md:h-6" />
               </button>
 
-              <img
-                src={src}
-                alt={alt}
-                className="w-full h-auto max-h-[70vh] md:max-h-[80vh] object-contain block mx-auto select-none"
-              />
+              {src.toLowerCase().endsWith('.mp4') ? (
+                <video
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full h-auto max-h-[70vh] md:max-h-[80vh] object-contain block mx-auto pointer-events-auto"
+                >
+                  <source src={src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={src}
+                  alt={alt}
+                  className="w-full h-auto max-h-[70vh] md:max-h-[80vh] object-contain block mx-auto select-none"
+                />
+              )}
             </div>
 
             {/* Caption */}

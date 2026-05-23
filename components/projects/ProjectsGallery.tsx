@@ -9,6 +9,16 @@ import { ImageLightbox } from '@/components/ui/ImageLightbox'
 
 const PROJECTS = [
     {
+        title: "Train station web design concept",
+        description: "A concept I instantly wanted to create after seeing the astonishing architecture and atmosphere of Changi Airport in Singapore.",
+        tags: ["Website"],
+        images: [
+            "/designs/train-station/train-station.mp4",
+            "/designs/train-station/train-station-shot.png",
+            "/designs/train-station/epic-train-station.png",
+        ]
+    },
+    {
         title: "Focas - AI Scheduling Assistant",
         description: "A daily habit-tracking and scheduling application powered by AI to help users optimize their productivity and maintain a balanced lifestyle.",
         tags: ["Web App", "Agentic AI"],
@@ -415,6 +425,42 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                                     {isActive ? (
                                         <ImageLightbox src={img} alt={`${project.title} - ${i}`}>
                                             <div className="relative w-full h-full cursor-zoom-in pointer-events-auto">
+                                                {img.toLowerCase().endsWith('.mp4') ? (
+                                                    <video
+                                                        autoPlay
+                                                        loop
+                                                        muted
+                                                        playsInline
+                                                        className="w-full h-full object-cover"
+                                                    >
+                                                        <source src={img} type="video/mp4" />
+                                                    </video>
+                                                ) : (
+                                                    <Image
+                                                        src={img}
+                                                        alt={project.title}
+                                                        fill
+                                                        className="object-cover"
+                                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                                        draggable={false}
+                                                        onDragStart={(e) => e.preventDefault()}
+                                                    />
+                                                )}
+                                            </div>
+                                        </ImageLightbox>
+                                    ) : (
+                                        <div className="relative w-full h-full">
+                                            {img.toLowerCase().endsWith('.mp4') ? (
+                                                <video
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    className="w-full h-full object-cover"
+                                                >
+                                                    <source src={img} type="video/mp4" />
+                                                </video>
+                                            ) : (
                                                 <Image
                                                     src={img}
                                                     alt={project.title}
@@ -424,19 +470,7 @@ const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
                                                     draggable={false}
                                                     onDragStart={(e) => e.preventDefault()}
                                                 />
-                                            </div>
-                                        </ImageLightbox>
-                                    ) : (
-                                        <div className="relative w-full h-full">
-                                            <Image
-                                                src={img}
-                                                alt={project.title}
-                                                fill
-                                                className="object-cover"
-                                                sizes="(max-width: 768px) 100vw, 33vw"
-                                                draggable={false}
-                                                onDragStart={(e) => e.preventDefault()}
-                                            />
+                                            )}
                                         </div>
                                     )}
                                 </div>
