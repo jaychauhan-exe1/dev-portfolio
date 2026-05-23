@@ -20,14 +20,14 @@ const data = {
     {
       title: "Graphics & UI/UX Designer",
       year: "2024",
-      description: "I worked as a Graphic Design Intern at Brand Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
+      description: "I worked as a Graphic Design Intern at Insights Mafia, a digital marketing agency, where I contributed to creating visual content for social media, marketing campaigns, and branding projects. During this time, I gained hands-on experience working with real client requirements, tight deadlines, and collaborative feedback, which helped me sharpen both my design skills and my ability to think creatively under pressure. I was involved in designing posts, promotional materials, and visual assets that aligned with brand identity and marketing goals. \n\n I really enjoyed being part of a fast-paced creative environment where ideas were constantly evolving. It taught me how to balance creativity with strategy, take constructive feedback positively, and focus on designs that not only look good but also communicate clearly and effectively. The experience strengthened my attention to detail and gave me a better understanding of how design plays a key role in digital marketing and brand growth.",
       link: "https://www.insightsmafia.com"
     },
-    {
-      title: "Aciony Studios - Building",
-      year: "2026 - BREWING",
-      description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
-    },
+    // {
+    //   title: "Aciony Studios - Building",
+    //   year: "2026 - BREWING",
+    //   description: "In 2026, I founded Aciony Studios with the goal of bringing together everything I’ve learned from years of freelancing into one place. Through this studio, I aim to provide businesses with complete, all-in-one solutions, ie. , from design and branding to web apps, custom systems, automations, marketing support, and social media management. Instead of offering isolated services, my focus is on helping businesses build strong digital foundations that actually support their growth. \n\n I started Aciony Studios because I saw how many businesses struggle when their tools, branding, and systems don’t work well together. I enjoy understanding how a business operates behind the scenes and then building solutions that make things smoother, more efficient, and easier to scale. This is just the beginning, and I’m excited to grow it into a studio that delivers real value and long-term impact for the brands I work with.",
+    // },
   ],
   learnings: [
     {
@@ -44,11 +44,11 @@ const data = {
   ],
   projects: [
     {
-      title: "Business Reports",
-      link: "https://github.com/jaychauhan-exe1/better-reports",
-      year: "NEXT JS",
-      description: "Better Reports is a business analytics dashboard I built to help businesses understand their data in a clear and practical way. It allows users to compare sales in multiple formats, generate invoices, and view performance insights through clean visual reports, making it easier to track growth and spot trends without digging through complex spreadsheets. \n\n One of its standout features is an AI assistant that can answer questions about business performance, sales data, and trends in real time, helping users get instant insights without manual analysis. I used local AI model using ollama to keep the business data safe and secure. Building this project strengthened my skills in data visualization, system design, and creating tools that are not only powerful but genuinely useful for real business decisions.",
-      thumbnail: "/designs/Business Report/sales-reports-dashboard.png",
+      title: "Mevasa",
+      link: "https://mevasa.in",
+      year: "ECOMMERCE",
+      description: "Mevasa is an exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents. I built this platform to deliver a seamless shopping experience, combining a warm design direction with performant frontend interactions.\n\n The project focuses on micro-interactions, clean layout structures, and high-fidelity product galleries to make digital retail feel tactile and alive. Designing and developing Mevasa helped me refine my skills in creating motion-heavy, component-driven interfaces that balance premium visual storytelling with smooth performance across all devices.",
+      thumbnail: "/designs/mevasa/Product%20page%20%231.png",
     },
     {
       title: "Sales Mobility App",

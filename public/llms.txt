@@ -8,7 +8,8 @@ Jay Singh Chauhan is a full stack product engineer and designer specializing in 
 - **Aciony Studios**: 2026 - Present. Founder and Lead Engineer.
 
 ## Key Projects
-- **Business Reports**: Business analytics dashboard with local AI assistant (Ollama).
+- **Train Station**: Train station web design concept inspired by Changi Airport.
+- **Mevasa**: E-commerce platform for baby products with modern, playful animations.
 - **Sales Mobility App**: Field sales management system with real-time invoicing.
 - **Think File**: RAG-based AI document interaction platform.
 - **Manager**: AI-powered project management system.
