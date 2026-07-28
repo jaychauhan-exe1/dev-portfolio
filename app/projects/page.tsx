@@ -3,6 +3,7 @@ import { constructMetadata } from "@/lib/metadata"
 import { GoBack } from '@/components/ui/GoBack'
 import Image from 'next/image'
 import Link from 'next/link'
+import projectsData from '@/content/projects.json'
 
 export const metadata = constructMetadata({
     title: "Work & Projects",
@@ -10,50 +11,19 @@ export const metadata = constructMetadata({
     canonical: "/projects",
 })
 
-const NEW_PROJECTS = [
-    {
-        title: "ALMN Web design",
-        tag: "Figma",
-        link: "https://dribbble.com/shots/23249053-ALMN-Design-Agency-Website",
-    },
-    {
-        title: "Focas - Web design",
-        tag: "Figma",
-        link: "https://dribbble.com/shots/24128564-Focas-AI-Scheduling-Assistant",
-    },
-    {
-        title: "Mevasa - Web design",
-        tag: "Wordpress",
-        link: "https://mevasa.in",
-    },
-    {
-        title: "Hydra Hosting - Web design",
-        tag: "Vue JS",
-        link: "https://dribbble.com/shots/23812904-Green-Hosting-Website-Design",
-    },
-    {
-        title: "Sales Mobility - App Development",
-        tag: "React Native",
-        link: "https://github.com/jaychauhan-exe1/bettermobility",
-    },
-    {
-        title: "Greater Construction - Website",
-        tag: "Wordpress",
-        link: "#",
-    },
-    {
-        title: "Toastdoshi - Bakery webshop",
-        tag: "Shopify",
-        link: "#",
-    },
-    {
-        title: "Think File - Custom RAG App",
-        tag: "Gen AI",
-        link: "https://think-file.vercel.app",
-    },
-]
-
 export default function ProjectsPage() {
+    const featuredTitles = projectsData.featured;
+    const allProjects = projectsData.projects;
+
+    // Find all projects that are in the featured titles list
+    const featuredCandidates = allProjects.filter(p => featuredTitles.includes(p.title));
+
+    // Take the last 8 (latest 8) as active featured
+    const activeFeatured = featuredCandidates.slice(-8);
+
+    // Reverse to display latest first
+    const sortedProjects = [...activeFeatured].reverse();
+
     return (
         <div className='w-full pb-32 max-w-7xl mx-auto'>
             <div className='mt-10 lg:mt-20 flex flex-col gap-10'>
@@ -71,7 +41,7 @@ export default function ProjectsPage() {
 
                 {/* Projects Grid */}
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 mt-6'>
-                    {NEW_PROJECTS.map((project, idx) => (
+                    {sortedProjects.map((project, idx) => (
                         <div key={idx} className='flex flex-col group'>
                             {/* Image Container */}
                             <div className='relative w-full aspect-[16/10] overflow-hidden rounded-3xl border border-border/30 bg-card shadow-sm'>
@@ -91,15 +61,15 @@ export default function ProjectsPage() {
                                     {project.title}
                                 </h2>
                                 <span className='text-sm text-foreground/50 font-cabin-sketch whitespace-nowrap shrink-0 mt-0.5 md:mt-1'>
-                                    {project.tag}
+                                    {project.tag || (project.tags && project.tags[0]) || ''}
                                 </span>
                             </div>
 
                             {/* Action Container */}
                             <div className='mt-1 px-1'>
-                                <Link 
-                                    href={project.link}
-                                    {...(project.link !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                <Link
+                                    href={project.link || '#'}
+                                    {...(project.link && project.link !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                                     className='inline-block w-fit'
                                 >
                                     <span className="text-sm underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all duration-300 text-foreground font-medium">
@@ -112,10 +82,10 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Footer Section */}
-                <div className="mt-20 text-center text-sm md:text-base text-foreground/50">
+                <div className="mt-20 text-center text-sm md:text-base text-foreground/50 leading-relaxed">
                     Wanna see more of my work?{' '}
-                    <Link 
-                        href="/archive" 
+                    <Link
+                        href="/archive"
                         className="text-foreground underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground transition-all duration-300 font-medium"
                     >
                         Click here to view Archives.

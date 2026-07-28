@@ -7,135 +7,18 @@ import { motion, AnimatePresence } from 'motion/react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ImageLightbox } from '@/components/ui/ImageLightbox'
 
-const PROJECTS = [
-    {
-        title: "Train station web design concept",
-        description: "A concept I instantly wanted to create after seeing the astonishing architecture and atmosphere of Changi Airport in Singapore.",
-        tags: ["Website"],
-        images: [
-            "/designs/train-station/train-station.mp4",
-            "/designs/train-station/train-station-shot.png",
-            "/designs/train-station/epic-train-station.png",
-        ]
-    },
-    {
-        title: "Focas - AI Scheduling Assistant",
-        description: "A daily habit-tracking and scheduling application powered by AI to help users optimize their productivity and maintain a balanced lifestyle.",
-        tags: ["Web App", "Agentic AI"],
-        images: [
-            "/designs/focas/Focas.png",
-            "/designs/focas/Slide%2016_9%20-%202.png",
-            "/designs/focas/Slide%2016_9%20-%203.png",
-        ]
-    },
-    {
-        title: "Mevasa - Modern Baby Products",
-        description: "An exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents.",
-        tags: ["Website", "Ecommerce"],
-        images: [
-            "/designs/mevasa/Product%20page%20%231.png",
-            "/designs/mevasa/Mevasa%20hero.png",
-            "/designs/mevasa/Mevasa%20Design.png",
-            "/designs/mevasa/Mevasa%20-%20Homepage.png",
-            "/designs/mevasa/Product%20Page.png",
-        ]
-    },
-    {
-        title: "Think File - AI Document Intelligence",
-        description: "An intelligent RAG (Retrieval-Augmented Generation) application that scans various document types, allowing users to interact with their data and ask complex questions using AI.",
-        tags: ["Web App", "Agentic AI"],
-        images: [
-            "/designs/think%20file/think-file.png",
-            "/designs/think%20file/think-file-dashboard.png",
-            "/designs/think%20file/think-file-chat.png",
-            "/designs/think%20file/think-file-signup.png",
-        ]
-    },
-    {
-        title: "Reflecto - Lighting & Ray Study",
-        description: "An experimental Figma project exploring advanced lighting effects, ray tracing, and realistic reflections in digital interface design.",
-        tags: ["Website"],
-        images: [
-            "/designs/reflecto/Reflecto%20dribble%20shot%20%231.png",
-        ]
-    },
-    {
-        title: "Toastloshi - Artisan Bakery",
-        description: "A sensory digital experience for a luxury bakery, focusing on premium food photography and an elegant layout that captures the essence of artisanal baking.",
-        tags: ["Website", "Ecommerce"],
-        images: [
-            "/designs/toastloshi/toastloshi%20-%20hero.png",
-            "/designs/toastloshi/toastloshi%20-%20homepage.png",
-            "/designs/toastloshi/about%20us.png",
-            "/designs/toastloshi/envolope.png",
-            "/designs/toastloshi/gallery.png",
-        ]
-    },
-    {
-        title: "Sales Mobility - Field Sales Management",
-        description: "A comprehensive application designed for sales representatives to streamline order processing, manage inventory, and optimize field operations through an organized digital ecosystem.",
-        tags: ["App"],
-        images: [
-            "/designs/Sales%20Mobility/mockup-1.png",
-            "/designs/Sales%20Mobility/Slide%204_3%20-%202.png",
-            "/designs/Sales%20Mobility/Slide%204_3%20-%203.png",
-        ]
-    },
-    {
-        title: "Tevino Men - Luxury Fashion",
-        description: "A premium menswear brand based in New Delhi, featuring a high-end web presence that reflects the exclusivity and sophistication of its luxury clothing lines.",
-        tags: ["Website", "Ecommerce"],
-        images: [
-            "/designs/Tevino/Tevino%20dribble%20shot%20%231.png",
-            "/designs/Tevino/Tevino%20dribble%20shot%20%232.png",
-            "/designs/Tevino/Tevino%20dribble%20shot.png",
-        ]
-    },
-    {
-        title: "Hosting Solutions - Server Infrastructure",
-        description: "Comprehensive landing and service pages for a professional hosting provider, designed to communicate reliability and high-performance infrastructure.",
-        tags: ["Website", "Web App"],
-        images: [
-            "/designs/hosting/Green%20Hosting%20-%20Hero.png",
-            "/designs/hosting/Green%20Hosting%20-%20Homepage.png",
-            "/designs/hosting/features.png",
-            "/designs/hosting/services.png",
-        ]
-    },
-    {
-        title: "Manager - Enterprise Project Collaboration",
-        description: "A sophisticated project management tool focused on team collaboration, task tracking, and resource allocation, featuring real-time updates and an intuitive dashboard.",
-        tags: ["Web App"],
-        images: [
-            "/designs/Manager/manager.png",
-            "/designs/Manager/manager-dashboard.png",
-            "/designs/Manager/manager-project.png",
-            "/designs/Manager/manager-task-edit.png",
-            "/designs/Manager/manager-login.png",
-        ]
-    },
-    {
-        title: "Floraflo - Flower & Bokeh Shop",
-        description: "A beautiful online marketplace for flowers and bespoke bouquets, featuring a vibrant design that highlights the artistry of floral arrangements.",
-        tags: ["Website", "Ecommerce"],
-        images: [
-            "/designs/Floragao/floragao-hero.png",
-            "/designs/Floragao/floragao-homepage.png",
-            "/designs/Floragao/categories.png",
-            "/designs/Floragao/features.png",
-            "/designs/Floragao/shop.png",
-        ]
-    },
-    {
-        title: "Talent Velocity - HR Solutions",
-        description: "A robust recruitment and human resources platform built for the Indian market, connecting top talent with industry-leading organizations.",
-        tags: ["Website"],
-        images: [
-            "/designs/Talent%20Velocity/Talent%20.png",
-            "/designs/Talent%20Velocity/Talent%20Velocity%20-%20hero.png",
-        ]
-    }
-]
+export interface Project {
+    title: string;
+    description: string;
+    tags: string[];
+    images: string[];
+    tag?: string;
+    link?: string;
+}
+
+interface ProjectsGalleryProps {
+    projects: Project[];
+}
 
 // Layout Constants
 const ACTIVE_HEIGHT = 310;
@@ -146,16 +29,16 @@ const INACTIVE_WIDTH = INACTIVE_HEIGHT * RATIO;
 const ITEM_GAP = 32;
 const PROJECTS_PER_PAGE = 5;
 
-export default function ProjectsGallery() {
+export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    const allTags = Array.from(new Set(PROJECTS.flatMap((p) => p.tags))).sort();
+    const allTags = Array.from(new Set((projects || []).flatMap((p) => p.tags))).sort();
 
     const filteredProjects = selectedTag
-        ? PROJECTS.filter((p) => p.tags.includes(selectedTag))
-        : PROJECTS;
+        ? (projects || []).filter((p) => p.tags.includes(selectedTag))
+        : (projects || []);
 
     const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
     const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
@@ -262,7 +145,7 @@ export default function ProjectsGallery() {
     )
 }
 
-const PortfolioCard = ({ project }: { project: typeof PROJECTS[0] }) => {
+const PortfolioCard = ({ project }: { project: Project }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMounted, setIsMounted] = useState(false);
     const [translateX, setTranslateX] = useState(0);
