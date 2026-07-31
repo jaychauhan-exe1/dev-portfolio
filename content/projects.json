@@ -6,141 +6,235 @@
     "Sales Mobility - App Development",
     "Hydra Hosting - Web design",
     "Mevasa - Web design",
-    "Focas - Web design",
+    "Monolith Web Design",
     "ALMN Web design"
   ],
   "projects": [
     {
       "title": "Talent Velocity - HR Solutions",
       "description": "A robust recruitment and human resources platform built for the Indian market, connecting top talent with industry-leading organizations.",
-      "tags": ["Website"],
+      "tags": [
+        "Website"
+      ],
       "images": [
         "/designs/Talent%20Velocity/Talent%20.png",
         "/designs/Talent%20Velocity/Talent%20Velocity%20-%20hero.png"
-      ]
+      ],
+      "role": "Lead Developer",
+      "client": "Talent Velocity",
+      "year": "2024",
+      "challenge_title": "Talent Velocity needed a robust, fast recruiting platform tailored for the Indian recruitment market.",
+      "challenge": "The primary challenge was handling large volumes of resume processing and candidate matchmaking while ensuring seamless real-time notifications for both recruiters and job seekers. The final product connects top talent with industry-leading organizations through optimized search pipelines."
     },
     {
       "title": "Floraflo - Flower & Bokeh Shop",
       "description": "A beautiful online marketplace for flowers and bespoke bouquets, featuring a vibrant design that highlights the artistry of floral arrangements.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/Floragao/floragao-hero.png",
         "/designs/Floragao/floragao-homepage.png",
         "/designs/Floragao/categories.png",
         "/designs/Floragao/features.png",
         "/designs/Floragao/shop.png"
-      ]
+      ],
+      "role": "UI/UX Designer & Developer",
+      "client": "Floraflo Shop",
+      "year": "2023",
+      "challenge_title": "An online marketplace for custom floral bouquets.",
+      "challenge": "The objective was to build a visually engaging storefront that captures the artistry and delicate colors of fresh arrangements, combined with an interactive flower builder where users can select and combine blooms. The challenge was maintaining high-fidelity visuals while keeping load times under 1 second."
     },
     {
       "title": "Manager - Enterprise Project Collaboration",
       "description": "A sophisticated project management tool focused on team collaboration, task tracking, and resource allocation, featuring real-time updates and an intuitive dashboard.",
-      "tags": ["Web App"],
+      "tags": [
+        "Web App"
+      ],
       "images": [
         "/designs/Manager/manager.png",
         "/designs/Manager/manager-dashboard.png",
         "/designs/Manager/manager-project.png",
         "/designs/Manager/manager-task-edit.png",
         "/designs/Manager/manager-login.png"
-      ]
+      ],
+      "role": "Frontend Engineer",
+      "client": "Manager Corp",
+      "year": "2024",
+      "challenge_title": "A collaborative workspace designed for large teams to manage tasks and track project metrics.",
+      "challenge": "The key challenge was syncing project boards in real time without lag, and building complex dashboard analytics showing sprint velocity and burn-down charts. Leveraged Next.js and WebSockets for seamless performance."
     },
     {
       "title": "Hosting Solutions - Server Infrastructure",
       "description": "Comprehensive landing and service pages for a professional hosting provider, designed to communicate reliability and high-performance infrastructure.",
-      "tags": ["Website", "Web App"],
+      "tags": [
+        "Website",
+        "Web App"
+      ],
       "images": [
         "/designs/hosting/Green%20Hosting%20-%20Hero.png",
         "/designs/hosting/Green%20Hosting%20-%20Homepage.png",
         "/designs/hosting/features.png",
         "/designs/hosting/services.png"
-      ]
+      ],
+      "role": "Full Stack Engineer",
+      "client": "Hosting Solutions",
+      "year": "2024",
+      "challenge_title": "Designed a professional, conversion-optimized landing page for a web hosting provider.",
+      "challenge": "Emphasized low latency, clear plan comparisons, and highly visible SLA statistics. The main challenge was designing complex infrastructure diagrams and interactive pricing calculators that remain accessible and responsive."
     },
     {
       "title": "Tevino Men - Luxury Fashion",
       "description": "A premium menswear brand based in New Delhi, featuring a high-end web presence that reflects the exclusivity and sophistication of its luxury clothing lines.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/Tevino/Tevino%20dribble%20shot%20%231.png",
         "/designs/Tevino/Tevino%20dribble%20shot%20%232.png",
         "/designs/Tevino/Tevino%20dribble%20shot.png"
-      ]
+      ],
+      "role": "UI/UX Designer & Web Developer",
+      "client": "Tevino Men",
+      "year": "2023",
+      "challenge_title": "A luxury fashion e-commerce experience for high-end menswear based in New Delhi.",
+      "challenge": "The design required a minimal, sophisticated layout featuring massive typography and fluid hover transitions to reflect the exclusivity of the clothing lines. Designed to optimize high-ticket checkouts."
     },
     {
       "title": "Sales Mobility - Field Sales Management",
       "description": "A comprehensive application designed for sales representatives to streamline order processing, manage inventory, and optimize field operations through an organized digital ecosystem.",
-      "tags": ["App"],
+      "tags": [
+        "App"
+      ],
       "images": [
         "/designs/Sales%20Mobility/mockup-1.png",
         "/designs/Sales%20Mobility/Slide%204_3%20-%202.png",
         "/designs/Sales%20Mobility/Slide%204_3%20-%203.png"
-      ]
+      ],
+      "role": "React Native Developer",
+      "client": "Enterprise Sales Client",
+      "year": "2024",
+      "challenge_title": "Field sales representatives required a lightweight app to manage orders, inventory, and field reports.",
+      "challenge": "The main challenge was enabling offline-first functionality for remote areas, paired with thermal printer integrations for on-the-spot receipt printing during customer visits."
     },
     {
       "title": "Toastloshi - Artisan Bakery",
       "description": "A sensory digital experience for a luxury bakery, focusing on premium food photography and an elegant layout that captures the essence of artisanal baking.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/toastloshi/toastloshi%20-%20hero.png",
         "/designs/toastloshi/toastloshi%20-%20homepage.png",
         "/designs/toastloshi/about%20us.png",
         "/designs/toastloshi/envolope.png",
         "/designs/toastloshi/gallery.png"
-      ]
+      ],
+      "role": "Lead Web Designer",
+      "client": "Toastloshi Bakery",
+      "year": "2023",
+      "challenge_title": "Created a digital experience that reflects the warmth of artisanal baking.",
+      "challenge": "The layout uses warm earth tones and rich animations. The main design challenge was making product photography look tactile and appetizing on all screens while ensuring an incredibly quick purchase flow."
     },
     {
       "title": "Reflecto - Lighting & Ray Study",
       "description": "An experimental Figma project exploring advanced lighting effects, ray tracing, and realistic reflections in digital interface design.",
-      "tags": ["Website"],
+      "tags": [
+        "Website"
+      ],
       "images": [
         "/designs/reflecto/Reflecto%20dribble%20shot%20%231.png"
-      ]
+      ],
+      "role": "Lead UI Designer",
+      "client": "Figma Community Project",
+      "year": "2024",
+      "challenge_title": "An experimental layout investigating advanced lighting, ray tracing, and reflections inside flat digital user interfaces.",
+      "challenge": "The project pushed Figma's limits in vector rendering and shadow stacking to create lifelike 3D-esque elements without using actual 3D software."
     },
     {
       "title": "Think File - AI Document Intelligence",
       "description": "An intelligent RAG (Retrieval-Augmented Generation) application that scans various document types, allowing users to interact with their data and ask complex questions using AI.",
-      "tags": ["Web App", "Agentic AI"],
+      "tags": [
+        "Web App",
+        "Agentic AI"
+      ],
       "images": [
         "/designs/think%20file/think-file.png",
         "/designs/think%20file/think-file-dashboard.png",
         "/designs/think%20file/think-file-chat.png",
         "/designs/think%20file/think-file-signup.png"
-      ]
+      ],
+      "role": "AI Engineer & Designer",
+      "client": "Personal Project",
+      "year": "2024",
+      "challenge_title": "An intelligent RAG (Retrieval-Augmented Generation) application scanning various document types and facilitating interactions with data via chat.",
+      "challenge": "The technical challenge was handling large document parsing pipelines, clean text extraction, and optimizing vector database query retrieval speeds."
     },
     {
       "title": "Mevasa - Modern Baby Products",
       "description": "An exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/mevasa/Product%20page%20%231.png",
         "/designs/mevasa/Mevasa%20hero.png",
         "/designs/mevasa/Mevasa%20Design.png",
         "/designs/mevasa/Mevasa%20-%20Homepage.png",
         "/designs/mevasa/Product%20Page.png"
-      ]
+      ],
+      "role": "Frontend Engineer",
+      "client": "Mevasa Kids",
+      "year": "2024",
+      "challenge_title": "An animated e-commerce shop for premium baby products.",
+      "challenge": "The design uses playful micro-interactions and soft pastel tones. The challenge was ensuring smooth animations did not affect the checkout performance, using optimized CSS layout techniques and lazy loading."
     },
     {
       "title": "Focas - AI Scheduling Assistant",
       "description": "A daily habit-tracking and scheduling application powered by AI to help users optimize their productivity and maintain a balanced lifestyle.",
-      "tags": ["Web App", "Agentic AI"],
+      "tags": [
+        "Web App",
+        "AI",
+        "Productivity"
+      ],
       "images": [
         "/designs/focas/Focas.png",
-        "/designs/focas/Slide%2016_9%20-%202.png",
-        "/designs/focas/Slide%2016_9%20-%203.png"
-      ]
+        "/designs/focas/2.png",
+        "/designs/focas/3.png"
+      ],
+      "role": "Frontend Engineer",
+      "client": "Personal Project",
+      "year": "2025",
+      "challenge_title": "AI-powered scheduling assistant designed to streamline calendar management and meeting coordination.",
+      "challenge": "The technical challenge involved integrating with Google Calendar and Outlook APIs to provide real-time availability updates, and developing an intuitive chat interface for scheduling that felt natural and efficient."
     },
     {
       "title": "Train station web design concept",
       "description": "A concept I instantly wanted to create after seeing the astonishing architecture and atmosphere of Changi Airport in Singapore.",
-      "tags": ["Website"],
+      "tags": [
+        "Website"
+      ],
       "images": [
-        "/designs/train-station/train-station.mp4",
         "/designs/train-station/train-station-shot.png",
         "/designs/train-station/epic-train-station.png"
-      ]
+      ],
+      "role": "UI Designer",
+      "client": "Concept Design",
+      "year": "2023",
+      "challenge_title": "A concept inspired by the striking modern architecture of Singapore's Changi Airport.",
+      "challenge": "The design explores vertical layouts, dynamic train route animations, and high-contrast color schemes to create an premium, immersive dashboard for travelers."
     },
     {
       "title": "Think File - Custom RAG App",
       "description": "An intelligent RAG (Retrieval-Augmented Generation) application that scans various document types, allowing users to interact with their data.",
-      "tags": ["Web App", "Agentic AI"],
+      "tags": [
+        "Web App",
+        "Agentic AI"
+      ],
       "images": [
         "/designs/think%20file/think-file.png",
         "/designs/think%20file/think-file-dashboard.png",
@@ -148,85 +242,149 @@
         "/designs/think%20file/think-file-signup.png"
       ],
       "tag": "Gen AI",
-      "link": "https://think-file.vercel.app"
+      "role": "Full Stack & AI Engineer",
+      "client": "Personal Project",
+      "year": "2024",
+      "challenge_title": "An advanced Next-Gen AI application utilizing retrieval augmented generation (RAG) to let users search and chat with documents.",
+      "challenge": "Optimized using a vector database for semantic search, custom text splitters, and a chat interface designed for deep document analysis."
     },
     {
       "title": "Toastdoshi - Bakery webshop",
       "description": "A sensory digital experience for a luxury bakery, focusing on premium food photography and an elegant layout that captures the essence of artisanal baking.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/toastloshi/toastloshi%20-%20hero.png",
-        "/designs/toastloshi/toastloshi%20-%20homepage.png"
+        "/designs/toastloshi/toastloshi%20-%20homepage.png",
+        "/designs/toastloshi/about%20us.png",
+        "/designs/toastloshi/gallery.png",
+        "/designs/toastloshi/envolope.png"
       ],
       "tag": "Shopify",
-      "link": "#"
+      "role": "Frontend Developer & Designer",
+      "client": "Toastdoshi Bakery",
+      "year": "2023",
+      "challenge_title": "Designed and engineered a high-fidelity web shop for an artisan bakery.",
+      "challenge": "Focuses on premium food photography, micro-interactions, and custom cart states. Crafted with smooth transitions to ensure a high-end customer journey."
     },
     {
       "title": "Greater Construction - Website",
       "description": "A modern, clean marketing website built for a construction and architecture firm to display recent build portfolios and credentials.",
-      "tags": ["Website"],
+      "tags": [
+        "Website"
+      ],
       "images": [
-        "/designs/ALMN/ALMN-hero-mockup.webp"
+        "/designs/Greater%20Construction/mockup.webp",
+        "/designs/Greater%20Construction/full%20page.webp"
       ],
       "tag": "Wordpress",
-      "link": "#"
+      "role": "Web Developer",
+      "client": "Greater Construction",
+      "year": "2023",
+      "challenge_title": "Developed a modern branding site for a premium architecture and construction firm.",
+      "challenge": "Built to present large-scale portfolios and architectural blueprints elegantly, featuring high-performance image optimization and fully responsive grid layouts."
     },
     {
       "title": "Sales Mobility - App Development",
       "description": "A comprehensive application designed for sales representatives to streamline order processing, manage inventory, and optimize field operations.",
-      "tags": ["App"],
+      "tags": [
+        "App"
+      ],
       "images": [
         "/designs/Sales%20Mobility/mockup-1.png",
         "/designs/Sales%20Mobility/Slide%204_3%20-%202.png",
         "/designs/Sales%20Mobility/Slide%204_3%20-%203.png"
       ],
       "tag": "React Native",
-      "link": "https://github.com/jaychauhan-exe1/bettermobility"
+      "role": "React Native Lead",
+      "client": "BetterMobility Corp",
+      "year": "2024",
+      "challenge_title": "A mobile enterprise application built to digitize field workflows.",
+      "challenge": "Developed order tracking, real-time inventories, and direct printing features. Designed to handle unstable internet connections smoothly using custom sync buffers."
     },
     {
       "title": "Hydra Hosting - Web design",
       "description": "Comprehensive landing and service pages for a professional hosting provider, designed to communicate reliability and high-performance infrastructure.",
-      "tags": ["Website", "Web App"],
+      "tags": [
+        "Website",
+        "Web App"
+      ],
       "images": [
         "/designs/hosting/Green%20Hosting%20-%20Hero.png",
-        "/designs/hosting/Green%20Hosting%20-%20Homepage.png"
+        "/designs/hosting/Green%20Hosting%20-%20Homepage.png",
+        "/designs/hosting/features.png",
+        "/designs/hosting/services.png"
       ],
       "tag": "Vue JS",
-      "link": "https://dribbble.com/shots/23812904-Green-Hosting-Website-Design"
+      "role": "UI/UX Designer",
+      "client": "Hydra Hosting",
+      "year": "2024",
+      "challenge_title": "A clean landing and service page design for cloud infrastructure.",
+      "challenge": "The design showcases high-availability statistics and interactive pricing panels using clean gradients, sharp typography, and subtle tech elements."
     },
     {
       "title": "Mevasa - Web design",
       "description": "An exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents.",
-      "tags": ["Website", "Ecommerce"],
+      "tags": [
+        "Website",
+        "Ecommerce"
+      ],
       "images": [
         "/designs/mevasa/Product%20page%20%231.png",
         "/designs/mevasa/Mevasa%20hero.png",
-        "/designs/mevasa/Mevasa%20Design.png"
+        "/designs/mevasa/Mevasa%20Design.png",
+        "/designs/mevasa/Mevasa%20-%20Homepage.png",
+        "/designs/mevasa/Product%20Page.png"
       ],
       "tag": "Wordpress",
-      "link": "https://mevasa.in"
+      "role": "Lead Web Designer",
+      "client": "Mevasa E-shop",
+      "year": "2024",
+      "challenge_title": "An online storefront featuring fluid animations and a soft aesthetic tailored to parents.",
+      "challenge": "Designed with mobile-first layouts, custom product filters, and micro-interactions that make the shopping experience delightful."
     },
     {
-      "title": "Focas - Web design",
-      "description": "A daily habit-tracking and scheduling application powered by AI to help users optimize their productivity and maintain a balanced lifestyle.",
-      "tags": ["Web App", "Agentic AI"],
+      "title": "Monolith Web Design",
+      "description": "A clean interface, bold typography, and architectural imagery combined with a familiar user journey, making the engineering website feel contemporary yet trustworthy.",
+      "tags": [
+        "Website",
+        "Design"
+      ],
       "images": [
-        "/designs/focas/Focas.png",
-        "/designs/focas/Slide%2016_9%20-%202.png",
-        "/designs/focas/Slide%2016_9%20-%203.png"
+        "/designs/Monolith/Dribbble%20shot%20%231.webp",
+        "/designs/Monolith/Dribbble%20shot%20%232.webp",
+        "/designs/Monolith/Dribbble%20shot%20%233.webp",
+        "/designs/Monolith/Dribbble%20shot%20%234.webp"
       ],
       "tag": "Figma",
-      "link": "https://dribbble.com/shots/24128564-Focas-AI-Scheduling-Assistant"
+      "role": "Designer",
+      "client": "Self-Initiated",
+      "year": "2026",
+      "challenge_title": "Bringing a modern identity to engineering without compromising familiarity.",
+      "challenge": "A clean interface, bold typography, and architectural imagery were combined with a familiar user journey, making the website feel contemporary while remaining approachable and trustworthy for traditional decision-makers."
     },
     {
       "title": "ALMN Web design",
       "description": "ALMN is a premium design agency landing page concept exploring advanced typography, glassmorphism, and minimal layouts.",
-      "tags": ["Website", "Design"],
+      "tags": [
+        "Website",
+        "Design"
+      ],
       "images": [
-        "/designs/ALMN/ALMN-hero-mockup.webp"
+        "/designs/ALMN/ALMN-hero-mockup.webp",
+        "/designs/ALMN/services.webp",
+        "/designs/ALMN/ALMN-4.webp",
+        "/designs/ALMN/stats%20section.webp",
+        "/designs/ALMN/ALMN-hero-mobile.webp"
       ],
       "tag": "Figma",
-      "link": "https://dribbble.com/shots/23249053-ALMN-Design-Agency-Website"
+      "role": "Lead Designer",
+      "client": "ALMN Agency",
+      "year": "2023",
+      "challenge_title": "A premium agency landing page featuring glassmorphism, precise layouts, and minimal structure.",
+      "challenge": "The challenge was displaying high-resolution screenshots without cluttering the screen, using clean grids and structured page flows."
     }
   ]
 }

@@ -4,6 +4,8 @@ import { GoBack } from '@/components/ui/GoBack'
 import Image from 'next/image'
 import Link from 'next/link'
 import projectsData from '@/content/projects.json'
+import { slugify } from '@/lib/slugify'
+
 
 export const metadata = constructMetadata({
     title: "Work & Projects",
@@ -41,45 +43,43 @@ export default function ProjectsPage() {
 
                 {/* Projects Grid */}
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 mt-6'>
-                    {sortedProjects.map((project, idx) => (
-                        <div key={idx} className='flex flex-col group'>
-                            {/* Image Container */}
-                            <div className='relative w-full aspect-[16/10] overflow-hidden rounded-3xl border border-border/30 bg-card shadow-sm'>
-                                <Image
-                                    src="/designs/ALMN/ALMN-hero-mockup.webp"
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    priority={idx < 2}
-                                />
-                            </div>
+                    {sortedProjects.map((project, idx) => {
+                        const slug = slugify(project.title);
+                        return (
+                            <Link href={`/projects/${slug}`} key={idx} className='flex flex-col group'>
+                                {/* Image Container */}
+                                <div className='relative w-full aspect-[16/10] overflow-hidden rounded-3xl border border-border/30 bg-card shadow-sm'>
+                                    <Image
+                                        src={project.images[0] || "/designs/ALMN/ALMN-hero-mockup.webp"}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        priority={idx < 2}
+                                    />
+                                </div>
 
-                            {/* Details Container */}
-                            <div className='flex justify-between items-start gap-4 mt-4 px-1'>
-                                <h2 className='text-base md:text-lg font-medium text-foreground tracking-tight'>
-                                    {project.title}
-                                </h2>
-                                <span className='text-sm text-foreground/50 font-cabin-sketch whitespace-nowrap shrink-0 mt-0.5 md:mt-1'>
-                                    {project.tag || (project.tags && project.tags[0]) || ''}
-                                </span>
-                            </div>
-
-                            {/* Action Container */}
-                            <div className='mt-1 px-1'>
-                                <Link
-                                    href={project.link || '#'}
-                                    {...(project.link && project.link !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                                    className='inline-block w-fit'
-                                >
-                                    <span className="text-sm underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all duration-300 text-foreground font-medium">
-                                        Learn more
+                                {/* Details Container */}
+                                <div className='flex justify-between items-start gap-4 mt-4 px-1'>
+                                    <h2 className='text-base md:text-lg font-medium text-foreground tracking-tight'>
+                                        {project.title}
+                                    </h2>
+                                    <span className='text-sm text-foreground/50 font-cabin-sketch whitespace-nowrap shrink-0 mt-0.5 md:mt-1'>
+                                        {project.tag || (project.tags && project.tags[0]) || ''}
                                     </span>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
+                                </div>
+
+                                {/* Action Container */}
+                                <div className='mt-1 px-1'>
+                                    <span className="text-sm underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all duration-300 text-foreground font-medium">
+                                        View Project
+                                    </span>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
+
 
                 {/* Footer Section */}
                 <div className="mt-20 text-center text-sm md:text-base text-foreground/50 leading-relaxed">
