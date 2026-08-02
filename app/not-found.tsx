@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { GradientButton } from "../components/ui/GradientButton";
+import { GradientButton } from "@/components/ui/GradientButton";
 
 export default function NotFound() {
   useEffect(() => {
