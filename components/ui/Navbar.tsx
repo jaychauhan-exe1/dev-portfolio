@@ -129,7 +129,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
               className=""
             >
 
-              <div className="bg-background/50 border p-2 rounded-full border-border dark:border-border backdrop-blur-[2px] shadow-sm shrink-0 w-14 h-14 flex items-center justify-center">
+              <div className="bg-background/60 border p-2 rounded-full border-border dark:border-border backdrop-blur-[2px] shadow-sm shrink-0 w-14 h-14 flex items-center justify-center">
                 <Tooltip content="Go Back">
                   <button
                     onClick={() => router.back()}
@@ -147,7 +147,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
         {/* Main Navbar */}
         <motion.div
           layout
-          className="flex items-center gap-2 bg-background/50 border p-2 rounded-full border-border dark:border-border backdrop-blur-[2px] shadow-sm"
+          className="flex items-center gap-2 bg-background/60 border p-2 rounded-full border-border dark:border-border backdrop-blur-[2px] shadow-sm"
         >
           <Tooltip content="QR Code">
             <button

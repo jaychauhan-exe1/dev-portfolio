@@ -6,7 +6,7 @@ import { GitHubCalendar } from "react-github-calendar";
 import { Cat, Moon, Sun, ArrowRightIcon } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { GradientButton } from "../components/ui/gradientButton";
+import { GradientButton } from "../components/ui/GradientButton";
 import TechStack from "@/components/ui/TechStack";
 
 const data = {
