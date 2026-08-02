@@ -112,7 +112,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="mt-20">
           <Link
             href={`/projects/${nextSlug}`}
-            className="group block relative w-full aspect-[2/1] md:aspect-[16/10] hover:shadow-lg border border-border overflow-hidden rounded-3xl transition-all duration-500"
+            className="group block relative w-full aspect-[4/3] md:aspect-[16/10] hover:shadow-lg border border-border overflow-hidden rounded-3xl transition-all duration-500"
           >
             {nextProject.images[0] && (
               <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -122,17 +122,18 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 {/* Gradient overlay to ensure text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent"></div>
               </div>
             )}
 
             <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 sm:p-8 md:p-10">
               <div className="flex flex-col gap-1 max-w-lg">
-                <h3 className="text-xl sm:text-lg md:text-xl tracking-tight text-black leading-tight">
+                <h3 className="text-xl sm:text-lg md:text-xl tracking-tight text-foreground leading-tight">
                   {nextProject.title}
                 </h3>
                 <div className="mt-2">
-                  <span className="text-xs sm:text-sm text-black/70 underline underline-offset-4 decoration-black/20 group-hover:text-black/80 group-hover:decoration-black/40 transition-all duration-300">
+                  <span className="text-xs sm:text-sm text-foreground/70 underline underline-offset-4 decoration-foreground/20 group-hover:text-foreground/80 group-hover:decoration-foreground/40 transition-all duration-300">
                     View Next Project
                   </span>
                 </div>
