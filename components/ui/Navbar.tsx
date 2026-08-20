@@ -133,7 +133,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
                 <Tooltip content="Go Back">
                   <button
                     onClick={() => router.back()}
-                    className="p-2 rounded-full hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] transition-colors duration-300 ease-out flex items-center justify-center w-full h-full cursor-pointer bg-transparent border-none"
+                    className="p-2 rounded-full hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] hover:bg-border/30 dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] transition-colors duration-300 ease-out flex items-center justify-center w-full h-full cursor-pointer bg-transparent border-none"
                   >
                     <ArrowLeft size={24} className="text-foreground" />
                   </button>
@@ -153,7 +153,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             <button
               type="button"
               onClick={showQR}
-              className={`p-2 rounded-full w-fit hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
+              className={`p-2 rounded-full w-fit hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] hover:bg-border/30 dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] transition-colors duration-300 ease-out bg-transparent border-none ${isDemo ? "cursor-default" : "cursor-pointer"}`}
             >
               <QrCode className="text-foreground" />
             </button>
@@ -163,7 +163,7 @@ export const Navbar = ({ className, isDemo = false }: { className?: string, isDe
             const isActive = !isDemo && pathname === link.href;
             const Icon = isActive ? Home : link.icon;
             const href = isDemo ? undefined : (isActive ? "/" : link.href);
-            const className = `hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] p-2 rounded-full w-fit transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`;
+            const className = `hover:shadow-[inset_0_0_4px_2px_rgba(0,0,0,0.1)] hover:bg-border/30 dark:hover:shadow-[inset_0_0_4px_2px_rgba(255,255,255,0.1)] p-2 rounded-full w-fit transition-colors duration-300 ease-out ${isDemo ? "cursor-default" : "cursor-pointer"}`;
 
             if (isDemo) {
               return (
