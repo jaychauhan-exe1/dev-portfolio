@@ -20,7 +20,7 @@
         "/designs/Talent%20Velocity/Talent%20.png",
         "/designs/Talent%20Velocity/Talent%20Velocity%20-%20hero.png"
       ],
-      "role": "Lead Developer",
+      "role": "Developer",
       "client": "Talent Velocity",
       "year": "2024",
       "challenge_title": "Talent Velocity needed a robust, fast recruiting platform tailored for the Indian recruitment market.",
@@ -133,7 +133,7 @@
         "/designs/toastloshi/envolope.png",
         "/designs/toastloshi/gallery.png"
       ],
-      "role": "Lead Web Designer",
+      "role": "Web Designer",
       "client": "Toastloshi Bakery",
       "year": "2023",
       "challenge_title": "Created a digital experience that reflects the warmth of artisanal baking.",
@@ -148,7 +148,7 @@
       "images": [
         "/designs/reflecto/Reflecto%20dribble%20shot%20%231.png"
       ],
-      "role": "Lead UI Designer",
+      "role": "UI Designer",
       "client": "Figma Community Project",
       "year": "2024",
       "challenge_title": "An experimental layout investigating advanced lighting, ray tracing, and reflections inside flat digital user interfaces.",
@@ -298,8 +298,8 @@
         "/designs/Sales%20Mobility/Slide%204_3%20-%203.png"
       ],
       "tag": "React Native",
-      "role": "React Native Lead",
-      "client": "BetterMobility Corp",
+      "role": "React Native Developer",
+      "client": "NDA",
       "year": "2024",
       "challenge_title": "A mobile enterprise application built to digitize field workflows.",
       "challenge": "Developed order tracking, real-time inventories, and direct printing features. Designed to handle unstable internet connections smoothly using custom sync buffers."
@@ -339,7 +339,7 @@
         "/designs/mevasa/Product%20Page.png"
       ],
       "tag": "Wordpress",
-      "role": "Lead Web Designer",
+      "role": "Web Design",
       "client": "Mevasa E-shop",
       "year": "2024",
       "challenge_title": "An online storefront featuring fluid animations and a soft aesthetic tailored to parents.",
@@ -380,7 +380,7 @@
         "/designs/ALMN/ALMN-hero-mobile.webp"
       ],
       "tag": "Figma",
-      "role": "Lead Designer",
+      "role": "Designer",
       "client": "ALMN Agency",
       "year": "2023",
       "challenge_title": "A premium agency landing page featuring glassmorphism, precise layouts, and minimal structure.",

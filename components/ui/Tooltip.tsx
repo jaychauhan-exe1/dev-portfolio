@@ -11,11 +11,21 @@ interface TooltipProps {
 export const Tooltip = ({ children, content }: TooltipProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
+    const handleMouseEnter = () => {
+        if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+            setIsHovered(true);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
     return (
         <div
             className="relative flex items-center justify-center"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             <AnimatePresence>
                 {isHovered && (
