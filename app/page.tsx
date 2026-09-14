@@ -8,6 +8,8 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { GradientButton } from "../components/ui/GradientButton";
 import TechStack from "@/components/ui/TechStack";
+import ProjectsGallery from "@/components/projects/ProjectsGallery";
+import projectsData from "@/content/projects.json";
 
 const data = {
   experience: [
@@ -37,38 +39,12 @@ const data = {
       description: "Reached Level 2 Seller on Fiverr through consistent 5-star work, positive client feedback, and successful project delivery. It’s a milestone that reflects the trust clients place in me and the effort I put into every project I take on.",
     },
   ],
-  projects: [
-    {
-      title: "Better DevDocs",
-      link: "https://bdd.jaysinghchauhan.com",
-      year: "DEV TOOLS",
-      description: "Better DevDocs is a platform built for developer learning, study, interactive documentation, problem solving, and hands-on code practice. Designed to streamline software development learning with progress maps, interactive coding environments, and real-time solution tracking.",
-      thumbnail: "/designs/Better%20DevDocs/Home.png",
-    },
-    {
-      title: "Mevasa",
-      link: "https://mevasa.in",
-      year: "ECOMMERCE",
-      description: "Mevasa is an exquisitely animated and modern e-commerce platform for baby products, using playful motion and a soft aesthetic to appeal to young parents. I built this platform to deliver a seamless shopping experience, combining a warm design direction with performant frontend interactions.\n\n The project focuses on micro-interactions, clean layout structures, and high-fidelity product galleries to make digital retail feel tactile and alive. Designing and developing Mevasa helped me refine my skills in creating motion-heavy, component-driven interfaces that balance premium visual storytelling with smooth performance across all devices.",
-      thumbnail: "/designs/mevasa/Product%20page%20%231.png",
-    },
-    {
-      title: "Sales Mobility App",
-      link: "https://github.com/jaychauhan-exe1/bettermobility",
-      year: "EXPO APP",
-      description: "Sales Mobility App is a field sales management system I built to replace manual, paper-based workflows with a streamlined digital solution. It allows sales representatives to create orders, manage returns, submit field reports, and handle daily sales activities directly from their mobile devices, improving accuracy and saving time for both reps and management. \n\n The app also supports real-time invoice generation with portable printer integration, enabling instant billing during client visits. This project strengthened my ability to design systems that solve real-world business problems and demonstrated how thoughtful digital tools can significantly improve operational efficiency.",
-      thumbnail: "/designs/Sales Mobility/Slide 4_3 - 3.png",
-    },
-    {
-      title: "Think File",
-      link: "https://think-file.vercel.app",
-      year: "GEN AI",
-      description: "ThinkFile is a Retrieval-Augmented Generation (RAG) system I built to explore and deepen my understanding of generative AI systems. It allows users to upload and interact with their data through AI-powered conversations, supporting formats such as Word, PDF, CSV, XLSX, Markdown, and other text-based files. Instead of manually searching documents, users can ask questions and receive context-aware answers instantly. \n\n The system currently runs on Gemini 3 Flash and 2.5 models, and includes structured file and project management along with chat history tracking. This project was intentionally built as a hands-on learning experience to better understand GenAI architecture, document processing pipelines, and real-world implementation patterns. While it’s not intended as a final product, it served as a practical foundation for experimenting with advanced AI workflows and system design.",
-      thumbnail: "/designs/think file/think-file.png",
-    },
-  ],
-
 };
+
+const targetKeys = ["Better DevDocs", "Mevasa", "Sales Mobility", "Think File"];
+const homeProjects = targetKeys
+  .map((key) => projectsData.projects.find((p) => p.title.toLowerCase().startsWith(key.toLowerCase())))
+  .filter((p): p is (typeof projectsData.projects)[0] => Boolean(p));
 const greetings = ["Hello", "Namaste", "Hola", "Bonjour", "Ciao", "こんにちは", "Guten Tag"];
 
 export default function Home() {
@@ -118,7 +94,6 @@ export default function Home() {
   const experienceContent = useMemo(() => <ExpandableContent items={data.experience} />, []);
   const learningsContent = useMemo(() => <ExpandableContent items={data.learnings} />, []);
   const achievementsContent = useMemo(() => <ExpandableContent items={data.achievements} />, []);
-  const projectsContent = useMemo(() => <ExpandableContent items={data.projects} />, []);
 
   const controls = useAnimation();
   const [lastTap, setLastTap] = useState(0);
@@ -309,7 +284,7 @@ export default function Home() {
             <ArrowRightIcon size={14} className="text-foreground/60" />
           </Link>
         </div>
-        {projectsContent}
+        <ProjectsGallery projects={homeProjects} view="homepage" />
       </section>
 
       <section className="flex flex-col gap-6 my-16">

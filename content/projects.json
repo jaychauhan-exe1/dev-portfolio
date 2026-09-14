@@ -114,6 +114,7 @@
         "/designs/Sales%20Mobility/Slide%204_3%20-%202.png",
         "/designs/Sales%20Mobility/Slide%204_3%20-%203.png"
       ],
+      "link": "https://github.com/jaychauhan-exe1/bettermobility",
       "role": "React Native Developer",
       "client": "Enterprise Sales Client",
       "year": "2024",
@@ -168,6 +169,7 @@
         "/designs/think%20file/think-file-chat.png",
         "/designs/think%20file/think-file-signup.png"
       ],
+      "link": "https://think-file.vercel.app",
       "role": "AI Engineer & Designer",
       "client": "Personal Project",
       "year": "2024",
@@ -188,6 +190,7 @@
         "/designs/mevasa/Mevasa%20-%20Homepage.png",
         "/designs/mevasa/Product%20Page.png"
       ],
+      "link": "https://mevasa.in",
       "role": "Frontend Engineer",
       "client": "Mevasa Kids",
       "year": "2024",
@@ -403,6 +406,7 @@
         "/designs/Better%20DevDocs/leaderboard.png",
         "/designs/Better%20DevDocs/analytics.png"
       ],
+      "link": "https://bdd.jaysinghchauhan.com",
       "tag": "Dev Tools",
       "role": "Full Stack Engineer & Designer",
       "client": "Better DevDocs",
