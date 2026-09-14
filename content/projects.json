@@ -1,5 +1,6 @@
 {
   "featured": [
+    "Better DevDocs",
     "Think File - Custom RAG App",
     "Toastdoshi - Bakery webshop",
     "Greater Construction - Website",
@@ -385,6 +386,29 @@
       "year": "2023",
       "challenge_title": "A premium agency landing page featuring glassmorphism, precise layouts, and minimal structure.",
       "challenge": "The challenge was displaying high-resolution screenshots without cluttering the screen, using clean grids and structured page flows."
+    },
+    {
+      "title": "Better DevDocs",
+      "description": "A platform for developer learning, study, interactive documentation, code practice, and hands-on software development.",
+      "tags": [
+        "Web App",
+        "Developer Tools",
+        "Education"
+      ],
+      "images": [
+        "/designs/Better%20DevDocs/Home.png",
+        "/designs/Better%20DevDocs/coding.png",
+        "/designs/Better%20DevDocs/solution.png",
+        "/designs/Better%20DevDocs/progress-map.png",
+        "/designs/Better%20DevDocs/leaderboard.png",
+        "/designs/Better%20DevDocs/analytics.png"
+      ],
+      "tag": "Dev Tools",
+      "role": "Full Stack Engineer & Designer",
+      "client": "Better DevDocs",
+      "year": "2025",
+      "challenge_title": "Building an interactive developer learning platform with live code practice and progress tracking.",
+      "challenge": "The challenge was building a unified developer ecosystem combining interactive code playgrounds, progress tracking, problem solutions, and clean, high-performance documentation. Designed with fluid dark/light interfaces, real-time analytics, and gamified progress maps to help developers master modern tech stacks."
     }
   ]
 }

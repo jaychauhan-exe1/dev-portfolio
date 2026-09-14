@@ -39,6 +39,13 @@ const data = {
   ],
   projects: [
     {
+      title: "Better DevDocs",
+      link: "https://bdd.jaysinghchauhan.com",
+      year: "DEV TOOLS",
+      description: "Better DevDocs is a platform built for developer learning, study, interactive documentation, problem solving, and hands-on code practice. Designed to streamline software development learning with progress maps, interactive coding environments, and real-time solution tracking.",
+      thumbnail: "/designs/Better%20DevDocs/Home.png",
+    },
+    {
       title: "Mevasa",
       link: "https://mevasa.in",
       year: "ECOMMERCE",

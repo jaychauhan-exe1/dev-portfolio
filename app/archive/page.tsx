@@ -11,22 +11,10 @@ export const metadata = constructMetadata({
 })
 
 export default function ArchivePage() {
-    const featuredTitles = projectsData.featured;
     const allProjects = projectsData.projects;
 
-    // Find all projects that are in the featured titles list
-    const featuredCandidates = allProjects.filter(p => featuredTitles.includes(p.title));
-
-    // Take the last 8 (latest 8) as active featured
-    const activeFeatured = featuredCandidates.slice(-8);
-
-    // All other projects (either never featured, or reverted) go to archive
-    const archiveProjects = allProjects.filter(
-        p => !activeFeatured.some(f => f.title === p.title)
-    );
-
-    // Reverse to display latest first
-    const sortedArchiveProjects = [...archiveProjects].reverse();
+    // Reverse to display latest first (newest projects at the top)
+    const sortedArchiveProjects = [...allProjects].reverse();
 
     return (
         <div className='w-full pb-32 max-w-7xl mx-auto'>
