@@ -164,8 +164,14 @@ const PortfolioCard = ({
     size?: 'default' | 'small';
     layout?: 'stack' | 'side-by-side';
 }) => {
-    const isHomepageView = view === 'homepage';
-    const isSideBySide = layout === 'side-by-side' || isHomepageView;
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isMounted, setIsMounted] = useState(false);
+    const [translateX, setTranslateX] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const isHomepageView = view === 'homepage' && !isMobile;
+    const isSideBySide = (layout === 'side-by-side' || view === 'homepage') && !isMobile;
     const isSmall = size === 'small' || isSideBySide;
 
     const ACTIVE_HEIGHT = isSideBySide ? 165 : (isSmall ? 210 : 310);
@@ -174,12 +180,6 @@ const PortfolioCard = ({
     const ACTIVE_WIDTH = ACTIVE_HEIGHT * RATIO;
     const INACTIVE_WIDTH = INACTIVE_HEIGHT * RATIO;
     const ITEM_GAP = isSideBySide ? 16 : (isSmall ? 24 : 32);
-
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isMounted, setIsMounted] = useState(false);
-    const [translateX, setTranslateX] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsMounted(true);
